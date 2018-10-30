@@ -1,0 +1,37 @@
+// Buttons
+
+.primary-button {
+    font: {
+        family: $primary-font;
+        weight: 600;
+    }
+    background: white;
+    color: #9a9a9a;
+    border: 1px solid transparent;
+    letter-spacing: -0.03em;
+    padding: 0.4rem 1rem 0.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: all 0.2s ease-out;
+    border-radius: 2px;
+
+    &--text {
+        padding: 0;
+    }
+
+    &:hover {
+        color: darken(#9a9a9a, 9%);
+    }
+
+    &--continue,
+    &--upload {
+        color: white;
+        background: $primary-button;
+        border-color: $primary-button;
+        &:hover {
+            color: white;
+            background: darken($primary-button, 8%);
+            border-color: darken($primary-button, 8%);
+        }
+    }
+}
