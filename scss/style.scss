@@ -8,58 +8,27 @@
 }
 body{
     font-family: 'Montserrat', sans-serif;
+    background-image: url(/static/img/office-3295556_1920.jpg);
+    background-blend-mode: overlay;
+    background-color: rgba(0,0,0,.5);
 }
 .container{
    
 }
 
 .header{
-    &__nav{
-        background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,.9), rgba(0,0,0,.8), rgba(0,0,0,.7), rgba(0,0,0,0));
-        position: fixed;
-        width: 100vw;
-        height: 6rem;
-
+    position: relative;
+    height: 70vh;
+    overflow: hidden;
+    &__info {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
-        &__list{
-        }
-        &__item{
-            list-style: none;
-            display: inline-block;
-            margin-left: 1rem;
-            color: white;
-            left: 15%;
-            font-size: 1.2rem;
-            position: relative;
-            }
-        &__logo{
-            height: 3rem;
-            position: relative;
-            top:.7rem;
-            right: 6rem;
-            }
-        &__tel{
-            height: 2rem;
-            margin-right: .3rem;
-            position: relative;
-            top:.7rem;
-        } 
-        
-     &__background{
-        width: 100vw;
-        height: 100vh;
-
-    }
-    &__backgroundfundo{
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.541);
-        position: fixed;
-   }
-}
-.div{
-    display: flex;
-   
     &__h2{
         z-index: 1;
         color: white;
@@ -67,26 +36,68 @@ body{
         align-items: center;
         position: relative;
         text-align: center;
-        top:-30rem;
-        left: 10rem;
+        text-shadow: 5px 5px 20px rgba(0,0,0,.5);
     }
     &__button{
         border: none;
         align-items: center;
         position: relative;
-        top:-12rem;
-        font-weight: 700;
+        margin-top: 4rem;
+        font-weight: bold;
         font-family: 'Montserrat', sans-serif;
         color: white;
         background-color: #36ab12;
         border-radius: 30px; 
-        left: -38%;
         z-index: 1;  
-        width: 35%;
-        font-size: 1rem;
+        font-size: 1.3rem;
         height: 3.5rem;
+        width: 22rem;
+        cursor: pointer;
+    }    
+    &__background{
+        min-width: 100%;
+        min-height: 100%;   
     }
 }
-.cel{
-    margin-left: 9rem;
+
+.nav-menu {
+    background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,.9), rgba(0,0,0,.8), rgba(0,0,0,.7), rgba(0,0,0,0));
+    position: fixed;
+    width: 100vw;
+    height: 6rem;
+    box-sizing: border-box;
+    padding: 0 10%;
+    z-index: 1;
+    &__list {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+    &__item{
+        list-style: none;
+        color: white;
+        font-size: 1.2rem;
+        position: relative;
+        &--logo {
+            margin-right: auto;
+            cursor: pointer;
+        } 
+        &--item {
+            margin: 0 1rem;
+            cursor: pointer;
+        }
+        &--cel {
+            margin-left: auto;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+    }
+    &__tel{
+        height: 2rem;
+        margin-right: .3rem;
+    }
+    &__logo{
+        height: 3rem;
+    }
 }
