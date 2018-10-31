@@ -172,3 +172,47 @@ body{
         margin-top: 1rem;
     }
 }
+.clientes{
+    background-color: #FFF;
+    padding-top: 12rem;
+    &__conteudo{
+        left: 15.3%;
+        position: relative;
+        display: flex;
+        margin-top: 7rem;
+
+    }
+    &__figure{
+        align-items: center;
+        margin-right: 6rem;
+    }
+    &__user{
+        height: 15.5rem;
+        border-radius: 50%;
+        margin-top: -2rem;
+        border:medium solid #36ab12;
+    }
+    &__empresa{
+        height: 12rem;
+        margin-left: -1.5rem;
+        margin-bottom: 3rem;
+    }
+    &__avaliacao{
+
+    }
+    &__p{
+        width: 49%;
+        color: #646464;
+    }
+       
+    &__b{
+        position: relative;
+        bottom: -2rem;
+        color: #444343;
+
+    }
+    .cases{
+        margin-left: -10rem;
+        
+    }
+}

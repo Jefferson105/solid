@@ -38,6 +38,21 @@ const Home = () =>
                 </li>
             </ul>
         </section>
+        <section className="clientes">
+        <h3 className="impacto__title">Alguns de nossos <b> clientes satisfeitos</b></h3>
+        <div className="clientes__conteudo">
+            <figure className="clientes__figure">
+                <img className="clientes__user" src="/static/img/wallpapersden.com_chris-pine-handsome-pics_1024x1024.jpg"/>
+            </figure>
+                    <div className="clientes__avaliacao">
+                        <p className="clientes__p">acelerar os resultados, é importante investir em tecnologia.  Esqueça o controle manual e veja como a Solid pode lhe ajudar nessa etapa.Esqueça o controle manual e veja como a Solid pode lhe ajudar nessa etapa.<br/><b className="clientes__b">Felipe Viana</b></p>
+                        
+                        <img className="clientes__empresa" src="/static/img/amazon-logo-icon-png_44637.png"/>
+                        <button className="header__button cases">Conheça nossos cases</button>
+                    </div>
+        </div>
+
+        </section>
     </section>
 
 export default connect(state => state)(Home);
