@@ -4,7 +4,8 @@
   "description": "Projeto solid",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "start": "node index",
+    "buildHtml": "NODE_ENV=production ./node_modules/.bin/next build && ./node_modules/.bin/next export"
   },
   "author": "Jefferson Barbosa",
   "license": "MIT",
