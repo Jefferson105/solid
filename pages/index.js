@@ -51,8 +51,22 @@ const Home = () =>
                         <button className="header__button cases">Conheça nossos cases</button>
                     </div>
         </div>
-
         </section>
-    </section>
+        <section className="blog">
+            <h3 className="impacto__title">Artigos do <b> Blog SOLID</b></h3>
+            <ul className="blog__postblog">
+                <li className="blog__artigo artigo0">
+                    <img  className="blog__foto" src="/static/img/wallpapersden.com_chris-pine-handsome-pics_1024x1024.jpg"/>    
+                </li>
+                <li className="blog__foto">
+                    <img  src="/static/img/wallpapersden.com_chris-pine-handsome-pics_1024x1024.jpg"/>
+                </li>
+                <li className="blog__foto">
+                    <img  src="/static/img/wallpapersden.com_chris-pine-handsome-pics_1024x1024.jpg"/>
+                </li>
+            </ul>
+            <button className="header__button cases">Conheça nossos blogs</button>
+        </section> 
+        </section>
 
 export default connect(state => state)(Home);
