@@ -175,6 +175,7 @@ body{
 .clientes{
     background-color: #FFF;
     padding-top: 12rem;
+   
     &__conteudo{
         left: 15.3%;
         position: relative;
@@ -211,8 +212,135 @@ body{
         color: #444343;
 
     }
-    .cases{
-        margin-left: -10rem;
-        
+}
+.cases{
+    margin-left: -10rem;
+    
+}
+.blog{
+    background-color: #F9f9f8;
+    padding-top: 11rem;
+    &__postblog{
+        display: flex;
+        margin-top: 6rem;
+        margin-left: 9%;
+
     }
+    &__artigo{
+        margin-left: 2rem;
+        list-style: none;
+    }
+    &__foto{
+        height: 28rem;
+        width: 10rem;
+        border-radius: 8px;
+    }
+    &__foto1{
+        height: 28rem;
+        width: 40rem;
+        border-radius: 8px;
+    }
+    &__foto2{
+        height: 1rem;
+
+    }
+    &__text{
+        position: relative;
+        bottom:10rem;
+        width: 75%;
+        color: #FFF;
+        left: 1.5rem;
+    }
+ 
+    &__title{
+        top: -.5rem;
+        position: relative;
+    }
+}
+.conheça{
+    display: flex;
+    background-color: #f58538;
+    padding-top:3rem;
+    
+
+    &__info{
+        left: 13rem;
+        position: relative;
+        top: 3rem;
+    }
+    &__h3{
+        color: white;
+        font-size: 2.5rem;
+        width: 70%;
+    }
+    &__figure{
+
+    }
+    &__img{
+        height:18rem;
+        bottom: 1rem;
+        position: relative;
+        right: 14rem;
+    }
+    &__button{
+        border: none;
+        align-items: center;
+        position: relative;
+        margin-top: 4rem;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
+        color:#f58538;
+        background-color: white;
+        border-radius: 30px; 
+        font-size: 1.3rem;
+        height: 3.5rem;
+        width: 22rem;
+        cursor: pointer;
+    }
+}
+.equipe{
+    background-color: white;
+    padding-top:6rem;
+    &__list{
+        display: flex;
+        margin-top: 6rem;
+        margin-bottom: 6rem;
+    }
+    &__item{
+        list-style: none;
+        text-align: center;
+    }
+    &__perfil{
+
+    }
+    &__img{
+        border-radius: 50%;
+        height: 14rem;
+    }
+    &__info{
+        width: 60%;
+        margin-top: 1rem;
+        margin-left: 6rem;
+        p{
+            color: #223952;           
+        }
+        b{
+            color: #223952;
+            font-weight: 700;
+            font-size: 1.2rem;
+            
+        }
+    }
+    &__cargo{
+        margin-bottom: .8rem;
+    }
+    &__post{
+        color: #223952;
+    }
+}
+.buttonblog{
+    margin-left: 42%;
+    margin-top: -3rem;
+    margin-bottom: 5rem;
+
 }
