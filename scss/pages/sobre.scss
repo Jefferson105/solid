@@ -1,0 +1,127 @@
+.sobre {
+    &__header {
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url(/static/img/quem-somos-header.jpg);
+        background-size: cover;
+        background-position-y: 40%;
+        border-bottom: thin solid #D2D2D2;
+        position: relative;
+    }
+    &__title {
+        color: $blue-color;
+        max-width: 768px;
+        text-align: center;
+        font-size: 2.1rem;
+        line-height: 50px;
+    }
+    &__market {
+        padding: 7rem 10%;
+    }
+    &__h3 {
+        font-weight: lighter;
+        max-width: 700px;
+        text-align: center;
+        font-size: 1.3rem;
+        margin: 0 auto;
+    }
+    &__market-list {
+        list-style: none;
+        max-width: 1000px;
+        margin: 5rem auto;
+        margin-top: 10rem;
+    }
+    &__item {
+        display: flex;
+        width: 100%;
+        margin-bottom: 8rem;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    &__market-text {
+        padding: 3rem;
+        width: 50%;
+        box-sizing: border-box;
+        background-color: #0F2339;
+        color: #FFF;
+        border-radius: 10px;
+    }
+    &__market-fig {
+        width: 50%;
+        background-color: #000;
+        border-radius: 10px;
+        position: relative;
+        top: -4rem;
+        background-size: cover;
+        &--right {
+            right: 1rem;
+        }
+        &--left {
+            left: 1rem;
+        }
+    }
+    &__p {
+        margin-bottom: .5rem;
+    }
+    &__crescer {
+        background-color: #F9F9F9;
+        border: thin solid #E6E6E6;
+        padding: 3rem 10%;
+    }
+    &__crescer-list {
+        list-style: none;
+        margin-top: 5rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__crescer-item {
+        border-radius: 10px;
+        background-color: #FFF;
+        width: 15rem;
+        height: 25rem;
+        border: thin solid #e6e6e6;
+        padding: 2rem 2rem 3rem 2rem;
+        box-shadow: 0 0 15px 0 rgba(0,0,0,.1);
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    &__icons {
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        box-shadow: 0 3px 20px 3px rgba(0,0,0,.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        img {
+            height: 4rem;
+        }
+    }
+    &__crescer-h3 {
+        margin-top: 2rem;
+        font-weight: lighter;
+        color: $blue-color;
+        font-size: 1.4rem;
+    }
+    &__crescer-text {
+        font-size: .9rem;
+        color: #666666;
+        line-height: 20px;
+        margin-top: 2rem;
+    }
+    &__saiba {
+        background-color: #1B4E85;
+        color: #FFF;
+        width: 10rem;
+        margin: auto auto 0 auto;
+        padding: .3rem 0;
+        font-weight: bold;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+}

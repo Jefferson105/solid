@@ -8,6 +8,7 @@ const Header = () =>
             <h2 className="header__h2">Transforme a Gestão da sua<br/> empresa e acelere seu crescimento com a SOLID</h2>
            
             <button className="header__button">Fale com nossos consultores</button>
+            <button className="header__arrow-down"><img src="/static/img/expand-button.svg" /></button>
         </div>
         
     </header>
