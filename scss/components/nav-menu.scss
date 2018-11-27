@@ -42,7 +42,7 @@
             cursor: pointer;
         } 
         &--item {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             margin: .8rem 1rem;
             cursor: pointer;
             font-weight: 500;
@@ -89,6 +89,7 @@
     border: thin solid #EDEDED;
     list-style: none;
     padding: 1.5rem;
+    z-index: 99;
     &__item {
         margin-bottom: 1rem;
         color: $blue-color;

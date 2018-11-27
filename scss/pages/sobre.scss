@@ -29,14 +29,14 @@
     }
     &__market-list {
         list-style: none;
-        max-width: 1000px;
+        max-width: 950px;
         margin: 5rem auto;
         margin-top: 10rem;
     }
     &__item {
         display: flex;
         width: 100%;
-        margin-bottom: 8rem;
+        margin-bottom: 10rem;
         &:last-child {
             margin-bottom: 0;
         }
@@ -45,7 +45,7 @@
         padding: 3rem;
         width: 50%;
         box-sizing: border-box;
-        background-color: #0F2339;
+        background-color: #223952;
         color: #FFF;
         border-radius: 10px;
     }
@@ -76,6 +76,9 @@
         margin-top: 5rem;
         display: flex;
         justify-content: space-between;
+        &--center {
+            justify-content: center;
+        }
     }
     &__crescer-item {
         border-radius: 10px;

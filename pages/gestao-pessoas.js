@@ -1,6 +1,8 @@
 import { connect } from "react-redux";
 import NavMenu from "../components/NavMenu";
 
+import { HeaderMini, HeaderTitle, ButtonHeader, TxtBold, TxtMini, GreenButton, IconHeader, WrapperImg100 } from "../components/styles";
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -10,19 +12,24 @@ class Home extends React.Component {
         return(
             <section className="container container__sobre">
                 <NavMenu isFixed={true} />
-                <header className="sobre__header">
-                    <h2 className="sobre__title">Consultoria em Gestão de Pessoas</h2>      
-                    <button className="header__arrow-down"><img src="/static/img/multiple-users.svg" /></button>
-                </header>
-                <h3 className="sobre__h3">Quando falamos de Consultoria em Gestão de Pessoas logo associamos ao desenvolvimento e capacitação do capital humano.Porém, treinar líderes e donos também é uma etapa fundamental para o crescimento e transformação do negócio.</h3>
-                    <img src="/static/img/capasolid.png" />
-                    <h3 className="sobre__h3">Para crescer, muitas vezes é preciso reestruturar o negócio.O apoio de uma consultoria de gestão é fundamental            para ajudar nessa etapa, pois além de contar com o trabalho de especialistas, é importante ter uma visão externa e isenta da                situação.
-                    </h3>
-                    <button className="header__button blog__button">Fale com nossos consultores</button>
+                <HeaderMini url="/static/img/header-pessoas.jpg">
+                    <HeaderTitle color="#FFF">Consultoria em <b>Gestão de Pessoas</b></HeaderTitle>      
+                    <ButtonHeader><IconHeader src="/static/img/multiple-users.svg" /></ButtonHeader>
+                </HeaderMini>
+               
+                <section>
+                    <TxtBold>Para crescer, muitas vezes é preciso reestruturar o negócio.O apoio de uma consultoria de gestão é fundamental para ajudar nessa etapa, pois além de contar com o trabalho de especialistas, é importante ter uma visão externa e isenta da situação.</TxtBold>
+
+                    <WrapperImg100 url="/static/img/pessoas-photo.jpg" />
+
+                    <TxtMini>Com esse modelo de serviço, a Solid está preparada para realizar projetos de transformação empresarial em cenários de estruturação organizacional, incluindo fusão e separação. Para isso, trabalhamos nos níveis hierárquicos, tipo de subordinaçãoe aumento da eficiência dos reportes matriciais. O outro doco é na reorganização economômica de empresas.</TxtMini>
+                    
+                    <GreenButton>Fale com nossos consultores</GreenButton>
+                </section>
                 <section className="sobre__crescer">
-                
-                    <ul className="sobre__crescer-list">
-                        <li className="sobre__crescer-item">
+                    <h3 className="impacto__title">Fazemos ainda mais pelo seu negócio</h3>
+                    <ul className="sobre__crescer-list sobre__crescer-list--center">
+                        <li style={{ marginRight: "4rem" }} className="sobre__crescer-item">
                             <figure className="sobre__icons">
                                 <img src="/static/img/setting-gears.svg" />
                             </figure>
@@ -38,7 +45,6 @@ class Home extends React.Component {
                             <p className="sobre__crescer-text">Nosso modelo de treinamento ajuda os líderes a gerirem de forma efetiva uma equipe, aprendendo a dar feedbacks de maneira corret, delegar tarefas, comunicar-se com assertividade.</p>
                             <a className="sobre__saiba">Saiba mais</a>
                         </li>
-        
                     </ul>
                 </section>
                 <section ref={el => this.clientes = el} className="clientes">
@@ -48,7 +54,7 @@ class Home extends React.Component {
                         <button className="clientes__arrows clientes__arrows--right"><img src="/static/img/right-arrow.svg" /></button>
                         <div>
                             <figure className="clientes__figure">
-                                <img className="clientes__user" src="/static/img/img_solid9.jpg"/>
+                                <img className="clientes__user" src="/static/img/abc-perfil.jpg"/>
                             </figure>
                         </div>
                         <div className="clientes__avaliacao">
@@ -56,7 +62,7 @@ class Home extends React.Component {
                             <p className="clientes__b"><b>Danilo Guedes</b></p>
                             <p>CEO da ABC Cargas</p>
                             
-                            <img className="clientes__empresa" src="/static/img/amazon.svg"/>
+                            <img className="clientes__empresa" src="/static/img/abclogo.jpg"/>
                             <button className="header__button cases">Conheça nossos cases</button>
                         </div>
                     </div>

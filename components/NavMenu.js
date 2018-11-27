@@ -61,12 +61,22 @@ class NavMenu extends React.Component {
                                     </Link>
                                 </li>
                                 <li className="sub-menu__item">
-                                    <Link prefetch href="/gestao-estrategica">
+                                    <Link prefetch href="/gestao-empresarial">
                                         <a className="nav-menu__link sub-menu__link">
                                             <figure className="sub-menu__icon">
                                                 <img src="/static/img/desktop-monitor.svg" />
                                             </figure>
                                             <span className="sub-menu__text">Software de <b>Gestão Empresarial</b></span>
+                                        </a>
+                                    </Link>
+                                </li>
+                                <li className="sub-menu__item">
+                                    <Link prefetch href="/vendas-marketing">
+                                        <a className="nav-menu__link sub-menu__link">
+                                            <figure className="sub-menu__icon">
+                                                <img src="/static/img/funnel.svg" />
+                                            </figure>
+                                            <span className="sub-menu__text">Vendas e <b>Marketing</b></span>
                                         </a>
                                     </Link>
                                 </li>

@@ -79,15 +79,23 @@
     &__list {
         margin-top: 7rem;
         list-style: none;
-        width: 60%;
-        margin-left: auto;
+        width: 70%;
+        //margin-left: auto;
     }
     &__item {
         display: flex;
         margin-bottom: 2rem;
         position: relative;
-        &--border {
-            &:before {
+        transition: all 4s ease;
+        transform: translateX(50%);
+        //opacity: 0;
+        &--show {
+            transform: translateX(0);
+            //opacity: 1;
+            .impacto__div2 {
+                opacity: 1;
+            }
+            /*&:before {
                 content: "";
                 position: absolute;
                 height: 90%;
@@ -95,7 +103,7 @@
                 top: 6rem;
                 left: calc(4rem - 3.5px);
                 z-index: 1;
-            }
+            }*/
         }
     }
     &__num-container {
@@ -124,6 +132,9 @@
     }
     &__div2 {
         margin-top: 1.5rem;
+        opacity: 0;
+        transition: all 3s ease;
+        transition-delay: .5s;
     }
     &__p {
         margin-top: 1rem;

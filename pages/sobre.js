@@ -20,10 +20,10 @@ class Home extends React.Component {
                     <ul className="sobre__market-list">
                         <li className="sobre__item">
                             <div className="sobre__market-text"><p>Temos uma <strong>metodologia hands on</strong>, ou seja, colocamos a mão na massa junto com nossos clientes, identificando onde estão os gaps, implementando planos de ação para reverter o cenário, acompanhando passo a passo o que está sendo feito e corrigimos a rota a qualquer momento até alcançar o resultado esperado</p></div>
-                            <figure style={{ backgroundImage: "url(/static/img/img_solid8.jpg)" }} className="sobre__market-fig sobre__market-fig--right"></figure>
+                            <figure style={{ backgroundImage: "url(/static/img/hands_on.jpg)" }} className="sobre__market-fig sobre__market-fig--right"></figure>
                         </li>
                         <li className="sobre__item">
-                            <figure style={{ backgroundImage: "url(/static/img/img_solid9.jpg)" }} className="sobre__market-fig sobre__market-fig--left"></figure>
+                            <figure style={{ backgroundImage: "url(/static/img/ceo_solid.jpg)" }} className="sobre__market-fig sobre__market-fig--left"></figure>
                             <div className="sobre__market-text">
                                 <p className="sobre__p"><strong>Eduardo Bogalheira</strong>, CEO da Solid, acumula mais de XX anos de experiência no mercado corporativo, ocupando cargos de liderança em importantes empresas dos setores de Logística, Automobilística e XX.</p>
                                 <p className="sobre__p">Além disso, a Solid conta com a equipe experiente, qualificada e com amplo conhecimento técnico, focada em melhorar os resultados de gestão e maximizar os lucros sempre atendendo aos objetivos estratégicos traçados pelos clientes.</p>

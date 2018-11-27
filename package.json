@@ -17,7 +17,9 @@
     "react-dom": "^16.6.0",
     "react-redux": "^5.1.0",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.0.3",
+    "styled-components-modifiers": "^1.1.0"
   },
   "devDependencies": {
     "@zeit/next-sass": "^1.0.1",

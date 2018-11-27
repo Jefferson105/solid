@@ -1,6 +1,8 @@
 import { connect } from "react-redux";
 import NavMenu from "../components/NavMenu";
 
+import { HeaderMini, HeaderTitle, ButtonHeader, Txt50, TxtBold, TxtMini, GreenButton, IconHeader, WrapperTxtImg, Img50 } from "../components/styles";
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -10,24 +12,27 @@ class Home extends React.Component {
         return(
             <section className="container container__sobre">
                 <NavMenu isFixed={true} />
-                <header className="sobre__header">
-                    <h2 className="sobre__title">GESTÃO ESTRATEGICA</h2>      
-                    <button className="header__arrow-down"><img src="/static/img/setting-gears.svg" /></button>
-                </header>
+                <HeaderMini url="/static/img/header-estrategica.jpg">
+                    <HeaderTitle color="#FFF">Gestão <b>Estratégica</b></HeaderTitle>      
+                    <ButtonHeader><IconHeader src="/static/img/setting-gears.svg" /></ButtonHeader>
+                </HeaderMini>
                
+                <section>
+                    <TxtBold>Para crescer, muitas vezes é preciso reestruturar o negócio.O apoio de uma consultoria de gestão é fundamental para ajudar nessa etapa, pois além de contar com o trabalho de especialistas, é importante ter uma visão externa e isenta da situação.</TxtBold>
+
+                    <WrapperTxtImg>
+                        <Img50 url="/static/img/consultoria.jpg" />
+                        <Txt50>A Solid não é o tipo de consultoria que entrega um relatório com recomendações e sugestões de melhorias. Nós somos hand on, transformamos seu negócio junto com você.</Txt50>
+                    </WrapperTxtImg>
+
+                    <TxtMini>Com esse modelo de serviço, a Solid está preparada para realizar projetos de transformação empresarial em cenários de estruturação organizacional, incluindo fusão e separação. Para isso, trabalhamos nos níveis hierárquicos, tipo de subordinaçãoe aumento da eficiência dos reportes matriciais. O outro doco é na reorganização economômica de empresas.</TxtMini>
+                    
+                    <GreenButton>Fale com nossos consultores</GreenButton>
+                </section>
                 <section className="sobre__crescer">
-                    <h3 className="sobre__h3">Para crescer, muitas vezes é preciso reestruturar o negócio.O apoio de uma consultoria de gestão é fundamental para ajudar nessa etapa, pois além de contar com o trabalho de especialistas, é importante ter uma visão externa e isenta da situação.</h3>
-                    <ul className="sobre__market-list">
-                        <li className="sobre__item">
-                            <div className="sobre__market-text"><p>Temos uma <strong>metodologia hands on</strong>, ou seja, colocamos a mão na massa junto com nossos clientes, identificando onde estão os gaps, implementando planos de ação para reverter o cenário, acompanhando passo a passo o que está sendo feito e corrigimos a rota a qualquer momento até alcançar o resultado esperado</p></div>
-                            <figure style={{ backgroundImage: "url(/static/img/img_solid8.jpg)" }} className="sobre__market-fig sobre__market-fig--right"></figure>
-                        </li>
-                    </ul>
-                    <h3 className="sobre__h3">Para crescer, muitas vezes é preciso reestruturar o negócio.O apoio de uma consultoria de gestão é fundamental            para ajudar nessa etapa, pois além de contar com o trabalho de especialistas, é importante ter uma visão externa e isenta da                situação.
-                    </h3>
-                    <button className="header__button blog__button">Fale com nossos consultores</button>
-                    <ul className="sobre__crescer-list">
-                        <li className="sobre__crescer-item">
+                    <h3 className="impacto__title">Fazemos ainda mais pelo seu negócio</h3>
+                    <ul className="sobre__crescer-list sobre__crescer-list--center">
+                        <li style={{ marginRight: "4rem" }} className="sobre__crescer-item">
                             <figure className="sobre__icons">
                                 <img src="/static/img/setting-gears.svg" />
                             </figure>
@@ -43,7 +48,6 @@ class Home extends React.Component {
                             <p className="sobre__crescer-text">Nosso modelo de treinamento ajuda os líderes a gerirem de forma efetiva uma equipe, aprendendo a dar feedbacks de maneira corret, delegar tarefas, comunicar-se com assertividade.</p>
                             <a className="sobre__saiba">Saiba mais</a>
                         </li>
-        
                     </ul>
                 </section>
                 <section ref={el => this.clientes = el} className="clientes">
@@ -53,7 +57,7 @@ class Home extends React.Component {
                         <button className="clientes__arrows clientes__arrows--right"><img src="/static/img/right-arrow.svg" /></button>
                         <div>
                             <figure className="clientes__figure">
-                                <img className="clientes__user" src="/static/img/img_solid9.jpg"/>
+                                <img className="clientes__user" src="/static/img/abc-perfil.jpg"/>
                             </figure>
                         </div>
                         <div className="clientes__avaliacao">
@@ -61,7 +65,7 @@ class Home extends React.Component {
                             <p className="clientes__b"><b>Danilo Guedes</b></p>
                             <p>CEO da ABC Cargas</p>
                             
-                            <img className="clientes__empresa" src="/static/img/amazon.svg"/>
+                            <img className="clientes__empresa" src="/static/img/abclogo.jpg"/>
                             <button className="header__button cases">Conheça nossos cases</button>
                         </div>
                     </div>
