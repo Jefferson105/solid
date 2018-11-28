@@ -4,6 +4,7 @@ import NavMenu from "../../components/NavMenu";
 import SlideArticles from "../../components/styles/blocks/slide-articles";
 import HeaderMedium from "../../components/styles/elements/HeaderMedium";
 import CardArticle from "../../components/styles/blocks/card-article";
+import BookAside from "../../components/styles/blocks/book-aside";
 
 class Blog extends React.Component {
     render() {
@@ -25,12 +26,86 @@ class Blog extends React.Component {
                         <SlideArticles.Arrow side="right"><img src="/static/img/left-arrow.svg" /></SlideArticles.Arrow>
                     </SlideArticles>
                 </HeaderMedium>
-                <section style={{ display: "flex", width: "80%", margin: "2rem auto" }}>
-                    <div>
+                <section style={{ display: "flex", width: "84%", margin: "2rem auto" }}>
+                    <div style={{ width: "70%" }}>
+                        <CardArticle>
+                            <CardArticle.Item>
+                                <CardArticle.Figure url="/static/img/consultoria.jpg" />
+                                <CardArticle.Info>
+                                    <CardArticle.Category>Categoria</CardArticle.Category>
+                                    <CardArticle.Title>Título do post com até 2 linha irá entrar aqui</CardArticle.Title>
+                                    <CardArticle.Author>
+                                        <CardArticle.Photo url="/static/img/img_solid3.jpg" />
+                                        <CardArticle.Name>Por <b>Andreia Gonçalves</b></CardArticle.Name>
+                                    </CardArticle.Author>
+                                    <CardArticle.Text>Temos a fórmula certa para ajudar sua empresa a construir uma estrutura de máquina de venda com o objetivo de acelerar os resultados e aumentar...</CardArticle.Text>
+                                    <CardArticle.Button>Leia mais</CardArticle.Button>
+                                </CardArticle.Info>
+                            </CardArticle.Item>
+                            <CardArticle.Item>
+                                <CardArticle.Figure url="/static/img/consultoria.jpg" />
+                                <CardArticle.Info>
+                                    <CardArticle.Category>Categoria</CardArticle.Category>
+                                    <CardArticle.Title>Título do post com até 2 linha irá entrar aqui</CardArticle.Title>
+                                    <CardArticle.Author>
+                                        <CardArticle.Photo url="/static/img/img_solid3.jpg" />
+                                        <CardArticle.Name>Por <b>Andreia Gonçalves</b></CardArticle.Name>
+                                    </CardArticle.Author>
+                                    <CardArticle.Text>Temos a fórmula certa para ajudar sua empresa a construir uma estrutura de máquina de venda com o objetivo de acelerar os resultados e aumentar...</CardArticle.Text>
+                                    <CardArticle.Button>Leia mais</CardArticle.Button>
+                                </CardArticle.Info>
+                            </CardArticle.Item>
+                            <CardArticle.Item>
+                                <CardArticle.Figure url="/static/img/consultoria.jpg" />
+                                <CardArticle.Info>
+                                    <CardArticle.Category>Categoria</CardArticle.Category>
+                                    <CardArticle.Title>Título do post com até 2 linha irá entrar aqui</CardArticle.Title>
+                                    <CardArticle.Author>
+                                        <CardArticle.Photo url="/static/img/img_solid3.jpg" />
+                                        <CardArticle.Name>Por <b>Andreia Gonçalves</b></CardArticle.Name>
+                                    </CardArticle.Author>
+                                    <CardArticle.Text>Temos a fórmula certa para ajudar sua empresa a construir uma estrutura de máquina de venda com o objetivo de acelerar os resultados e aumentar...</CardArticle.Text>
+                                    <CardArticle.Button>Leia mais</CardArticle.Button>
+                                </CardArticle.Info>
+                            </CardArticle.Item>
+                            <CardArticle.Item>
+                                <CardArticle.Figure url="/static/img/consultoria.jpg" />
+                                <CardArticle.Info>
+                                    <CardArticle.Category>Categoria</CardArticle.Category>
+                                    <CardArticle.Title>Título do post com até 2 linha irá entrar aqui</CardArticle.Title>
+                                    <CardArticle.Author>
+                                        <CardArticle.Photo url="/static/img/img_solid3.jpg" />
+                                        <CardArticle.Name>Por <b>Andreia Gonçalves</b></CardArticle.Name>
+                                    </CardArticle.Author>
+                                    <CardArticle.Text>Temos a fórmula certa para ajudar sua empresa a construir uma estrutura de máquina de venda com o objetivo de acelerar os resultados e aumentar...</CardArticle.Text>
+                                    <CardArticle.Button>Leia mais</CardArticle.Button>
+                                </CardArticle.Info>
+                            </CardArticle.Item>
+                        </CardArticle>
 
+                        <CardArticle.Pagination>
+                            <CardArticle.Num>1</CardArticle.Num>
+                            <CardArticle.Num>2</CardArticle.Num>
+                            <CardArticle.Num>3</CardArticle.Num>
+                            <CardArticle.Num>4</CardArticle.Num>
+                            <CardArticle.Proximo>Próxima página</CardArticle.Proximo>
+                        </CardArticle.Pagination>
                     </div>
-                    <aside>
+                    <aside style={{ width: "30%", display: "flex", alignItems: "center", flexDirection: "column" }}>
+                        <BookAside>
+                            <BookAside.Image src="/static/img/livro.png" />
+                            <BookAside.Text>Conheça mais conteúdos para transformar o seu negócio</BookAside.Text>
+                            <BookAside.Button>Cadastrar</BookAside.Button>
+                        </BookAside>
 
+                        <div>
+                            <div className="footer__box">
+                                <h4 className="footer__title">Receba dicas para transformar seu negócio</h4>
+                                <input className="footer__input footer__input--marg" placeholder="Seu e-mail" />
+                                <input className="footer__input" placeholder="Seu nome" />
+                                <button className="header__button footer__button">Cadastrar</button>
+                            </div>
+                        </div>
                     </aside>
                 </section>
                 <section ref={el => this.conheca = el} className="conheca">
