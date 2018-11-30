@@ -52,29 +52,29 @@
     }
     &__item {
         margin: 0 1rem;
-        font-weight: bold;
+        //font-weight: bold;
         color: #040404;
     }
     &__box {
-        width: 16rem;
+        width: 19rem;
         background-color: #FFF;
-        padding: 2rem 1rem;
+        padding: 2rem 1.5rem;
         box-shadow: 0 5px 20px 2px rgba(0,0,0,.2);
         border-radius: 10px;
     }
     &__title {
         color: $blue-color;
         font-weight: lighter;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         margin-bottom: 1rem;
     }
     &__input {
         width: 100%;
         border: 1.5px solid #D2D2D2;
-        padding: .7rem 1rem;
+        padding: 1rem 2rem;
         box-sizing: border-box;
-        border-radius: 20px;
-        font-size: .9rem;
+        border-radius: 30px;
+        font-size: 1rem;
         &--marg {
             margin-bottom: 1rem;
         }
@@ -82,7 +82,7 @@
     &__button {
         width: 100% !important;
         margin-top: 1rem !important;
-        font-size: 1rem;
+        font-size: .9rem;
         padding: .5rem 0;
     }
 }

@@ -9,7 +9,7 @@ const BookAside = styled.div`
     border-radius: 15px;
     width: 16rem;
     margin-bottom: 2rem;
-    padding: 2rem;
+    padding: 3rem 2rem;
 `;
 
 BookAside.Button = Button;

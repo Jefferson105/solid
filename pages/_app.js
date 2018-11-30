@@ -2,6 +2,7 @@ import App, { Container } from "next/app";
 import { connect, Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
 import Head from 'next/head'
+import withNProgress from "next-nprogress";
 
 import createStore from "../store";
 
@@ -40,4 +41,7 @@ class MyApp extends App {
     }
 }
 
-export default withRedux(createStore)(connect(state => state)(MyApp));
+export default withNProgress()(withRedux(createStore)(connect(state => state)(MyApp)));
+
+// jessica.paraguassu@solidsolucoes.com.br
+// solid@admin

@@ -33,4 +33,10 @@ body{
 button {
     background-color: transparent;
     border: none;
+    outline: none;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
 }

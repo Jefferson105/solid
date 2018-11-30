@@ -258,7 +258,7 @@
     }
     &__text{
         position: relative;
-        bottom: 10rem;
+        bottom: 12rem;
         width: 75%;
         color:#FFF;
         left: 1.5rem;
@@ -270,8 +270,8 @@
         position: relative;
     }
     &__button {
-        font-size: 1.1rem;
-        width: 15rem;
+        font-size: 1.2rem;
+        width: 17rem;
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -289,12 +289,12 @@
     }
     &__h3{
         color: white;
-        font-size: 2.3rem;
-        width: 80%;
+        font-size: 2.6rem;
+        width: 90%;
         line-height: 50px;
     }
     &__img{
-        height: 18rem;
+        height: 19rem;
         position: relative;
     }
     &__button{
@@ -319,7 +319,7 @@
     padding: 6rem 10% 5rem 10%;
     &__list{
         display: flex;
-        margin-top: 6rem;
+        margin-top: 8rem;
         margin-bottom: 6rem;
     }
     &__item{
@@ -332,10 +332,11 @@
     }
     &__img{
         border-radius: 50%;
-        height: 14rem;
+        height: 16rem;
     }
     &__info{
         width: 80%;
+        margin-top: 1rem;
         b{
             color: #223952;
             font-weight: 700;
@@ -343,13 +344,15 @@
         }
     }
     &__post {
-        color: #717171;
-        font-size: .9rem; 
-        line-height: 15px;
+        color: #545454;
+        font-size: 1rem; 
+        line-height: 18px;
     }
     &__cargo{
+        margin-top: -5px;
         margin-bottom: .8rem;
         color: #223952;
+        font-size: 1.1rem;
     }
     &__button {
         height: 3rem;

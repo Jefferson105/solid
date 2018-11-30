@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import NavMenu from "../components/NavMenu";
 import Impacto from "../components/Impacto";
+import Footer from "../components/Footer";
 
 class Home extends React.Component {
     constructor(props) {
@@ -86,7 +87,7 @@ class Home extends React.Component {
                 </section> 
                 <section ref={el => this.conheca = el} className="conheca">
                     <div className="conheca__info">
-                        <h3 className="conheca__h3">conheca mais conteúdos para transformar o seu negócio</h3>
+                        <h3 className="conheca__h3">Conheça mais conteúdos para transformar o seu negócio</h3>
                         <button className="conheca__button">Descubra</button>
                     </div>
                     <figure className="conheca__figure">
@@ -98,22 +99,22 @@ class Home extends React.Component {
                     <ul className="equipe__list">
                         <li className="equipe__item">
                             <figure className="equipe__perfil">
-                                <img  className="equipe__img" src="/static/img/img_solid2.jpg"/>   
+                                <img className="equipe__img" src="/static/img/img_solid2.jpg"/>   
                             </figure>
                             <div className="equipe__info">
-                                <b>Patrícia Bogalheira</b>
-                                <p className="equipe__cargo">Diretora de Treinamento</p>
-                                <p className="equipe__post">Para fechar o tripé necessário para transformar a sua empresa e acelerar os resultados, é importante investir em tecnologia. Esqueça o controle manual e veja como a Solid pode lhe ajudar nessa etapa.</p>
+                                <b>Eduardo Bogalheira</b>
+                                <p className="equipe__cargo">Presidente</p>
+                                <p className="equipe__post">Com mais de 30 anos de carreira executiva, Bogalheira acumula experiência em cargos de liderança em diversas empresas. Há 15 anos, está do "outro lado do balcão", atuando em consultoria de negócio e colocando a mão na massa junto com os clientes para acelerar os resultados e transformar as empresas.</p>
                                 </div>
                         </li>
                         <li className="equipe__item">
                             <figure className="equipe__perfil">
-                                <img  className="equipe__img" src="/static/img/img_solid3.jpg"/>   
+                                <img className="equipe__img" src="/static/img/img_solid3.jpg"/>   
                             </figure>
                             <div className="equipe__info">
                                 <b>Patrícia Bogalheira</b>
                                 <p className="equipe__cargo">Diretora de Treinamento</p>
-                                <p className="equipe__post">Para fechar o tripé necessário para transformar a sua empresa e acelerar os resultados, é importante investir em tecnologia. Esqueça o controle manual e veja como a Solid pode lhe ajudar nessa etapa.</p>
+                                <p className="equipe__post">Master/Executive Coach, especializada na Linguagem Ericsoniana, certificada pelo Instituto Brasileiro de Coaching - IBC e reconhecida pelas renomadas entidades Coaching do mundo. Patrícia atua para promover o autoconhecimento e self empowerment a empreendedores, executivos de alto comando, líderes e times de todos os setores.</p>
                             </div>
                         </li>
                         <li className="equipe__item">
@@ -121,51 +122,15 @@ class Home extends React.Component {
                                 <img  className="equipe__img" src="/static/img/img_solid2.jpg"/>   
                             </figure>
                             <div className="equipe__info">
-                                <b>Patrícia Bogalheira</b>
-                                <p className="equipe__cargo">Diretora de Treinamento</p>  
-                                <p className="equipe__post">Para fechar o tripé necessário para transformar a sua empresa e acelerar os resultados, é importante investir em tecnologia. Esqueça o controle manual e veja como a Solid pode lhe ajudar nessa etapa.</p>
+                                <b>Jéssica Paraguassu</b>
+                                <p className="equipe__cargo">Diretora Comercial</p>  
+                                <p className="equipe__post">Formada em Relações Internacionais, Jéssica tem a missão de tornar a Solid cada vez mais inovadora e vanguardista. Para isso, está em constante atualização a respeito de novas tecnologias e tendências, criando modelos replicáveis do negócio.</p>
                             </div>
                         </li>
                     </ul>
                     <button className="header__button blog__button">Saiba mais</button>
                 </section>
-                <footer ref={el => this.footer = el} className="footer">
-                    <div className="footer__content">
-                        <div>
-                            <figure>
-                                <img className="footer__logo" src="/static/img/logo_solid_blue.svg" />
-                            </figure>
-                            <p className="footer__txt footer__txt--top">R. Jurubatuba, 1350</p>
-                            <p className="footer__txt">Salas 618,619 - Centro</p>
-                            <p className="footer__txt">CEP 09725-000</p>
-                            <p className="footer__txt footer__txt--top">São Bernardo do Campo - SP</p>
-                            <p className="footer__txt footer__txt--top">Telefone: (11) 4330-2784</p>
-                            <p className="footer__socials">
-                                <a className="footer__social"><img src="/static/img/facebook-logo.svg" /></a>
-                                <a className="footer__social"><img src="/static/img/twitter-logo.svg" /></a>
-                                <a className="footer__social"><img src="/static/img/linkedin-logo.svg" /></a>
-                            </p>
-                        </div>
-                        <div className="footer__list-content">
-                            <ul className="footer__list">
-                                <li className="footer__item">Nossoa Serviços</li>
-                                <li className="footer__item">Sobre a Solid</li>
-                                <li className="footer__item">Clientes</li>
-                                <li className="footer__item">Contato</li>
-                                <li className="footer__item">Blog</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div className="footer__box">
-                                <h4 className="footer__title">Receba dicas para transformar seu negócio</h4>
-                                <input className="footer__input footer__input--marg" placeholder="Seu e-mail" />
-                                <input className="footer__input" placeholder="Seu nome" />
-                                <button className="header__button footer__button">Cadastrar</button>
-                            </div>
-                        </div>
-                    </div>
-                    <p className="footer__p">Solid Gestão Empresarial &copy; - Todos os direitos reservados</p>
-                </footer>
+                <Footer />
             </section>
         )
     }

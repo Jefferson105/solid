@@ -5,6 +5,7 @@ import SlideArticles from "../../components/styles/blocks/slide-articles";
 import HeaderMedium from "../../components/styles/elements/HeaderMedium";
 import CardArticle from "../../components/styles/blocks/card-article";
 import BookAside from "../../components/styles/blocks/book-aside";
+import CategoryAside from "../../components/styles/blocks/categories-aside";
 
 class Blog extends React.Component {
     render() {
@@ -97,7 +98,17 @@ class Blog extends React.Component {
                             <BookAside.Text>Conheça mais conteúdos para transformar o seu negócio</BookAside.Text>
                             <BookAside.Button>Cadastrar</BookAside.Button>
                         </BookAside>
-
+                        <CategoryAside>
+                            <CategoryAside.Title>Categorias</CategoryAside.Title>
+                            
+                            <CategoryAside.Category>Categoria 1</CategoryAside.Category>
+                            <CategoryAside.Category>Categoria 2</CategoryAside.Category>
+                            <CategoryAside.Category>Categoria 3</CategoryAside.Category>
+                            <CategoryAside.Category>Categoria 4</CategoryAside.Category>
+                            <CategoryAside.Category>Categoria 5</CategoryAside.Category>
+                            <CategoryAside.Category>Categoria 6</CategoryAside.Category>
+                            <CategoryAside.Category>Categoria 7</CategoryAside.Category>
+                        </CategoryAside>
                         <div>
                             <div className="footer__box">
                                 <h4 className="footer__title">Receba dicas para transformar seu negócio</h4>
@@ -110,7 +121,7 @@ class Blog extends React.Component {
                 </section>
                 <section ref={el => this.conheca = el} className="conheca">
                     <div className="conheca__info">
-                        <h3 className="conheca__h3">conheca mais conteúdos para transformar o seu negócio</h3>
+                        <h3 className="conheca__h3">Conheça mais conteúdos para transformar o seu negócio</h3>
                         <button className="conheca__button">Descubra</button>
                     </div>
                     <figure className="conheca__figure">
