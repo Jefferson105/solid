@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const Footer = () =>
-    <footer className="footer">
+    <footer className="footer container">
         <div className="footer__content">
             <div>
                 <figure>

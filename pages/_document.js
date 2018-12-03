@@ -1,4 +1,5 @@
 import Document, { Head, Main, NextScript } from 'next/document';
+import Footer from "../components/Footer";
 import { ServerStyleSheet } from 'styled-components';
 
 const mailChimpCode = `
@@ -43,6 +44,7 @@ export default class MyDocument extends Document {
                     </noscript>
                     <Main />
                     <NextScript />
+                    <Footer />
                 </body>
             </html>
         )

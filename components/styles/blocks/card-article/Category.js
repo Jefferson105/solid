@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const Category = styled.button`
-    color: #1B4E85;
-    border: thin solid #BBD5F2;
+    color: #3A81D6;
+    border: 2px solid #BBD5F2;
     border-radius: 15px;
-    padding: .2rem 1rem;
+    padding: .2rem 1.5rem;
     font-size: 1rem;
 `;
 

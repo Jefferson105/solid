@@ -7,6 +7,7 @@ const Button = styled.button`
     margin-top: 1rem;
     padding: .7rem 0;
     width: 100%;
+    font-size: 1.1rem;
     border-radius: 20px;
 `;
 

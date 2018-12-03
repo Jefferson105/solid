@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "buildHtml": "NODE_ENV=production ./node_modules/.bin/next build && ./node_modules/.bin/next export"
+    "buildHtml": "NODE_ENV=production ./node_modules/.bin/next build && ./node_modules/.bin/next export",
+    "analyze": "NODE_ENV=production BUNDLE_ANALYZE=both next build",
+    "analyze:server": "BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "BUNDLE_ANALYZE=browser next build"
   },
   "author": "Jefferson Barbosa",
   "license": "MIT",
@@ -23,6 +26,7 @@
     "styled-components-modifiers": "^1.1.0"
   },
   "devDependencies": {
+    "@zeit/next-bundle-analyzer": "^0.1.2",
     "@zeit/next-sass": "^1.0.1",
     "node-sass": "^4.9.4"
   }
