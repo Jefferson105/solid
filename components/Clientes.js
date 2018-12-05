@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import Router from "next/router";
 
 class Clientes extends React.Component {
     render() {
@@ -19,7 +20,7 @@ class Clientes extends React.Component {
                         <p>CEO da ABC Cargas</p>
                         
                         <img className="clientes__empresa" src="/static/img/abclogo.jpg"/>
-                        <button className="header__button cases">Conheça nossos cases</button>
+                        <button onClick={() => Router.push("/clientes")} className="header__button cases">Conheça nossos cases</button>
                     </div>
                 </div>
                 <img className="clientes__bg" src="/static/img/img_solid6.png" />

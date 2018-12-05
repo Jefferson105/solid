@@ -77,22 +77,6 @@ class Home extends React.Component {
                                 <ClientButton>Download Case</ClientButton>
                             </ClienteInfo>
                         </ListItem>
-                        <ListItem>
-                            <ClienteInfo>
-                                <LogoCliente src="/static/img/abclogo.jpg" />
-                                <ClienteTxt>Veja como a Solid ajudou a ABC Cargas a sair do prejuízo para o lucro de R$ 6 milhões, em 1 ano</ClienteTxt>
-                                <ClientButton>Download Case</ClientButton>
-                            </ClienteInfo>
-                            <FigItem right={true} url="/static/img/cliente2.jpg" />
-                        </ListItem>
-                        <ListItem>
-                            <FigItem url="/static/img/cliente3.jpg" />
-                            <ClienteInfo>
-                                <LogoCliente src="/static/img/abclogo.jpg" />
-                                <ClienteTxt>Veja como a Solid ajudou a ABC Cargas a sair do prejuízo para o lucro de R$ 6 milhões, em 1 ano</ClienteTxt>
-                                <ClientButton>Download Case</ClientButton>
-                            </ClienteInfo>
-                        </ListItem>
                     </ListClients>
                 </section>
                 <Crescer />

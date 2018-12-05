@@ -24,7 +24,7 @@ const Equipe = () =>
             </li>
             <li className="equipe__item">
                 <figure className="equipe__perfil">
-                    <img  className="equipe__img" src="/static/img/img_solid3.jpg"/>   
+                    <img className="equipe__img" src="/static/img/diretora-comercial.jpeg"/>   
                 </figure>
                 <div className="equipe__info">
                     <b>Jéssica Paraguassu</b>

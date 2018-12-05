@@ -114,6 +114,18 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background-color: $green-color;
+        }
     }
     &__num {
         font-weight: bold;
@@ -126,6 +138,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        display: none;
     }
     &__div1 {
         margin-right: 2rem; 

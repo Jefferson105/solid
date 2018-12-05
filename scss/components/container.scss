@@ -2,10 +2,8 @@
     background-attachment: fixed;
     max-width: 1367px;
     margin: 0 auto;
+    overflow-x: hidden;
     &__home {
         background-image: url(/static/img/img_solid8.jpg);
-    }
-    &__sobre {
-        
     }
 }
