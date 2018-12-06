@@ -22,8 +22,6 @@ class Home extends React.Component {
         const { artigo, sec } = this.state;
         const { posts } = this.props;
 
-        console.log(posts);
-
         return(
             <section ref={el => this.container = el} className="container container__home">
                 <header ref={el => this.header = el} className="header">
@@ -44,11 +42,11 @@ class Home extends React.Component {
                 </header>
                 <Impacto />
                 <Clientes />
-                <section ref={el => this.blog = el} className="blog">
+                <section className="blog">
                     <h3 className="impacto__title">Artigos do <b> Blog SOLID</b></h3>
                     <ul className="blog__postblog">
                         {
-                            posts.list.length &&
+                            !!posts.list.length &&
                             posts.list.slice(0, 3).map(({ conteudo, createdat, titulo, id }, i) => 
                                 <li key={i} onClick={() => Router.push({ pathname: "/blog", query: { artigo: id } })} onMouseEnter={() => this.setState({ artigo: i })} className={`blog__artigo ${artigo == i && "blog__artigo--selected"}`}>
                                     <img className="blog__foto" src="/static/img/img_solid5.jpg"/>    
