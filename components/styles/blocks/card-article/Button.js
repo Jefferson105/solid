@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Button = styled.p`
+const Button = styled.a`
     margin-top: 1rem;
     color: #FFF;
     background-color: #1B4E85;
@@ -9,6 +9,8 @@ const Button = styled.p`
     font-weight: bold;
     padding: .5rem 0;
     border-radius: 25px;
+    display: block;
+    cursor: pointer;
 `;
 
 export default Button;

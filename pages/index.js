@@ -9,13 +9,17 @@ class Home extends React.Component {
         super(props);
 
         this.state = {
-            artigo: 2,
+            artigo: 0,
             sec: 0
         }
     }
 
     render() {
         const { artigo, sec } = this.state;
+        const { posts } = this.props;
+
+        console.log(posts);
+
         return(
             <section ref={el => this.container = el} className="container container__home">
                 <header ref={el => this.header = el} className="header">
@@ -39,30 +43,19 @@ class Home extends React.Component {
                 <section ref={el => this.blog = el} className="blog">
                     <h3 className="impacto__title">Artigos do <b> Blog SOLID</b></h3>
                     <ul className="blog__postblog">
-                        <li onMouseEnter={() => this.setState({ artigo: 0 })} className={`blog__artigo ${artigo == 0 && "blog__artigo--selected"}`}>
-                            <img className="blog__foto" src="/static/img/img_solid5.jpg"/>    
-                            <div className="blog__text">
-                                <p className="blog__title"><b>O titulo do artigo do blog deve conter até 3 linhas</b></p>
-                                <p className="blog__date"><img className="blog__calendar" src="/static/img/calendar.svg"/> 23 de setembro 2018</p>
-                                <p className="blog__post">Para fechar o tripé necessário para transformar a sua empresa e acelerar os resultados, é importante investir em tecnologia. Esqueça o controle manual e veja como a Solid pode lhe ajudar nessa etapa.</p>
-                            </div>
-                        </li>
-                        <li onMouseEnter={() => this.setState({ artigo: 1 })} className={`blog__artigo ${artigo == 1 && "blog__artigo--selected"}`}>
-                            <img className="blog__foto" src="/static/img/img_solid7.jpg"/>    
-                            <div className="blog__text">
-                                <p className="blog__title"><b>O titulo do artigo do blog deve conter até 3 linhas</b></p>
-                                <p className="blog__date"><img className="blog__calendar" src="/static/img/calendar.svg"/> 23 de setembro 2018</p>
-                                <p className="blog__post">Para fechar o tripé necessário para transformar a sua empresa e acelerar os resultados, é importante investir em tecnologia. Esqueça o controle manual e veja como a Solid pode lhe ajudar nessa etapa.</p>
-                            </div>
-                        </li>
-                        <li onMouseEnter={() => this.setState({ artigo: 2 })} className={`blog__artigo ${artigo == 2 && "blog__artigo--selected"}`}>
-                            <img className="blog__foto" src="/static/img/img_solid4.jpg"/>
-                            <div className="blog__text">
-                                <p className="blog__title"><b>O titulo do artigo do blog deve conter até 3 linhas</b></p>
-                                <p className="blog__date"><img className="blog__calendar" src="/static/img/calendar.svg"/> 23 de setembro 2018</p>
-                                <p className="blog__post">Para fechar o tripé necessário para transformar a sua empresa e acelerar os resultados, é importante investir em tecnologia. Esqueça o controle manual e veja como a Solid pode lhe ajudar nessa etapa.</p>
-                            </div>
-                        </li>
+                        {
+                            posts.length &&
+                            posts.slice(0, 3).map(({ conteudo, createdat, titulo }, i) => 
+                                <li key={i} onMouseEnter={() => this.setState({ artigo: i })} className={`blog__artigo ${artigo == i && "blog__artigo--selected"}`}>
+                                    <img className="blog__foto" src="/static/img/img_solid5.jpg"/>    
+                                    <div className="blog__text">
+                                        <p className="blog__title"><b>{titulo}</b></p>
+                                        <p className="blog__date"><img className="blog__calendar" src="/static/img/calendar.svg"/> {createdat.split("T")[0]}</p>
+                                        <p className="blog__post" dangerouslySetInnerHTML={{ __html: conteudo.slice(0, 100) }} />
+                                    </div>
+                                </li>
+                            )
+                        }
                     </ul>
                     <button className="header__button blog__button">Conheça nosso blog</button>
                 </section> 

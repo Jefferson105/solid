@@ -76,10 +76,10 @@ class Home extends React.Component {
                     <div className="contato__formcontent">
                         <form className="contato__form">
                             <input type="name" className="contato__input" placeholder="Seu nome"/>
-                            <input type="name" className="contato__input" placeholder="Seu nome"/>
-                            <input type="name" className="contato__input2" placeholder="Seu nome"/>
-                            <input type="name" className="contato__input2" placeholder="Seu nome"/>
-                            <input type="name" className="contato__msg" placeholder="Seu nome"/>
+                            <input type="name" className="contato__input" placeholder="Empresa"/>
+                            <input type="name" className="contato__input2" placeholder="Seu e-mail"/>
+                            <input type="name" className="contato__input2" placeholder="Departamento desejado"/>
+                            <input type="name" className="contato__msg" placeholder="Mensagem"/>
                             <button style={{ marginTop: "2rem" }} className="header__button blog__button enviarform">Enviar</button>
                         </form>
                     </div>

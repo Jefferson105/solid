@@ -1,3 +1,21 @@
+String.prototype.replaceSpecialChars = function() {
+    var str = this.toString();
+    str = str.replace(/[ÀÁÃÄÂ]/g,"A");
+    str = str.replace(/[àáãâä]/g,"a");
+    str = str.replace(/[ÈÉÊË]/g,"E");
+    str = str.replace(/[èéêë]/g,"e");
+    str = str.replace(/[ÌÍÎÏ]/g,"I");
+    str = str.replace(/[ìíîï]/g,"i");
+    str = str.replace(/[ÒÓÔÕÖ]/g,"O");
+    str = str.replace(/[òóôõö]/g,"o");
+    str = str.replace(/[ÙÚÛŨÜ]/g,"U");
+    str = str.replace(/[ùúûũü]/g,"u");
+    str = str.replace(/[Ç]/g,"C");
+    str = str.replace(/[ç]/g,"c");
+
+    return str;
+};
+
 import App, { Container } from "next/app";
 import { connect, Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
@@ -8,24 +26,19 @@ import createStore from "../store";
 
 import '../scss/style.scss';
 
+import { getPosts } from '../actions';
+
 class MyApp extends App {
     constructor(props) {
         super(props);
-
-        this.state = {
-            loading: false
-        }
     }
 
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({ loading: false });
-        }, 3000)
+        this.props.dispatch(getPosts());
     }
 
     render() {
         const { Component, pageProps, store } = this.props;
-        const { loading } = this.state;
         return (
             <Container>
                 <Provider store={store}>
