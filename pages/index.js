@@ -49,7 +49,7 @@ class Home extends React.Component {
                             !!posts.list.length &&
                             posts.list.slice(0, 3).map(({ conteudo, createdat, titulo, id }, i) => 
                                 <li key={i} onClick={() => Router.push({ pathname: "/blog", query: { artigo: id } })} onMouseEnter={() => this.setState({ artigo: i })} className={`blog__artigo ${artigo == i && "blog__artigo--selected"}`}>
-                                    <img className="blog__foto" src="/static/img/img_solid5.jpg"/>    
+                                    <img className="blog__foto" src="/static/img/blog.jpg"/>    
                                     <div className="blog__text">
                                         <p className="blog__title"><b>{titulo}</b></p>
                                         <p className="blog__date"><img className="blog__calendar" src="/static/img/calendar.svg"/> {createdat.split("T")[0]}</p>

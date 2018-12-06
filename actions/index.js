@@ -16,7 +16,7 @@ export const getPosts = () => {
 
             dispatch({ type: GET_POSTS, data: { list: data, fetched: true, error: null }});
         }catch(err) {
-            dispatch({ type: GET_POSTS, data: { list: data, fetched: true, error: "Ocorreu um erro ao obter os posts." }});
+            dispatch({ type: GET_POSTS, data: { list: [], fetched: true, error: "Ocorreu um erro ao obter os posts." }});
         }
     }
 }
@@ -36,7 +36,7 @@ export const getCategorias = () => {
 
             dispatch({ type: GET_CATEGORIAS, data: { list: data, fetched: true, error: null }});
         }catch(err) {
-            dispatch({ type: GET_CATEGORIAS, data: { list: data, fetched: true, error: "Ocorreu um erro ao obter as categorias." }});
+            dispatch({ type: GET_CATEGORIAS, data: { list: [], fetched: true, error: "Ocorreu um erro ao obter as categorias." }});
         }
     }
 }
