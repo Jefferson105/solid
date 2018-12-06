@@ -1,8 +1,16 @@
 import { GET_POSTS, GET_CATEGORIAS } from '../actions/types';
 
 export const initialData = {
-    posts: [],
-    categorias: []
+    posts: {
+        list: [],
+        fetched: false,
+        error: null
+    },
+    categorias: {
+        list: [],
+        fetched: false,
+        error: null
+    }
 };
 
 let reducer = (state = initialData, { type, data }) => {

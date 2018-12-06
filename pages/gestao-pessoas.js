@@ -20,11 +20,11 @@ class Home extends React.Component {
                 </HeaderMini>
                
                 <section>
-                    <TxtBold>Para crescer, muitas vezes é preciso reestruturar o negócio.O apoio de uma consultoria de gestão é fundamental para ajudar nessa etapa, pois além de contar com o trabalho de especialistas, é importante ter uma visão externa e isenta da situação.</TxtBold>
+                    <TxtBold>Quando falamos de Consultoria em Gestão de Pessoas logo assoiamos ao desenvolvimento e capacitação do capital humano. Porém, treinar líderes e donos também é uma etapa fundamental para o crescimento e transformação do negócio.</TxtBold>
 
                     <WrapperImg100 url="/static/img/pessoas-photo.jpg" />
 
-                    <TxtMini>Com esse modelo de serviço, a Solid está preparada para realizar projetos de transformação empresarial em cenários de estruturação organizacional, incluindo fusão e separação. Para isso, trabalhamos nos níveis hierárquicos, tipo de subordinaçãoe aumento da eficiência dos reportes matriciais. O outro doco é na reorganização economômica de empresas.</TxtMini>
+                    <TxtMini>Com esse modelo de serviço, a Solid está preparada para realizar projetos de transformação empresarial em cenários de estruturação organizacional, incluindo fusão e separação. Para isso, trabalhamos nos níveis hierárquicos, tipo de subordinação e aumento da eficiência dos reportes matriciais. O outro foco é na reorganização economômica de empresas.</TxtMini>
                     
                     <GreenButton>Fale com nossos consultores</GreenButton>
                 </section>

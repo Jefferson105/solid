@@ -17,7 +17,7 @@ class Home extends React.Component {
                     <button className="header__arrow-down"><img src="/static/img/expand-button.svg" /></button>
                 </header>
                 <section className="sobre__market">
-                    <h3 className="sobre__h3">Estamos no mercado há 15 anos e, desde então, já ajudamos mais de XX empresas a darem a volta por cima e se tornarem lucrativas.<br /> <strong>E sabe qual o nosso segredo para isso?</strong></h3>
+                    <h3 className="sobre__h3">Estamos no mercado há 15 anos e, desde então, já ajudamos mais de centenas de empresas a darem a volta por cima e se tornarem lucrativas.<br /> <strong>E sabe qual o nosso segredo para isso?</strong></h3>
 
                     <ul className="sobre__market-list">
                         <li className="sobre__item">
@@ -27,7 +27,7 @@ class Home extends React.Component {
                         <li className="sobre__item">
                             <figure style={{ backgroundImage: "url(/static/img/presidente-total.jpeg)" }} className="sobre__market-fig sobre__market-fig--left"></figure>
                             <div className="sobre__market-text">
-                                <p className="sobre__p"><strong>Eduardo Bogalheira</strong>, CEO da Solid, acumula mais de XX anos de experiência no mercado corporativo, ocupando cargos de liderança em importantes empresas dos setores de Logística, Automobilística e XX.</p>
+                                <p className="sobre__p"><strong>Eduardo Bogalheira</strong>, CEO da Solid, acumula mais de 15 anos de experiência no mercado corporativo, ocupando cargos de liderança em importantes empresas dos setores de Logística, Automobilística e Indústria.</p>
                                 <p className="sobre__p">Além disso, a Solid conta com a equipe experiente, qualificada e com amplo conhecimento técnico, focada em melhorar os resultados de gestão e maximizar os lucros sempre atendendo aos objetivos estratégicos traçados pelos clientes.</p>
                                 <p>Usando técnicas modernas de gestão, eliminamos as causas que ocasionam os problemas ao mesmo tempo em que treinamos seus colaboradores.</p>
                             </div>

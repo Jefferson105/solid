@@ -6,6 +6,7 @@ import NavMenu from "../components/NavMenu";
 import Impacto from "../components/Impacto";
 import Equipe from "../components/Equipe";
 import Clientes from "../components/Clientes";
+import EbookConteudo from "../components/EbookConteudo";
 
 class Home extends React.Component {
     constructor(props) {
@@ -47,30 +48,22 @@ class Home extends React.Component {
                     <h3 className="impacto__title">Artigos do <b> Blog SOLID</b></h3>
                     <ul className="blog__postblog">
                         {
-                            posts.length &&
-                            posts.slice(0, 3).map(({ conteudo, createdat, titulo, id }, i) => 
+                            posts.list.length &&
+                            posts.list.slice(0, 3).map(({ conteudo, createdat, titulo, id }, i) => 
                                 <li key={i} onClick={() => Router.push({ pathname: "/blog", query: { artigo: id } })} onMouseEnter={() => this.setState({ artigo: i })} className={`blog__artigo ${artigo == i && "blog__artigo--selected"}`}>
                                     <img className="blog__foto" src="/static/img/img_solid5.jpg"/>    
                                     <div className="blog__text">
                                         <p className="blog__title"><b>{titulo}</b></p>
                                         <p className="blog__date"><img className="blog__calendar" src="/static/img/calendar.svg"/> {createdat.split("T")[0]}</p>
-                                        <p className="blog__post" dangerouslySetInnerHTML={{ __html: `${conteudo.slice(0, 100)} ...` }} />
+                                        <p className="blog__post" dangerouslySetInnerHTML={{ __html: `${conteudo.slice(0, 100)}...` }} />
                                     </div>
                                 </li>
                             )
                         }
                     </ul>
-                    <button className="header__button blog__button">Conheça nosso blog</button>
+                    <button className="header__button blog__button" onClick={() => Router.push('/blog')}>Conheça nosso blog</button>
                 </section> 
-                <section ref={el => this.conheca = el} className="conheca">
-                    <div className="conheca__info">
-                        <h3 className="conheca__h3">Conheça mais conteúdos para transformar o seu negócio</h3>
-                        <button className="conheca__button">Descubra</button>
-                    </div>
-                    <figure className="conheca__figure">
-                        <img className="conheca__img" src="/static/img/livro.png"/> 
-                    </figure>
-                </section>
+                <EbookConteudo />
                 <Equipe />
             </section>
         )

@@ -24,7 +24,7 @@ const Crescer = ({ remove = [], title = defaultTitle }) =>
                         <img src="/static/img/multiple-users.svg" />
                     </figure>
                     <h3 className="sobre__crescer-h3">Consultoria em<br /><b>Gestão de Pessoas</b></h3>
-                    <p className="sobre__crescer-text">Nosso modelo de treinamento ajuda os líderes a gerirem de forma efetiva uma equipe, aprendendo a dar feedbacks de maneira corret, delegar tarefas, comunicar-se com assertividade.</p>
+                    <p className="sobre__crescer-text">Nosso modelo de treinamento ajuda os líderes a gerirem uma equipe de forma efetiva, aprendendo a dar feedbacks de maneira correta, delegar tarefas e comunicar-se com assertividade.</p>
                     <a className="sobre__saiba">Saiba mais</a>
                 </li>
             }
@@ -46,7 +46,7 @@ const Crescer = ({ remove = [], title = defaultTitle }) =>
                         <img src="/static/img/funnel.svg" />
                     </figure>
                     <h3 className="sobre__crescer-h3">Vendas e<br /><b>Marketing</b></h3>
-                    <p className="sobre__crescer-text">Temos a fórmula certa para ajudar sua empresa a construir uma estrutura de máquina de venda com o objetivo de acelerar os resultados e aumentar o número de contrato fechados.</p>
+                    <p className="sobre__crescer-text">Temos a fórmula certa para ajudar sua empresa a construir uma estrutura de máquina de venda com o objetivo de acelerar os resultados e aumentar o número de contratos fechados.</p>
                     <a className="sobre__saiba">Saiba mais</a>
                 </li>
             }
