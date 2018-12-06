@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Button = styled.a`
+const Button = styled.button`
     margin-top: 1rem;
     color: #FFF;
     background-color: #1B4E85;

@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
-import Link from 'next/link';
-import { withRouter } from 'next/router';
+import Router, { withRouter } from 'next/router';
 
 import NavMenu from "../../components/NavMenu";
 import SlideArticles from "../../components/styles/blocks/slide-articles";
@@ -43,7 +42,7 @@ class Blog extends React.Component {
                                             <SlideArticles.Photo><img src="/static/img/img_solid3.jpg" /></SlideArticles.Photo>
                                             <SlideArticles.Name>Por <b>Andreia Gonçalves</b></SlideArticles.Name>
                                         </SlideArticles.InfoContent>
-                                        <Link href={{ pathname: '/blog', query: { artigo: artigo.id } }}><CardArticle.Button>Leia mais</CardArticle.Button></Link>
+                                        { !hasArtigo && <CardArticle.Button onClick={() => Router.push({ pathname: '/blog', query: { artigo: artigo.id } })}>Leia mais</CardArticle.Button> }
                                     </SlideArticles.Item>
                                 </SlideArticles>
                         }
@@ -53,7 +52,11 @@ class Blog extends React.Component {
                     <div style={{ width: "70%" }}>
                         {
                             hasArtigo ?
-                            posts.length && <div style={{ whiteSpace: "pre-wrap" }}>{artigo.conteudo}</div> :
+                            !!posts.length && 
+                            <div>
+                                <h3 style={{ fontSize: "34px", marginBottom: "2rem", color: "#494949", lineHeight: "30px" }}>{artigo.titulo}</h3>
+                                <div style={{ whiteSpace: "pre-wrap" }}>{artigo.conteudo}</div>
+                            </div> :
                             !!posts.length &&
                             <CardArticle>
                                 {
@@ -68,7 +71,7 @@ class Blog extends React.Component {
                                                     <CardArticle.Name>Por <b>Andreia Gonçalves</b></CardArticle.Name>
                                                 </CardArticle.Author>
                                                 <CardArticle.Text dangerouslySetInnerHTML={{ __html: `${conteudo.slice(0, 100)} ...` }} />
-                                                <Link href={{ pathname: '/blog', query: { artigo: id } }}><CardArticle.Button>Leia mais</CardArticle.Button></Link>
+                                                <CardArticle.Button onClick={() => Router.push({ pathname: '/blog', query: { artigo: id } })}>Leia mais</CardArticle.Button>
                                             </CardArticle.Info>
                                         </CardArticle.Item>    
                                     )
@@ -86,7 +89,7 @@ class Blog extends React.Component {
                             !!categorias.length &&
                             <CategoryAside>
                                 <CategoryAside.Title>Categorias</CategoryAside.Title>
-                                { categorias.map(({ nome, id }, i) => <Link key={i} href={{ pathname: '/blog', query: { categoria: id } }}><CategoryAside.Category>{nome}</CategoryAside.Category></Link> ) }  
+                                { categorias.map(({ nome, id }, i) => <CategoryAside.Category onClick={() => Router.push({ pathname: '/blog', query: { categoria: id } })}>{nome}</CategoryAside.Category> ) }  
                             </CategoryAside>
                         }
                         <div>

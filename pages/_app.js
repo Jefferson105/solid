@@ -21,6 +21,7 @@ import { connect, Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
 import Head from 'next/head'
 import withNProgress from "next-nprogress";
+import Router from "next/router";
 
 import createStore from "../store";
 
@@ -35,6 +36,10 @@ class MyApp extends App {
 
     componentDidMount() {
         this.props.dispatch(getPosts());
+    
+        Router.onRouteChangeStart = _ => {
+            window.scrollTo(0,0);
+        }
     }
 
     render() {

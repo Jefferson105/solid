@@ -1,4 +1,7 @@
 import { connect } from "react-redux";
+
+import Router from "next/router";
+
 import NavMenu from "../components/NavMenu";
 import Impacto from "../components/Impacto";
 import Equipe from "../components/Equipe";
@@ -25,7 +28,7 @@ class Home extends React.Component {
                 <header ref={el => this.header = el} className="header">
                     <NavMenu />
                     <div className="header__info">
-                        <h2 className="header__h2">Transforme a Gestão da sua<br/> empresa e acelere seu crescimento com a SOLID</h2>
+                        <h2 className="header__h2">Transforme a gestão da sua<br/> empresa e acelere seu crescimento com a SOLID</h2>
                     
                         <button className="header__button">Fale com nossos consultores</button>
                         <button onClick={() => {
@@ -45,13 +48,13 @@ class Home extends React.Component {
                     <ul className="blog__postblog">
                         {
                             posts.length &&
-                            posts.slice(0, 3).map(({ conteudo, createdat, titulo }, i) => 
-                                <li key={i} onMouseEnter={() => this.setState({ artigo: i })} className={`blog__artigo ${artigo == i && "blog__artigo--selected"}`}>
+                            posts.slice(0, 3).map(({ conteudo, createdat, titulo, id }, i) => 
+                                <li key={i} onClick={() => Router.push({ pathname: "/blog", query: { artigo: id } })} onMouseEnter={() => this.setState({ artigo: i })} className={`blog__artigo ${artigo == i && "blog__artigo--selected"}`}>
                                     <img className="blog__foto" src="/static/img/img_solid5.jpg"/>    
                                     <div className="blog__text">
                                         <p className="blog__title"><b>{titulo}</b></p>
                                         <p className="blog__date"><img className="blog__calendar" src="/static/img/calendar.svg"/> {createdat.split("T")[0]}</p>
-                                        <p className="blog__post" dangerouslySetInnerHTML={{ __html: conteudo.slice(0, 100) }} />
+                                        <p className="blog__post" dangerouslySetInnerHTML={{ __html: `${conteudo.slice(0, 100)} ...` }} />
                                     </div>
                                 </li>
                             )
