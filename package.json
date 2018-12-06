@@ -8,7 +8,8 @@
     "buildHtml": "NODE_ENV=production ./node_modules/.bin/next build && ./node_modules/.bin/next export",
     "analyze": "NODE_ENV=production BUNDLE_ANALYZE=both next build",
     "analyze:server": "BUNDLE_ANALYZE=server next build",
-    "analyze:browser": "BUNDLE_ANALYZE=browser next build"
+    "analyze:browser": "BUNDLE_ANALYZE=browser next build",
+    "build": "NODE_ENV=production ./node_modules/.bin/next build"
   },
   "author": "Jefferson Barbosa",
   "license": "MIT",
