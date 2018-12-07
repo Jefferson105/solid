@@ -1,4 +1,4 @@
-import { GET_POSTS, GET_CATEGORIAS } from './types';
+import { GET_POSTS, GET_CATEGORIAS, MODAL_EMAIL_CONTATO } from './types';
 import { request } from '../utils/request';
 
 export const getPosts = () => {
@@ -43,6 +43,8 @@ export const getCategorias = () => {
 
 export const enviarEmailContato = (info) => {
     return async dispatch => {
+        dispatch({ type: MODAL_EMAIL_CONTATO, data: { show: true, loading: true, sended: false, error: null } });
+
         try {
             let mensagem = 
 `Nome: ${info.nome}
@@ -63,12 +65,18 @@ Mensagem: ${info.mensagem}`;
             var { sucesso, mensagem, erro } = await res.json();
 
             if(sucesso) {
-                console.log(mensagem);
+                dispatch({ type: MODAL_EMAIL_CONTATO, data: { show: true, loading: false, sended: true, error: null }});
             }else {
-                console.error(erro);
+                console.log(erro);
+                dispatch({ type: MODAL_EMAIL_CONTATO, data: { show: true, loading: false, sended: true, error: true }});
             }
         }catch(err) {
-
+            console.error(err);
+            dispatch({ type: MODAL_EMAIL_CONTATO, data: { show: true, loading: false, sended: true, error: true }});
         }
     }
+}
+
+export const closeModalEmail = () => {
+    return { type: MODAL_EMAIL_CONTATO, data: { show: false, loading:false, sended: false, error: false }};
 }

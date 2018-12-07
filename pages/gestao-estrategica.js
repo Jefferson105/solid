@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import Router from 'next/router';
 import NavMenu from "../components/NavMenu";
 import Crescer from "../components/Crescer";
 import Clientes from "../components/Clientes";
@@ -29,7 +30,7 @@ class Home extends React.Component {
 
                     <TxtMini>Com esse modelo de serviço, a Solid está preparada para realizar projetos de transformação empresarial em cenários de estruturação organizacional, profissionalização para empresas familiares, incluindo fusões e separações. Para isso, trabalhamos nos em diversas frentes, entendendo a complexidade de cada negócio, a fim de alcançar os objetivos e metas traçados.</TxtMini>
                     
-                    <GreenButton>Fale com nossos consultores</GreenButton>
+                    <GreenButton onClick={() => Router.push('/contato')}>Fale com nossos consultores</GreenButton>
                 </section>
                 <Crescer remove={["estrategica"]} title="Fazemos ainda mais pelo seu negócio" />
                 <Clientes />

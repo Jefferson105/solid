@@ -42,7 +42,7 @@ const ClienteTxt = styled.p`
     margin: 1rem 0;
 `;
 
-const ClientButton = styled.button`
+const ClientButton = styled.a`
     background-color: #1B4E85;
     color: #FFF;
     font-weight: bold;
@@ -50,6 +50,7 @@ const ClientButton = styled.button`
     border-radius: 25px;
     padding: .5rem 1.5rem;
     margin-top: 1rem;
+    text-decoration: none;
 `;
 
 class Home extends React.Component {
@@ -74,7 +75,7 @@ class Home extends React.Component {
                             <ClienteInfo>
                                 <LogoCliente src="/static/img/abclogo.jpg" />
                                 <ClienteTxt>Veja como a Solid ajudou a ABC Cargas a sair do prejuízo para o lucro de R$ 6 milhões, em 1 ano</ClienteTxt>
-                                <ClientButton>Download Case</ClientButton>
+                                <ClientButton download href="/static/INFOGRAFICO.pdf">Download Case</ClientButton>
                             </ClienteInfo>
                         </ListItem>
                     </ListClients>

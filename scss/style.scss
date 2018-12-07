@@ -40,3 +40,23 @@ button {
     text-decoration: none;
     color: inherit;
 }
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,.5);
+    z-index: 99;
+    &__content {
+        width: 600px;
+        padding: 2rem;
+        text-align: center;
+        background-color: #FFF;
+        border-radius: 20px;
+    }
+}

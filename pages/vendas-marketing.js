@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import Router from 'next/router';
 import NavMenu from "../components/NavMenu";
 import Crescer from "../components/Crescer";
 import Clientes from "../components/Clientes";
@@ -39,7 +40,7 @@ class Home extends React.Component {
                         </ListMarketing.Item>
                     </ListMarketing>
 
-                    <GreenButton>Fale com nossos consultores</GreenButton>
+                    <GreenButton onClick={() => Router.push('/contato')}>Fale com nossos consultores</GreenButton>
                 </section>
                 <Crescer remove={["vendas"]} title="Fazemos ainda mais pelo seu negócio" />
                 <Clientes />

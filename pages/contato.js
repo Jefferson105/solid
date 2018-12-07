@@ -9,6 +9,7 @@ import { HeaderMini, HeaderTitle, TxtMini } from "../components/styles";
 
 import HeaderMedium from "../components/styles/elements/HeaderMedium";
 import Error from '../components/styles/elements/Error';
+import Modal from '../components/modalEmail';
 
 const ContainerEmail = styled.div`
     width: 80%;
@@ -86,6 +87,7 @@ class Home extends React.Component {
     }
 
     render() {
+        const { emailContato } = this.props;
         const { error } = this.state;
         return(
             <section className="container contato container__sobre">
@@ -121,6 +123,7 @@ class Home extends React.Component {
                     </EmailInfo>
                 </section>
                 <Crescer />
+                { !!emailContato.show && <Modal /> }
              </section>
 
       

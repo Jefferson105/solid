@@ -23,24 +23,11 @@ app.prepare()
 
     const port = 3002;
 
-    const msg = {
-        to: 'festivaldetalentos123@gmail.com',
-        
-        subject: 'Teste Sendgrid',
-        text: 'Mensagem de teste'
-    };
-    try {
-        let data = await sgMail.send(msg);
-        console.log(data)
-    }catch(err) {
-        console.error(err);
-    }
-
     server.post("/api/sendmail", async (req, res) => {
         const { assunto, mensagem, name } = req.body;
 
         const msg = {
-            to: 'festivaldetalentos123@gmail.com',
+            to: 'contato@solidsolucoes.com.br',
             from: {
                 name: name || 'Contato Site SOLID',
                 email: 'contato@solidsolucoes.com.br'
@@ -52,8 +39,8 @@ app.prepare()
         try {
             let email = await sgMail.send(msg);
             res.json({ sucesso: true, mensagem: "Email enviado com sucesso." });
-        }catch(err) {
-            res.json({ sucesso: false, erro: "Ocorreu um erro ao enviar o email. Tente novamente." })
+        }catch(erro) {
+            res.json({ sucesso: false, erro })
         }
     });
 

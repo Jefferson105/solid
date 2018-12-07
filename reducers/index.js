@@ -1,4 +1,4 @@
-import { GET_POSTS, GET_CATEGORIAS } from '../actions/types';
+import { GET_POSTS, GET_CATEGORIAS, MODAL_EMAIL_CONTATO } from '../actions/types';
 
 export const initialData = {
     posts: {
@@ -13,9 +13,9 @@ export const initialData = {
     },
     emailContato: {
         show: false,
-        loading: true,
-        data: null,
-        error: null
+        loading: false,
+        sended: false,
+        error: false
     }
 };
 
@@ -31,6 +31,12 @@ let reducer = (state = initialData, { type, data }) => {
             return {
                 ...state,
                 categorias: data
+            }
+
+        case MODAL_EMAIL_CONTATO:
+            return {
+                ...state,
+                emailContato: data
             }
 
         default:
