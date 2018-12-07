@@ -15,7 +15,7 @@ class Home extends React.Component {
             <section className="container container__sobre">
                 <NavMenu isFixed={true} />
                 <HeaderMini url="/static/img/header-estrategica.jpg">
-                    <HeaderTitle color="#FFF">Gestão <b>Estratégica</b></HeaderTitle>      
+                    <HeaderTitle color="#FFF">Planejamento <b>Estratégico</b></HeaderTitle>      
                     <ButtonHeader><IconHeader src="/static/img/setting-gears.svg" /></ButtonHeader>
                 </HeaderMini>
                
@@ -24,10 +24,10 @@ class Home extends React.Component {
 
                     <WrapperTxtImg>
                         <Img50 url="/static/img/consultoria.jpg" />
-                        <Txt50>A Solid não é o tipo de empresa de consultoria que entrega um relatório com recomendações e sugestões de melhorias. Nós somos hands on, ou seja, transformamos seu negócio junto com você.</Txt50>
+                        <Txt50>A Solid não é o tipo de consultoria que entrega um relatório com recomendações e sugestões de melhorias. Nós somos hand on, transformamos seu negócio junto com você.</Txt50>
                     </WrapperTxtImg>
 
-                    <TxtMini>Com esse modelo de serviço, a Solid está preparada para realizar projetos de transformação empresarial em cenários de estruturação organizacional, incluindo fusão e separação. Para isso, trabalhamos nos níveis hierárquicos, tipo de subordinação e aumento da eficiência dos reportes matriciais. O outro foco é na reorganização economômica de empresas.</TxtMini>
+                    <TxtMini>Com esse modelo de serviço, a Solid está preparada para realizar projetos de transformação empresarial em cenários de estruturação organizacional, profissionalização para empresas familiares, incluindo fusões e separações. Para isso, trabalhamos nos em diversas frentes, entendendo a complexidade de cada negócio, a fim de alcançar os objetivos e metas traçados.</TxtMini>
                     
                     <GreenButton>Fale com nossos consultores</GreenButton>
                 </section>
@@ -37,5 +37,6 @@ class Home extends React.Component {
         )
     }
 }                
+
     
 export default connect(state => state)(Home);

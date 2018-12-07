@@ -20,11 +20,11 @@ class Home extends React.Component {
                 </HeaderMini>
                
                 <section>
-                    <TxtBold>Para ajudar as empresas a ter controle do negócio, acompanhando a produtividade da equipe e a lucratividade de cada área, desenvolvemos um software de gestão empresarial sob medida para cada cliente.</TxtBold>
+                    <TxtBold>Para ajudar as empresas a ter controle do negócio, acompanhando a produtividade da equipe e a lucratividade de cada área, desenvolvemos um software de gestão empresarial sob medida para cada cliente, que possibilite a análise crítica.</TxtBold>
 
                     <WrapperImg100 url="/static/img/empresarial-photo.jpg" />
 
-                    <TxtMini>Com esse modelo de serviço, a Solid está preparada para realizar projetos de transformação empresarial em cenários de estruturação organizacional, incluindo fusão e separação. Para isso, trabalhamos nos níveis hierárquicos, tipo de subordinação e aumento da eficiência dos reportes matriciais. O outro foco é na reorganização economômica de empresas.</TxtMini>
+                    <TxtMini>Por meio desse sistema, o gestor passa a ter acesso a um dashboard, onde tem a possibilidade de acompanhar a evolução dos resultados em tempo real e de qualquer lugar.</TxtMini>
                     
                     <GreenButton>Fale com nossos consultores</GreenButton>
                 </section>
@@ -34,5 +34,6 @@ class Home extends React.Component {
         )
     }
 }                
-    
+
+
 export default connect(state => state)(Home);

@@ -15,7 +15,7 @@ class Clientes extends React.Component {
                         </figure>
                     </div>
                     <div className="clientes__avaliacao">
-                        <p className="clientes__p">"A Solid foi crucial para nosso crescimento na era da Logística 4.0. A empresa nos tirou do ciclo da "sobrevivência" nos levando para o ciclo de prosperidade. Conseguimos reduzir custos significativos e, mesmo assim, aumentar a nossa lucratividade"</p>
+                        <p className="clientes__p">“ Solid foi crucial para nosso crescimento na era da Logística 4.0. A empresa nos tirou do ciclo da “sobrevivência” nos levando para o ciclo da prosperidade. Conseguimos reduzir custos significativos e, mesmo assim, aumentar a nossa lucratividade”.</p>
                         <p className="clientes__b"><b>Danilo Guedes</b></p>
                         <p>CEO da ABC Cargas</p>
                         

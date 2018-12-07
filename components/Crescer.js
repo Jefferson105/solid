@@ -12,7 +12,7 @@ const Crescer = ({ remove = [], title = defaultTitle }) =>
                     <figure className="sobre__icons">
                         <img src="/static/img/setting-gears.svg" />
                     </figure>
-                    <h3 className="sobre__crescer-h3">Gestão<br /><b>Estratégica</b></h3>
+                    <h3 className="sobre__crescer-h3">Planejamento<br /><b>Estratégico</b></h3>
                     <p className="sobre__crescer-text">Quando falamos de Consultoria em Gestão de Pessoas logo associamos ao desenvolvimento e capacitação do capital humano.</p>
                     <a className="sobre__saiba">Saiba mais</a>
                 </li>

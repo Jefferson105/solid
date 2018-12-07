@@ -40,3 +40,35 @@ export const getCategorias = () => {
         }
     }
 }
+
+export const enviarEmailContato = (info) => {
+    return async dispatch => {
+        try {
+            let mensagem = 
+`Nome: ${info.nome}
+Email: ${info.email}
+Empresa: ${info.empresa}
+Departamento: ${info.departamento}
+Mensagem: ${info.mensagem}`;
+            let assunto = "Contato site SOLID";
+
+            var res = await fetch("/api/sendmail", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({ mensagem, assunto, name: "Contato Site SOLID" })
+            });
+    
+            var { sucesso, mensagem, erro } = await res.json();
+
+            if(sucesso) {
+                console.log(mensagem);
+            }else {
+                console.error(erro);
+            }
+        }catch(err) {
+
+        }
+    }
+}

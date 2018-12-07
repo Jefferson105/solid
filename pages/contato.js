@@ -3,9 +3,12 @@ import NavMenu from "../components/NavMenu";
 import Crescer from "../components/Crescer";
 import styled from "styled-components";
 
+import { enviarEmailContato } from "../actions";
+
 import { HeaderMini, HeaderTitle, TxtMini } from "../components/styles";
 
 import HeaderMedium from "../components/styles/elements/HeaderMedium";
+import Error from '../components/styles/elements/Error';
 
 const ContainerEmail = styled.div`
     width: 80%;
@@ -61,11 +64,29 @@ const IconInfo = styled.span`
 `;
 
 class Home extends React.Component {
-    constructor(props) {
-        super(props);
+    state = {
+        nome: "",
+        empresa: "",
+        email: "",
+        departamento: "",
+        mensagem: "",
+        error: null
+    }
+
+    checkFields = (e) => {
+        e.preventDefault();
+
+        this.setState({ error: null });
+
+        if(Object.keys(this.state).every(k => k == 'error' ? true : this.state[k])) {
+            this.props.dispatch(enviarEmailContato(this.state));
+        }else {
+            this.setState({ error: "Preencha todos os campos." });
+        }
     }
 
     render() {
+        const { error } = this.state;
         return(
             <section className="container contato container__sobre">
                 <NavMenu isFixed={true} />
@@ -74,14 +95,15 @@ class Home extends React.Component {
                 </HeaderMedium>
                 <section style={{ backgroundColor: "#F9F9F9" }}>
                     <div className="contato__formcontent">
-                        <form className="contato__form">
-                            <input type="name" className="contato__input" placeholder="Seu nome"/>
-                            <input type="name" className="contato__input" placeholder="Empresa"/>
-                            <input type="name" className="contato__input2" placeholder="Seu e-mail"/>
-                            <input type="name" className="contato__input2" placeholder="Departamento desejado"/>
-                            <input type="name" className="contato__msg" placeholder="Mensagem"/>
+                        <form onSubmit={this.checkFields} className="contato__form">
+                            <input onChange={(e) => this.setState({ nome: e.target.value })} type="text" className="contato__input" placeholder="Seu nome"/>
+                            <input onChange={(e) => this.setState({ empresa: e.target.value })} type="text" className="contato__input" placeholder="Empresa"/>
+                            <input onChange={(e) => this.setState({ email: e.target.value })} type="text" className="contato__input2" placeholder="Seu e-mail"/>
+                            <input onChange={(e) => this.setState({ departamento: e.target.value })} type="text" className="contato__input2" placeholder="Departamento desejado"/>
+                            <input onChange={(e) => this.setState({ mensagem: e.target.value })} type="text" className="contato__msg" placeholder="Mensagem"/>
                             <button style={{ marginTop: "2rem" }} className="header__button blog__button enviarform">Enviar</button>
                         </form>
+                        { !!error && <Error>{error}</Error> }
                     </div>
                     <ContainerEmail>
                         <TitleEmail>Caso prefira, envie um e-mail ou ligue para nós.</TitleEmail>

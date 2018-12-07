@@ -10,6 +10,12 @@ export const initialData = {
         list: [],
         fetched: false,
         error: null
+    },
+    emailContato: {
+        show: false,
+        loading: true,
+        data: null,
+        error: null
     }
 };
 

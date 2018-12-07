@@ -1,3 +1,5 @@
+import Router from "next/router";
+
 const Equipe = () => 
     <section className="equipe">
         <h3 className="impacto__title">Nossa<b> Equipe</b></h3>
@@ -19,7 +21,7 @@ const Equipe = () =>
                 <div className="equipe__info">
                     <b>Patrícia Bogalheira</b>
                     <p className="equipe__cargo">Diretora de Treinamento</p>
-                    <p className="equipe__post">Master/Executive Coach, especializada na Linguagem Ericsoniana, certificada pelo Instituto Brasileiro de Coaching - IBC e reconhecida pelas renomadas entidades Coaching do mundo. Patrícia atua para promover o autoconhecimento e self empowerment a empreendedores, executivos de alto comando, líderes e times de todos os setores.</p>
+                    <p className="equipe__post">Especialista em gestão de pessoas, Patrícia atua no ramo corporativo há mais de 10 anos, hoje com foco em desenvolver líderes na essência dentro das organizações, além de implantar metodologias inovadoras de relacionamento com o colaborador, que garantam o sentimento de pertencimento à todos no time.</p>
                 </div>
             </li>
             <li className="equipe__item">
@@ -29,11 +31,11 @@ const Equipe = () =>
                 <div className="equipe__info">
                     <b>Jéssica Paraguassu</b>
                     <p className="equipe__cargo">Diretora Comercial</p>  
-                    <p className="equipe__post">Formada em Relações Internacionais, Jéssica tem a missão de tornar a Solid cada vez mais inovadora e vanguardista. Para isso, está em constante atualização a respeito de novas tecnologias e tendências, criando modelos replicáveis do negócio.</p>
+                    <p className="equipe__post">Formada em Relações Internacionais e pós graduada em Gestão de Negócios com  ampla experiência no mercado de startups e modelos de negócios revolucionários, Jéssica tem a missão de tornar a operação da Solid cada vez mais inovadora. Para isso, está em constante atualização a respeito de novas tecnologias e tendências, criando modelos comerciais replicáveis para negócios diversos. </p>
                 </div>
             </li>
         </ul>
-        <button className="header__button blog__button">Saiba mais</button>
+        <button onClick={() => Router.push("/sobre")} className="header__button blog__button">Saiba mais</button>
     </section>
 
 export default Equipe;

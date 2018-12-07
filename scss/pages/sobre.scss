@@ -83,10 +83,10 @@
     &__crescer-item {
         border-radius: 10px;
         background-color: #FFF;
-        width: 24%;
-        height: 30rem;
+        width: 277px;
+        height: 517px;
         border: thin solid #e6e6e6;
-        padding: 2rem 2rem 3rem 2rem;
+        padding: 2rem 20px 3rem 20px;
         box-shadow: 0 0 15px 0 rgba(0,0,0,.1);
         display: flex;
         flex-direction: column;
@@ -107,10 +107,10 @@
         }
     }
     &__crescer-h3 {
-        margin-top: 1rem;
+        margin-top: 1.2rem;
         font-weight: lighter;
         color: $blue-color;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
     &__crescer-text {
         font-size: 1rem;

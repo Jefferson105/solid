@@ -46,7 +46,7 @@ class NavMenu extends React.Component {
                                             <figure className="sub-menu__icon">
                                                 <img src="/static/img/setting-gears.svg" />
                                             </figure>
-                                            <span className="sub-menu__text">Gestão <b>Estratégica</b></span>
+                                            <span className="sub-menu__text">Planejamento <b>Estratégico</b></span>
                                         </a>
                                     </Link>
                                 </li>
@@ -56,7 +56,7 @@ class NavMenu extends React.Component {
                                             <figure className="sub-menu__icon">
                                                 <img src="/static/img/multiple-users.svg" />
                                             </figure>
-                                            <span className="sub-menu__text">Consultoria em <b>Gestão de Pessoas</b></span>
+                                            <span className="sub-menu__text">Desenvolvimento<b> de Pessoas</b></span>
                                         </a>
                                     </Link>
                                 </li>
@@ -86,7 +86,7 @@ class NavMenu extends React.Component {
                     <li className="nav-menu__item nav-menu__item--item">
                         <Link prefetch href="/clientes">
                             <a className="nav-menu__link">
-                                Clientes
+                                Cases
                             </a>
                         </Link>
                     </li>

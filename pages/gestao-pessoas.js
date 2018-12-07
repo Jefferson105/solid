@@ -15,16 +15,18 @@ class Home extends React.Component {
             <section className="container container__sobre">
                 <NavMenu isFixed={true} />
                 <HeaderMini url="/static/img/header-pessoas.jpg">
-                    <HeaderTitle color="#FFF">Consultoria em <b>Gestão de Pessoas</b></HeaderTitle>      
+                    <HeaderTitle color="#FFF">Desenvolvimento de <b>Pessoas</b></HeaderTitle>      
                     <ButtonHeader><IconHeader src="/static/img/multiple-users.svg" /></ButtonHeader>
                 </HeaderMini>
                
                 <section>
-                    <TxtBold>Quando falamos de Consultoria em Gestão de Pessoas logo assoiamos ao desenvolvimento e capacitação do capital humano. Porém, treinar líderes e donos também é uma etapa fundamental para o crescimento e transformação do negócio.</TxtBold>
+                    <TxtBold>O grande desafio das lideranças com pessoas, em qualquer ambiente, é gerar um senso de pertencimento a todos, de modo que se construa um time verdadeiramente engajado em alcançar metas. Portanto, é necessária uma atuação constante em agregar, alocar, recompensar, desenvolver, manter e monitorar as pessoas com a melhor metodologia de gestão possível.
+                    </TxtBold>
 
                     <WrapperImg100 url="/static/img/pessoas-photo.jpg" />
 
-                    <TxtMini>Com esse modelo de serviço, a Solid está preparada para realizar projetos de transformação empresarial em cenários de estruturação organizacional, incluindo fusão e separação. Para isso, trabalhamos nos níveis hierárquicos, tipo de subordinação e aumento da eficiência dos reportes matriciais. O outro foco é na reorganização economômica de empresas.</TxtMini>
+                    <TxtMini>Nosso modelo de desenvolvimento, ajuda os líderes a gerirem de forma efetiva e prática, sem jamais delegar suas responsabilidades ao “RH”, aprendendo a dar feedbacks de maneira correta, delegar tarefas, comunicar-se com assertividade, melhorar o relacionamento com a equipe, saber como lidar com momentos de crises e tomar decisões importantes, além de adquirir técnicas para otimização do próprio tempo e da equipe e, criar estratégias para que o negócio possa crescer financeiramente, com a participação ativa de todos.
+                    </TxtMini>
                     
                     <GreenButton>Fale com nossos consultores</GreenButton>
                 </section>
