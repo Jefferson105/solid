@@ -53,9 +53,9 @@ class Impacto extends React.Component {
                             <p className="impacto__num-container"><span className="impacto__num">2</span></p>
                         </div>
                         <div className="impacto__div2">
-                            <h4 className="impacto__h4"><b>Software de gestão</b> customizado</h4>
+                            <h4 className="impacto__h4"><b>Desenvolvimento de Pessoas</b></h4>
                             <p className="impacto__p">
-                                Para transformar a sua empresa e acelerar os resultados, é importante gerir bem as informações para ter uma tomada de decisão assertiva. Esqueça o controle manual e veja como a Solid pode lhe ajudar nessa etapa.
+                                Empresas são resultados de pessoas. Se não forem  pertencentes e engajadas, consequentemente, os resultados ficarão aquém do desejado. Desenhamos uma oferta de consultoria em gestão de pessoas, de acordo com as necessidades, para manter os colaboradores da empresa totalmente alinhados com o seu plano de negócio.
                                  <br /> <b onClick={() => Router.push('/gestao-empresarial')}>Saiba mais.</b></p>
                         </div>
                     </li>
@@ -64,8 +64,8 @@ class Impacto extends React.Component {
                             <p className="impacto__num-container"><span className="impacto__num">3</span></p>
                         </div>
                         <div className="impacto__div2">
-                            <h4 className="impacto__h4">Como geramos <b>impacto no seu negócio</b></h4>
-                            <p className="impacto__p">Para fechar o tripé é necessário para transformar a sua empresa e acelerar os resultados, é importante investir em tecnologia. Esqueça o controle manual e veja como a Solid pode lhe ajudar nessa etapa.<br /> <b onClick={() => Router.push('/gestao-pessoas')}>Saiba mais</b>.</p>
+                            <h4 className="impacto__h4"><b>Software de Gestão</b> customizado</h4>
+                            <p className="impacto__p">Para transformar a sua empresa e acelerar os resultados, é importante gerir bem as informações para ter uma tomada de decisão assertiva. Esqueça o controle manual e veja como a Solid pode lhe ajudar nessa etapa.<br /> <b onClick={() => Router.push('/gestao-pessoas')}>Saiba mais</b>.</p>
                         </div>
                     </li>
                     <li ref={(el) => this.li4 = el} className={`impacto__item ${show4 && "impacto__item--show"}`}>
