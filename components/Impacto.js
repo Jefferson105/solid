@@ -20,12 +20,39 @@ class Impacto extends React.Component {
     }
 
     checkScroll() {
-        if(!this.li1) return;
+        //console.log(window.innerHeight / 2, this.li1.getBoundingClientRect().top);
+        const changeAnimation = ({ position, top, marginTop, translate }) => {
+            this.animation.style.position = position;
+            this.animation.style.top = top;
+            this.animation.style.marginTop = marginTop;
+            this.animation.style.transform = `translateX(${translate})`;
+        }
+        
+        if(window.innerHeight / 2 > this.li1.getBoundingClientRect().top) {
+            changeAnimation({ position: 'fixed', top: '50%', marginTop: '0', translate: '-7px' });
+        }else {
+            changeAnimation({ position: 'relative', top: '0', marginTop: '7rem', translate: '0' });
+        }
 
-        if(window.innerHeight > this.li1.getBoundingClientRect().top) this.setState({ show1: true });
-        if(window.innerHeight > this.li2.getBoundingClientRect().top) this.setState({ show2: true });
-        if(window.innerHeight > this.li3.getBoundingClientRect().top) this.setState({ show3: true });
-        if(window.innerHeight > this.li4.getBoundingClientRect().top) this.setState({ show4: true });
+        if(window.innerHeight / 2 > this.li2.getBoundingClientRect().top) {
+            this.anim3.classList.add('animation__item--selected');
+        }
+
+        if(window.innerHeight / 2 > this.li3.getBoundingClientRect().top) {
+            this.anim2.classList.add('animation__item--selected');
+        }
+
+        if(window.innerHeight / 2 > this.li4.getBoundingClientRect().top) {
+            this.anim1.classList.add('animation__item--selected');
+            changeAnimation({ position: 'relative', top: '0', marginTop: 'auto', translate: '0' });
+        }
+
+        //if(!this.li1) return;
+
+        //if(window.innerHeight > this.li1.getBoundingClientRect().top) this.setState({ show1: true });
+        //if(window.innerHeight > this.li2.getBoundingClientRect().top) this.setState({ show2: true });
+        //if(window.innerHeight > this.li3.getBoundingClientRect().top) this.setState({ show3: true });
+        //if(window.innerHeight > this.li4.getBoundingClientRect().top) this.setState({ show4: true });
     }
 
     render() {
@@ -34,6 +61,15 @@ class Impacto extends React.Component {
         return(
             <section ref={el => this.impacto = el} className="impacto">
                 <h3 className="impacto__title">Como geramos <b>impacto no seu negócio</b></h3>
+                <div style={{ display: "flex" }}>
+                <div className="impacto__animation">
+                    <ul ref={el => this.animation = el} className="animation">
+                        <li ref={el => this.anim1 = el} className="animation__item"><i></i></li>
+                        <li ref={el => this.anim2 = el} className="animation__item"><i></i></li>
+                        <li ref={el => this.anim3 = el} className="animation__item"><i></i></li>
+                        <li className="animation__item animation__item--selected"><i></i></li>
+                    </ul>
+                </div>
                 <ul className="impacto__list">
                     <li ref={(el) => this.li1 = el} className={`impacto__item ${show1 && "impacto__item--show"}`}>
                         <div className="impacto__div1">
@@ -78,6 +114,7 @@ class Impacto extends React.Component {
                         </div>
                     </li>
                 </ul>
+                </div>
             </section>
         )
     }

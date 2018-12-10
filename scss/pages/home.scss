@@ -64,6 +64,10 @@
     background-color: #FFF;
     padding: 6rem 10% 7rem 10%;
     position: relative;
+    &__animation {
+        display: flex;
+        margin-left: auto;
+    }
     &__title {
         font-size: 2.3rem;
         font-weight: lighter;
@@ -79,15 +83,15 @@
     &__list {
         margin-top: 7rem;
         list-style: none;
-        width: 70%;
-        //margin-left: auto;
+        width: 60%;
+        margin-left: auto;
     }
     &__item {
         display: flex;
         margin-bottom: 2rem;
         position: relative;
         transition: all 4s ease;
-        transform: translateX(50%);
+        //transform: translateX(50%);
         //opacity: 0;
         &--show {
             transform: translateX(0);
@@ -145,7 +149,7 @@
     }
     &__div2 {
         margin-top: 1.5rem;
-        opacity: 0;
+        //opacity: 0;
         transition: all 3s ease;
         transition-delay: .5s;
     }
