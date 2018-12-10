@@ -24,7 +24,7 @@ class Home extends React.Component {
                         <li className="sobre__item">
                             <figure></figure>
                             <div className="sobre__market-text">
-                                <p className="sobre__p"><strong>Eduardo Bogalheira</strong>, CEO da Solid, acumula mais de 15 anos de experiência no mercado corporativo, ocupando cargos de liderança em importantes empresas dos setores de Logística, Automobilística e Indústria.</p>
+                                <p className="sobre__p"><strong>Eduardo Bogalheira</strong>, CEO da Solid, acumula mais de 30 anos de experiência no mercado corporativo, ocupando cargos de liderança em importantes empresas dos setores de Logística, Automobilística e Indústria.</p>
                                 <p className="sobre__p">Além disso, a Solid conta com a equipe experiente, qualificada e com amplo conhecimento técnico, focada em melhorar os resultados de gestão e maximizar os lucros sempre atendendo aos objetivos estratégicos traçados pelos clientes.</p>
                                 <p>Usando técnicas modernas de gestão, eliminamos as causas que ocasionam os problemas ao mesmo tempo em que treinamos seus colaboradores.</p>
                             </div>

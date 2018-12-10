@@ -13,9 +13,8 @@ const Footer = () =>
                 <p className="footer__txt footer__txt--top">São Bernardo do Campo - SP</p>
                 <p className="footer__txt footer__txt--top">Telefone: (11) 4330-2784</p>
                 <p className="footer__socials">
-                    <a className="footer__social"><img src="/static/img/facebook-logo.svg" /></a>
-                    <a className="footer__social"><img src="/static/img/twitter-logo.svg" /></a>
-                    <a className="footer__social"><img src="/static/img/linkedin-logo.svg" /></a>
+                    <a href="https://www.facebook.com/SolidGestaoEmpresarial/" target="_blank" className="footer__social"><img src="/static/img/facebook-logo.svg" /></a>
+                    <a href="https://www.linkedin.com/company/solid-consultoria-em-gestao-empresarial/" target="_blank" className="footer__social"><img src="/static/img/linkedin-logo.svg" /></a>
                 </p>
             </div>
             <div className="footer__list-content">
@@ -43,3 +42,5 @@ const Footer = () =>
     </footer>
 
 export default Footer;
+
+//<a href="https://www.facebook.com/SolidGestaoEmpresarial/" target="_blank" className="footer__social"><img src="/static/img/twitter-logo.svg" /></a>

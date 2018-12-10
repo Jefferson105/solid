@@ -22,6 +22,7 @@ import withRedux from "next-redux-wrapper";
 import Head from 'next/head'
 import withNProgress from "next-nprogress";
 import Router from "next/router";
+import ReactGA from "react-ga";
 
 import createStore from "../store";
 
@@ -34,10 +35,16 @@ class MyApp extends App {
         super(props);
     }
 
+    componentWillMount() {
+        ReactGA.initialize('UA-130772779-1');
+        ReactGA.pageview('/homepage');
+    }
+
     componentDidMount() {
         this.props.dispatch(getPosts());
     
-        Router.onRouteChangeStart = _ => {
+        Router.onRouteChangeStart = url => {
+            ReactGA.pageview(url);
             window.scrollTo(0,0);
         }
     }

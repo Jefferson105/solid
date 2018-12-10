@@ -11,7 +11,7 @@ const Equipe = () =>
                 <div className="equipe__info">
                     <b>Eduardo Bogalheira</b>
                     <p className="equipe__cargo">Presidente</p>
-                    <p className="equipe__post">Com mais de 30 anos de carreira executiva, Bogalheira acumula experiência em cargos de liderança em diversas empresas. Há 15 anos, está do "outro lado do balcão", atuando em consultoria de negócio e colocando a mão na massa junto com os clientes para acelerar os resultados e transformar as empresas.</p>
+                    <p className="equipe__post">Com mais de 30 anos de carreira executiva, Bogalheira acumula experiência em cargos de liderança em diversas empresas. Há 30 anos, está do "outro lado do balcão", atuando em consultoria de negócio e colocando a mão na massa junto com os clientes para acelerar os resultados e transformar as empresas.</p>
                     </div>
             </li>
             <li className="equipe__item">

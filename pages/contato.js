@@ -10,6 +10,7 @@ import { HeaderMini, HeaderTitle, TxtMini } from "../components/styles";
 import HeaderMedium from "../components/styles/elements/HeaderMedium";
 import Error from '../components/styles/elements/Error';
 import Modal from '../components/modalEmail';
+import Box from '../components/styles/blocks/box-map';
 
 const ContainerEmail = styled.div`
     width: 80%;
@@ -123,6 +124,14 @@ class Home extends React.Component {
                     </EmailInfo>
                 </section>
                 <Crescer />
+                <div style={{ position: 'relative' }}>
+                    <Box>
+                        <Box.Text><b>Endereço:</b></Box.Text>
+                        <Box.Text>R. Jurubatuba, 1350<br/>Salas 618,619 - Centro</Box.Text>
+                        <Box.Text>CEP 09725-000<br/>São Bernardo do Campo - SP<br/>Brasil</Box.Text>
+                    </Box>
+                    <iframe src="https://snazzymaps.com/embed/119420" width="100%" height="440px" style={{ border: 'none' }}></iframe>
+                </div>
                 { !!emailContato.show && <Modal /> }
              </section>
 

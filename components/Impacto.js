@@ -20,7 +20,8 @@ class Impacto extends React.Component {
     }
 
     checkScroll() {
-        //console.log(window.innerHeight / 2, this.li1.getBoundingClientRect().top);
+        if(!this.li1) return;
+        
         const changeAnimation = ({ position, top, marginTop, translate }) => {
             this.animation.style.position = position;
             this.animation.style.top = top;
@@ -46,8 +47,6 @@ class Impacto extends React.Component {
             this.anim1.classList.add('animation__item--selected');
             changeAnimation({ position: 'relative', top: '0', marginTop: 'auto', translate: '0' });
         }
-
-        //if(!this.li1) return;
 
         //if(window.innerHeight > this.li1.getBoundingClientRect().top) this.setState({ show1: true });
         //if(window.innerHeight > this.li2.getBoundingClientRect().top) this.setState({ show2: true });
