@@ -75,7 +75,7 @@ class Home extends React.Component {
                             <ClienteInfo>
                                 <LogoCliente src="/static/img/abclogo.jpg" />
                                 <ClienteTxt>Veja como a Solid ajudou a ABC Cargas a sair do prejuízo para o lucro de R$ 6 milhões, em 1 ano</ClienteTxt>
-                                <ClientButton download href="/static/INFOGRAFICO.pdf">Download Case</ClientButton>
+                                <ClientButton target="_blank" href="https://mailchi.mp/d6b22e18739f/case-lucro-abc-cargas">Download Case</ClientButton>
                             </ClienteInfo>
                         </ListItem>
                     </ListClients>
