@@ -1,6 +1,7 @@
 import { GET_POSTS, GET_CATEGORIAS, MODAL_EMAIL_CONTATO } from '../actions/types';
 
 export const initialData = {
+    prefix: 'http://www.solidsolucoes.com.br:8197',
     posts: {
         list: [],
         fetched: false,

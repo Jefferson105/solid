@@ -20,7 +20,7 @@ class Home extends React.Component {
 
     render() {
         const { artigo, sec } = this.state;
-        const { posts } = this.props;
+        const { posts, prefix } = this.props;
 
         return(
             <section ref={el => this.container = el} className="container container__home">
@@ -38,7 +38,6 @@ class Home extends React.Component {
                             });
                         }} className="header__arrow-down"><img src="/static/img/expand-button.svg" /></button>
                     </div>
-                    
                 </header>
                 <Impacto />
                 <Clientes />
@@ -47,12 +46,11 @@ class Home extends React.Component {
                     <ul className="blog__postblog">
                         {
                             !!posts.list.length &&
-                            posts.list.slice(0, 3).map(({ conteudo, createdat, titulo, id }, i) => 
-                                <li key={i} onClick={() => Router.push({ pathname: "/blog", query: { artigo: id } })} onMouseEnter={() => this.setState({ artigo: i })} className={`blog__artigo ${artigo == i && "blog__artigo--selected"}`}>
-                                    <img className="blog__foto" src="/static/img/blog.jpg"/>    
+                            posts.list.slice(0, 3).map(({ conteudo, createdAt, titulo, id, imagem_principal }, i) => 
+                                <li key={i} onClick={() => Router.push({ pathname: "/blog", query: { artigo: id } })} onMouseEnter={() => this.setState({ artigo: i })} style={{ backgroundImage: `url(${prefix + imagem_principal.url})` }} className={`blog__artigo ${artigo == i && "blog__artigo--selected"}`}>
                                     <div className="blog__text">
                                         <p className="blog__title"><b>{titulo}</b></p>
-                                        <p className="blog__date"><img className="blog__calendar" src="/static/img/calendar.svg"/> {createdat.split("T")[0]}</p>
+                                        <p className="blog__date"><img className="blog__calendar" src="/static/img/calendar.svg"/> {createdAt.split("T")[0]}</p>
                                         <p className="blog__post" dangerouslySetInnerHTML={{ __html: `${conteudo.slice(0, 100)}...` }} />
                                     </div>
                                 </li>
@@ -69,3 +67,5 @@ class Home extends React.Component {
 } 
 
 export default connect(state => state)(Home);
+
+//<img className="blog__foto" src={prefix + imagem_principal.url} />

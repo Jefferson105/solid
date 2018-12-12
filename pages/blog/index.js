@@ -20,7 +20,7 @@ class Blog extends React.Component {
     }
 
     render() {
-        const { categorias, posts, router } = this.props;
+        const { categorias, posts, router, prefix } = this.props;
 
         let categoria = router.query.categoria ? categorias.list.find(c => c.id === router.query.categoria) : null;
         let artigo = router.query.artigo ? posts.list.find(p => p.id === router.query.artigo) : posts.list[0];
@@ -29,7 +29,7 @@ class Blog extends React.Component {
 
         let listPosts = [];
 
-        if(categoria && posts.fetched) listPosts = posts.list.filter(({ categorias }) => categorias.Nome.replaceSpecialChars().toLowerCase() == categoria.nome.replaceSpecialChars().toLowerCase());
+        if(categoria && posts.fetched) listPosts = posts.list.filter((p) => p.categoria.nome.replaceSpecialChars().toLowerCase() == categoria.nome.replaceSpecialChars().toLowerCase());
         else listPosts = posts.list;
 
         return(
@@ -39,11 +39,11 @@ class Blog extends React.Component {
                     !!(categoria || artigo) &&
                     <HeaderMedium url="/static/img/header-pessoas.jpg">
                         {
-                            categoria ?
+                            !!categoria ?
                                 <HeaderTitle color="#FFF">{categoria.nome}</HeaderTitle> :
                                 <SlideArticles>
                                     <SlideArticles.Item>
-                                        <SlideArticles.Category>{artigo.categorias.Nome}</SlideArticles.Category>
+                                        <SlideArticles.Category>{artigo.categoria.nome}</SlideArticles.Category>
                                         <SlideArticles.Title>{artigo.titulo}</SlideArticles.Title>
                                         { !hasArtigo && <CardArticle.Button onClick={() => Router.push({ pathname: '/blog', query: { artigo: artigo.id } })}>Leia mais</CardArticle.Button> }
                                     </SlideArticles.Item>
@@ -65,11 +65,11 @@ class Blog extends React.Component {
                                 listPosts.length ?
                                 <CardArticle>
                                     {
-                                        listPosts.map(({ categorias, titulo, conteudo, id }, i) => 
+                                        listPosts.map(({ categoria, titulo, conteudo, id, imagem_principal }, i) => 
                                             <CardArticle.Item key={i}>
-                                                <CardArticle.Figure url="/static/img/consultoria.jpg" />
+                                                <CardArticle.Figure url={prefix + imagem_principal.url} />
                                                 <CardArticle.Info>
-                                                    <CardArticle.Category>{categorias.Nome}</CardArticle.Category>
+                                                    <CardArticle.Category>{categoria.nome}</CardArticle.Category>
                                                     <CardArticle.Title>{titulo}</CardArticle.Title>
                                                     <CardArticle.Text dangerouslySetInnerHTML={{ __html: `${conteudo.slice(0, 100)} ...` }} />
                                                     <CardArticle.Button onClick={() => Router.push({ pathname: '/blog', query: { artigo: id } })}>Leia mais</CardArticle.Button>
@@ -84,8 +84,8 @@ class Blog extends React.Component {
                     <aside style={{ width: "30%", display: "flex", alignItems: "center", flexDirection: "column" }}>
                         <BookAside>
                             <BookAside.Image src="/static/img/livro.png" />
-                            <BookAside.Text>Conheça mais conteúdos para transformar o seu negócio</BookAside.Text>
-                            <BookAside.Button onClick={() => Router.push('/clientes')}>Descubra</BookAside.Button>
+                            <BookAside.Text>Como a Solid ajudou a ABC Cargas a sair do prejuízo?</BookAside.Text>
+                            <BookAside.Button target="_blank" href="https://mailchi.mp/d6b22e18739f/case-lucro-abc-cargas">Descubra</BookAside.Button>
                         </BookAside>
                         {
                             !!categorias.fetched &&

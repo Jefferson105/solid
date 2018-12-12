@@ -6,13 +6,13 @@ export const getPosts = () => {
         dispatch({ type: GET_POSTS, data: { list: [], fetched: false, error: null }});
         
         try {
-            let data = await request('blogposts');
+            let data = await request('posts');
 
-            data = data.map((a, i) => Object.keys(a).reduce((ac, v) => {
+            /*data = data.map((a, i) => Object.keys(a).reduce((ac, v) => {
                 ac[v.replaceSpecialChars().toLowerCase().split(" ").join("_")] = data[i][v];
 
                 return ac;
-            }, {}));
+            }, {}));*/
 
             dispatch({ type: GET_POSTS, data: { list: data, fetched: true, error: null }});
         }catch(err) {
@@ -28,11 +28,11 @@ export const getCategorias = () => {
         try {
             let data = await request('categorias');
 
-            data = data.map((a, i) => Object.keys(a).reduce((ac, v) => {
+            /*data = data.map((a, i) => Object.keys(a).reduce((ac, v) => {
                 ac[v.replaceSpecialChars().toLowerCase().split(" ").join("_")] = data[i][v];
 
                 return ac;
-            }, {}));
+            }, {}));*/
 
             dispatch({ type: GET_CATEGORIAS, data: { list: data, fetched: true, error: null }});
         }catch(err) {

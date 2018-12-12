@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Button = styled.button`
+const Button = styled.a`
     font-weight: bold;
     background-color: #FFF;
     color: #F58538;
@@ -10,6 +10,10 @@ const Button = styled.button`
     font-size: 1.1rem;
     border-radius: 20px;
     cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 export default Button;
