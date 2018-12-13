@@ -29,7 +29,7 @@ const Footer = () =>
             <div>
                 <div className="footer__box">
                     <h4 className="footer__title">Receba dicas para transformar seu negócio</h4>
-                        <form action="https://solidsolucoes.us19.list-manage.com/subscribe/post?u=f6a8b65cd28d281b2c0856998&amp;id=bc061a8c5b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                        <form action="https://solidsolucoes.us19.list-manage.com/subscribe/post?u=f6a8b65cd28d281b2c0856998&amp;id=bc061a8c5b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" noValidate>
                             <input className="footer__input footer__input--marg" type="email" name="EMAIL" placeholder="Seu e-mail" />
                             <input className="footer__input" name="FNAME" type="text" placeholder="Seu nome" />
                             <button className="header__button footer__button">Cadastrar</button>

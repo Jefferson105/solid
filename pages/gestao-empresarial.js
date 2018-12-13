@@ -27,7 +27,7 @@ class Home extends React.Component {
 
                     <TxtMini>Por meio desse sistema, o gestor passa a ter acesso a um dashboard, onde tem a possibilidade de acompanhar a evolução dos resultados em tempo real e de qualquer lugar.</TxtMini>
                     
-                    <GreenButton onClick={() => Router.push('/contato')}>Fale com nossos consultores</GreenButton>
+                    <GreenButton onClick={() => Router.push({ pathname: '/contato', query: { consultor: true }})}>Fale com nossos consultores</GreenButton>
                 </section>
                 <Crescer remove={["empresarial"]} title="Fazemos ainda mais pelo seu negócio" />
                 <Clientes />

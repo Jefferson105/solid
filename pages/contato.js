@@ -1,13 +1,14 @@
-import { connect } from "react-redux";
-import NavMenu from "../components/NavMenu";
-import Crescer from "../components/Crescer";
-import styled from "styled-components";
+import { connect } from 'react-redux';
+import NavMenu from '../components/NavMenu';
+import Crescer from '../components/Crescer';
+import styled from 'styled-components';
+import { withRouter } from 'next/router';
 
-import { enviarEmailContato } from "../actions";
+import { enviarEmailContato } from '../actions';
 
-import { HeaderMini, HeaderTitle, TxtMini } from "../components/styles";
+import { HeaderMini, HeaderTitle, TxtMini } from '../components/styles';
 
-import HeaderMedium from "../components/styles/elements/HeaderMedium";
+import HeaderMedium from '../components/styles/elements/HeaderMedium';
 import Error from '../components/styles/elements/Error';
 import Modal from '../components/modalEmail';
 import Box from '../components/styles/blocks/box-map';
@@ -81,15 +82,16 @@ class Home extends React.Component {
         this.setState({ error: null });
 
         if(Object.keys(this.state).every(k => k == 'error' ? true : this.state[k])) {
-            this.props.dispatch(enviarEmailContato(this.state));
+            this.props.dispatch(enviarEmailContato(this.state, this.props.router.query.consultor));
         }else {
             this.setState({ error: "Preencha todos os campos." });
         }
     }
 
     render() {
-        const { emailContato } = this.props;
+        const { emailContato, router } = this.props;
         const { error } = this.state;
+
         return(
             <section className="container contato container__sobre">
                 <NavMenu isFixed={true} />
@@ -140,5 +142,5 @@ class Home extends React.Component {
     }
 }                
  
-export default connect(state => state)(Home);
+export default withRouter(connect(state => state)(Home));
         

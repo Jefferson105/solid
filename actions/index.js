@@ -8,12 +8,6 @@ export const getPosts = () => {
         try {
             let data = await request('posts');
 
-            /*data = data.map((a, i) => Object.keys(a).reduce((ac, v) => {
-                ac[v.replaceSpecialChars().toLowerCase().split(" ").join("_")] = data[i][v];
-
-                return ac;
-            }, {}));*/
-
             dispatch({ type: GET_POSTS, data: { list: data, fetched: true, error: null }});
         }catch(err) {
             dispatch({ type: GET_POSTS, data: { list: [], fetched: true, error: "Ocorreu um erro ao obter os posts." }});
@@ -28,12 +22,6 @@ export const getCategorias = () => {
         try {
             let data = await request('categorias');
 
-            /*data = data.map((a, i) => Object.keys(a).reduce((ac, v) => {
-                ac[v.replaceSpecialChars().toLowerCase().split(" ").join("_")] = data[i][v];
-
-                return ac;
-            }, {}));*/
-
             dispatch({ type: GET_CATEGORIAS, data: { list: data, fetched: true, error: null }});
         }catch(err) {
             dispatch({ type: GET_CATEGORIAS, data: { list: [], fetched: true, error: "Ocorreu um erro ao obter as categorias." }});
@@ -41,7 +29,7 @@ export const getCategorias = () => {
     }
 }
 
-export const enviarEmailContato = (info) => {
+export const enviarEmailContato = (info, isConsultor) => {
     return async dispatch => {
         dispatch({ type: MODAL_EMAIL_CONTATO, data: { show: true, loading: true, sended: false, error: null } });
 
@@ -59,19 +47,19 @@ Mensagem: ${info.mensagem}`;
                 headers: {
                     "Content-type": "application/json"
                 },
-                body: JSON.stringify({ mensagem, assunto, name: "Contato Site SOLID" })
+                body: JSON.stringify({ mensagem, assunto, to: isConsultor ? 'jessica.paraguassu@solidsolucoes.com.br' : 'contato@solidsolucoes.com.br' })
             });
     
             var { sucesso, mensagem, erro } = await res.json();
 
+            console.log(sucesso, mensagem, erro);
+
             if(sucesso) {
                 dispatch({ type: MODAL_EMAIL_CONTATO, data: { show: true, loading: false, sended: true, error: null }});
             }else {
-                console.log(erro);
                 dispatch({ type: MODAL_EMAIL_CONTATO, data: { show: true, loading: false, sended: true, error: true }});
             }
         }catch(err) {
-            console.error(err);
             dispatch({ type: MODAL_EMAIL_CONTATO, data: { show: true, loading: false, sended: true, error: true }});
         }
     }

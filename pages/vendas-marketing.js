@@ -40,7 +40,7 @@ class Home extends React.Component {
                         </ListMarketing.Item>
                     </ListMarketing>
 
-                    <GreenButton onClick={() => Router.push('/contato')}>Fale com nossos consultores</GreenButton>
+                    <GreenButton onClick={() => Router.push({ pathname: '/contato', query: { consultor: true }})}>Fale com nossos consultores</GreenButton>
                 </section>
                 <Crescer remove={["vendas"]} title="Fazemos ainda mais pelo seu negócio" />
                 <Clientes />

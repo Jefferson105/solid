@@ -24,12 +24,12 @@ app.prepare()
     const port = 3002;
 
     server.post("/api/sendmail", async (req, res) => {
-        const { assunto, mensagem, name = 'Contato Site SOLID' } = req.body;
+        const { assunto, mensagem, to = 'contato@solidsolucoes.com.br' } = req.body;
 
         const msg = {
-            to: 'contato@solidsolucoes.com.br',
+            to,
             from: {
-                name: name,
+                name: 'Contato Site SOLID',
                 email: 'contato@solidsolucoes.com.br'
             },
             subject: assunto,

@@ -29,7 +29,7 @@ class Home extends React.Component {
                     <TxtMini>Nosso modelo de desenvolvimento, ajuda os líderes a gerirem de forma efetiva e prática, sem jamais delegar suas responsabilidades ao “RH”, aprendendo a dar feedbacks de maneira correta, delegar tarefas, comunicar-se com assertividade, melhorar o relacionamento com a equipe, saber como lidar com momentos de crises e tomar decisões importantes, além de adquirir técnicas para otimização do próprio tempo e da equipe e, criar estratégias para que o negócio possa crescer financeiramente, com a participação ativa de todos.
                     </TxtMini>
                     
-                    <GreenButton onClick={() => Router.push('/contato')}>Fale com nossos consultores</GreenButton>
+                    <GreenButton onClick={() => Router.push({ pathname: '/contato', query: { consultor: true }})}>Fale com nossos consultores</GreenButton>
                 </section>
                 <Crescer remove={["pessoas"]} title="Fazemos ainda mais pelo seu negócio" />
                 <Clientes />

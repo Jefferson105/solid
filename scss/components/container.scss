@@ -4,6 +4,7 @@
     margin: 0 auto;
     overflow-x: hidden;
     &__home {
-        background-image: url(/static/img/img_solid8.jpg);
+        background-size: cover;
+        background-image: url(/static/img/bg_hero.jpg);
     }
 }

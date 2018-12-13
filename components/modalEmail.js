@@ -11,7 +11,7 @@ const ModalEmail = ({ emailContato, dispatch }) =>
             {
                 emailContato.loading ?
                     <Loading src="/static/img/loading.svg" /> :
-                    emailContato.error ?
+                    !emailContato.error ?
                         <p>Seu email foi enviado com sucesso.</p> :
                         <Error>Ocorreu um erro. Tente novamente.</Error>       
             }
