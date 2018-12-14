@@ -1,16 +1,38 @@
 const express = require("express");
 const next = require("next");
 const compression = require("compression");
-
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey("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");
+const nodeMailer = require('nodemailer');
 const bodyParser = require("body-parser");
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
+const sendMail = ({ assunto, mensagem, to }) =>
+    new Promise((resolve, reject) => {
+        let transporter = nodeMailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
+            auth: {
+                user: "mailapisender@gmail.com",
+                pass: "Informatic@"
+            }
+        })
 
+        let mailOptions = {
+            from: '"Contato Site Solid" <mailsenderapi@gmail.com>',
+            to,
+            subject: assunto,
+            text: mensagem
+        }
+
+        transporter.sendMail(mailOptions, function(err, info) {
+            if(err) reject(err);
+            
+            resolve(info);
+        });
+    })
 
 app.prepare()
 .then(async () => {
@@ -22,23 +44,12 @@ app.prepare()
     server.post('/api/sendmail', async (req, res) => {
         const { assunto, mensagem, to = 'contato@solidsolucoes.com.br' } = req.body;
 
-        const msg = {
-            to,
-            from: {
-                email: 'contato@solidsolucoes.com.br',
-                name: 'Contato Site SOLID'
-            },
-            subject: assunto,
-            text: mensagem,
-        };
-
         try {
-            let email = await sgMail.send(msg);
-            console.log("Sucesso: ", email);
-            res.json({ sucesso: true, mensagem: "Email enviado com sucesso." });
+            let info = await sendMail({ assunto, mensagem, to });
+
+            res.json({ sucesso: true, mensagem: "Email enviado", data: info });
         }catch(erro) {
-            console.log("Erro: ", erro);
-            res.json({ sucesso: false, erro })
+            res.json({ sucesso: false, erro });
         }
     });
 
