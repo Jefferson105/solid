@@ -15,9 +15,18 @@ const sendMail = ({ assunto, mensagem, to }) =>
             //port: 465,
             //secure: false,
             auth: {
+                type: 'OAuth2',
+                user: "mailapisender@gmail.com",
+                //accessToken: 'QPq569K6vSIZEcfRU_rAzLpc'
+                //pass: "Informatic@",
+                //clientId: '377146351254-jfu92s8otehkua2gg2nsr8kb7j696nbv.apps.googleusercontent.com',
+                //clientSecret: 'QPq569K6vSIZEcfRU_rAzLpc',
+                accessToken: 'ya29.GltyBiFugNtCSUAo7e6lFP-myANsNYxUp8v5pNs8FiLFUCLLVwubvo2lpeIEDa2mDqqD-erW8wDZwr856aFZtWJbXWGwBkeH4ZEGp4-FVzyYtDwxfR9gXLERfWpw'
+            }
+            /*auth: {
                 user: "mailapisender@gmail.com",
                 pass: "Informatic@"
-            }
+            }*/
         })
 
         let mailOptions = {
@@ -28,6 +37,8 @@ const sendMail = ({ assunto, mensagem, to }) =>
         }
 
         transporter.sendMail(mailOptions, function(err, info) {
+            console.log({ err, info });
+
             if(err) reject(err);
             
             resolve(info);
