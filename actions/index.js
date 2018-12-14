@@ -52,8 +52,6 @@ Mensagem: ${info.mensagem}`;
     
             var { sucesso, mensagem, erro } = await res.json();
 
-            console.log(sucesso, mensagem, erro);
-
             if(sucesso) {
                 dispatch({ type: MODAL_EMAIL_CONTATO, data: { show: true, loading: false, sended: true, error: null }});
             }else {
