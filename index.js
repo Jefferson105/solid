@@ -12,8 +12,8 @@ const sendMail = ({ assunto, mensagem, to }) =>
     new Promise((resolve, reject) => {
         let transporter = nodeMailer.createTransport({
             host: 'smtp.gmail.com',
-            port: 465,
-            secure: true,
+            //port: 465,
+            //secure: false,
             auth: {
                 user: "mailapisender@gmail.com",
                 pass: "Informatic@"
