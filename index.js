@@ -19,18 +19,14 @@ app.prepare()
     server.use(bodyParser.json());
     server.use(compression());
 
-    server.get("*", (req, res) => handle(req, res));
-
-    const port = 3002;
-
-    server.post("/api/sendmail", async (req, res) => {
+    server.post('/api/sendmail', async (req, res) => {
         const { assunto, mensagem, to = 'contato@solidsolucoes.com.br' } = req.body;
 
         const msg = {
             to,
             from: {
-                name: 'Contato Site SOLID',
-                email: 'contato@solidsolucoes.com.br'
+                email: 'contato@solidsolucoes.com.br',
+                name: 'Contato Site SOLID'
             },
             subject: assunto,
             text: mensagem,
@@ -38,11 +34,17 @@ app.prepare()
 
         try {
             let email = await sgMail.send(msg);
+            console.log("Sucesso: ", email);
             res.json({ sucesso: true, mensagem: "Email enviado com sucesso." });
         }catch(erro) {
+            console.log("Erro: ", erro);
             res.json({ sucesso: false, erro })
         }
     });
+
+    server.get("*", (req, res) => handle(req, res));
+
+    const port = 3002;
 
     server.listen(process.env.PORT || port, (err) => {
         if(err) throw err;
