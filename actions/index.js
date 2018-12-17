@@ -29,7 +29,7 @@ export const getCategorias = () => {
     }
 }
 
-export const enviarEmailContato = (info, isConsultor) => {
+export const enviarEmailContato = (info) => {
     return async dispatch => {
         dispatch({ type: MODAL_EMAIL_CONTATO, data: { show: true, loading: true, sended: false, error: null } });
 
@@ -47,10 +47,10 @@ Mensagem: ${info.mensagem}`;
                 headers: {
                     "Content-type": "application/json"
                 },
-                body: JSON.stringify({ mensagem, assunto, to: isConsultor ? 'jessica.paraguassu@solidsolucoes.com.br' : 'contato@solidsolucoes.com.br' })
+                body: JSON.stringify({ mensagem, assunto, to: 'jessica.paraguassu@solidsolucoes.com.br' })
             });
     
-            var { sucesso, mensagem, erro } = await res.json();
+            var { sucesso } = await res.json();
 
             if(sucesso) {
                 dispatch({ type: MODAL_EMAIL_CONTATO, data: { show: true, loading: false, sended: true, error: null }});

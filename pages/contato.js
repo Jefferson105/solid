@@ -82,14 +82,14 @@ class Home extends React.Component {
         this.setState({ error: null });
 
         if(Object.keys(this.state).every(k => k == 'error' ? true : this.state[k])) {
-            this.props.dispatch(enviarEmailContato(this.state, this.props.router.query.consultor));
+            this.props.dispatch(enviarEmailContato(this.state));
         }else {
             this.setState({ error: "Preencha todos os campos." });
         }
     }
 
     render() {
-        const { emailContato, router } = this.props;
+        const { emailContato } = this.props;
         const { error } = this.state;
 
         return(

@@ -66,7 +66,7 @@ class MyApp extends App {
     }
 }
 
-export default withNProgress()(withRedux(createStore)(connect(state => state)(MyApp)));
+export default withNProgress(200, { showSpinner: false })(withRedux(createStore)(connect(state => state)(MyApp)));
 
 // jessica.paraguassu@solidsolucoes.com.br
 // solid@admin
