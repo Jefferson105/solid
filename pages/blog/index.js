@@ -26,6 +26,12 @@ class Blog extends React.Component {
         let artigo = router.query.artigo ? posts.list.find(p => p.id === router.query.artigo) : posts.list[0];
 
         let hasArtigo = !!router.query.artigo;
+        let not_found = false;
+
+        if(hasArtigo && !artigo) {
+            not_found = true;
+            artigo = posts.list[0];
+        }
 
         let listPosts = [];
 
@@ -57,8 +63,14 @@ class Blog extends React.Component {
                             hasArtigo ?
                                 !!listPosts.length && 
                                 <div>
-                                    <h3 style={{ fontSize: "34px", marginBottom: "2rem", color: "#494949", lineHeight: "30px" }}>{artigo.titulo}</h3>
-                                    <div style={{ whiteSpace: "pre-wrap" }}>{artigo.conteudo}</div>
+                                    {
+                                        !not_found ?
+                                            <React.Fragment>
+                                                <h3 style={{ fontSize: "34px", marginBottom: "2rem", color: "#494949", lineHeight: "30px" }}>{artigo.titulo}</h3>
+                                                <div style={{ whiteSpace: "pre-wrap" }}>{artigo.conteudo}</div>
+                                            </React.Fragment> :
+                                            <CardArticle.Title>Artigo não encontrado. <span style={{ textDecoration: 'underline', cursor: 'pointer' }} onClick={() => Router.push('/blog')}>Ver outros.</span></CardArticle.Title>
+                                    }
                                 </div> :
                                 !posts.fetched ?
                                 <p style={{ color: "#1B4E85" }}>Carregando <Loading src="/static/img/loading.svg" /></p> :
