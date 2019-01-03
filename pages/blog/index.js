@@ -89,7 +89,7 @@ class Blog extends React.Component {
                         !!hasArtigo &&
                         <React.Fragment>
                             <meta property="og:title" content={artigo.titulo} />
-                            <meta property="og:description" content={artigo.conteudo.slice(0,50) + '...'} />
+                            <meta property="og:description" content={artigo.conteudo.slice(0,200) + '...'} />
                             <meta property="og:image" content={prefix + artigo.imagem_principal.url} />
                             <meta property="og:image:alt" content="Imagem principal do post" />
                         </React.Fragment>
@@ -99,7 +99,7 @@ class Blog extends React.Component {
                 <NavMenu isFixed={true} />
                 { 
                     !!(categoria || artigo) &&
-                    <HeaderMedium url="/static/img/header-pessoas.jpg">
+                    <HeaderMedium url={hasArtigo ? prefix + artigo.imagem_principal.url : '/static/img/header-pessoas.jpg'}>
                         {
                             !!categoria ?
                                 <HeaderTitle color="#FFF">{categoria.nome}</HeaderTitle> :

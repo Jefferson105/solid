@@ -10,4 +10,6 @@ export default styled.header`
     background-position-y: 40%;
     border-bottom: thin solid #D2D2D2;
     position: relative;
+    background-color: #1B4E85;
+    background-blend-mode: overlay;
 `;
