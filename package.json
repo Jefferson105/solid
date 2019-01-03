@@ -19,6 +19,7 @@
     "compress": "^0.99.0",
     "compression": "^1.7.3",
     "express": "^4.16.4",
+    "isomorphic-fetch": "^2.2.1",
     "mailchimp-api-v3": "^1.12.1",
     "next": "^7.0.2",
     "next-nprogress": "^1.4.0",

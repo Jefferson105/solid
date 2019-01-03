@@ -18,8 +18,9 @@ String.prototype.replaceSpecialChars = function() {
 
 import App, { Container } from "next/app";
 import { connect, Provider } from "react-redux";
+import { withRouter } from 'next/router';
 import withRedux from "next-redux-wrapper";
-import Head from 'next/head'
+import Head from 'next/head';
 import withNProgress from "next-nprogress";
 import Router from "next/router";
 import ReactGA from "react-ga";
@@ -38,11 +39,10 @@ class MyApp extends App {
     componentWillMount() {
         ReactGA.initialize('UA-130772779-1');
         ReactGA.pageview('/homepage');
+        this.props.dispatch(getPosts());
     }
 
     componentDidMount() {
-        this.props.dispatch(getPosts());
-    
         Router.onRouteChangeStart = url => {
             ReactGA.pageview(url);
             window.scrollTo(0,0);
@@ -50,13 +50,17 @@ class MyApp extends App {
     }
 
     render() {
-        const { Component, pageProps, store } = this.props;
+        const { Component, pageProps, router, store } = this.props;
+
         return (
             <Container>
                 <Provider store={store}>
                     <React.Fragment>
                         <Head>
                             <title>Solid</title>
+                            <meta property="og:site_name" content="Solid" />
+                            <meta property="og:type" content="website" />
+                            <meta property="og:url" content={`http://www.solidsolucoes.com.br${router.asPath}`} />
                         </Head>
                         <Component {...pageProps} />
                     </React.Fragment>
@@ -66,7 +70,7 @@ class MyApp extends App {
     }
 }
 
-export default withNProgress(200, { showSpinner: false })(withRedux(createStore)(connect(state => state)(MyApp)));
+export default withNProgress(200, { showSpinner: false })(withRouter(withRedux(createStore)(connect(state => state)(MyApp))));
 
 // jessica.paraguassu@solidsolucoes.com.br
 // solid@admin

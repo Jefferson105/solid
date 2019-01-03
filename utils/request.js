@@ -1,3 +1,4 @@
+import fetch from 'isomorphic-fetch';
 const prefix = "http://www.solidsolucoes.com.br:8197";
 
 export const request = (url) => 

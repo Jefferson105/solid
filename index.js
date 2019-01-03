@@ -64,6 +64,14 @@ app.prepare()
         }
     });
 
+    server.get("/blog/artigo/:id", (req, res) => {
+        app.render(req, res, "/blog", { artigo: req.params.id });        
+    });
+
+    server.get("/blog/categoria/:id", (req, res) => {
+        app.render(req, res, "/blog", { categoria: req.params.id });        
+    });
+
     server.get("*", (req, res) => handle(req, res));
 
     const port = 3002;

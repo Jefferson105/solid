@@ -8,13 +8,47 @@ import CardArticle from "../../components/styles/blocks/card-article";
 import BookAside from "../../components/styles/blocks/book-aside";
 import CategoryAside from "../../components/styles/blocks/categories-aside";
 import EbookConteudo from '../../components/EbookConteudo';
+import Head from 'next/head'
 
 import { getCategorias } from '../../actions/index';
 
 import { HeaderTitle } from "../../components/styles";
 import Loading from "../../components/styles/elements/Loading";
 
+import { request } from '../../utils/request';
+
+const replaceKeys = (inputString) => {
+    let keySplit = inputString.split('**');
+    let newStr = '';
+
+
+    keySplit.forEach((s, i) => {
+        if(i % 2 == 0) {
+            newStr += s;
+        }else {
+            newStr += `<b>${s}</b>`;
+        }
+    })
+
+    return newStr;
+} 
+
 class Blog extends React.Component {
+    static async getInitialProps({ req }) {
+        let artigo = null;
+
+        if(!req || !req.params.id) return { artigo }; 
+
+        if(req.params.id.replaceSpecialChars().toLowerCase().indexOf('-') > -1) {
+            let splited = req.params.id.split('-');
+            let id = splited[splited.length - 1];
+
+            artigo = await request('posts/' + id);
+        }
+
+        return { artigo }
+    }
+
     componentDidMount() {
         this.props.dispatch(getCategorias());
     }
@@ -23,9 +57,18 @@ class Blog extends React.Component {
         const { categorias, posts, router, prefix } = this.props;
 
         let categoria = router.query.categoria ? categorias.list.find(c => c.id === router.query.categoria) : null;
-        let artigo = router.query.artigo ? posts.list.find(p => p.id === router.query.artigo) : posts.list[0];
 
-        let hasArtigo = !!router.query.artigo;
+        let title = router.query.artigo || '';
+
+        if(title && title.indexOf('-') > -1) {
+            let tSplited = title.split('-');
+
+            title = tSplited[tSplited.length - 1];
+        } 
+
+        let artigo = this.props.artigo ? this.props.artigo : title ? posts.list.find(p => p.id === title) : posts.list[0];
+
+        let hasArtigo = !!title;
         let not_found = false;
 
         if(hasArtigo && !artigo) {
@@ -39,7 +82,20 @@ class Blog extends React.Component {
         else listPosts = posts.list;
 
         return(
-            <section className="container contato container__sobre">
+            <React.Fragment>
+                <Head>
+                    <title>Solid Blog</title>
+                    {
+                        !!hasArtigo &&
+                        <React.Fragment>
+                            <meta property="og:title" content={artigo.titulo} />
+                            <meta property="og:description" content={artigo.conteudo.slice(0,50) + '...'} />
+                            <meta property="og:image" content={prefix + artigo.imagem_principal.url} />
+                            <meta property="og:image:alt" content="Imagem principal do post" />
+                        </React.Fragment>
+                    }
+                </Head>
+                <section className="container contato container__sobre">
                 <NavMenu isFixed={true} />
                 { 
                     !!(categoria || artigo) &&
@@ -51,7 +107,7 @@ class Blog extends React.Component {
                                     <SlideArticles.Item>
                                         <SlideArticles.Category>{artigo.categoria.nome}</SlideArticles.Category>
                                         <SlideArticles.Title>{artigo.titulo}</SlideArticles.Title>
-                                        { !hasArtigo && <CardArticle.Button onClick={() => Router.push({ pathname: '/blog', query: { artigo: artigo.id } })}>Leia mais</CardArticle.Button> }
+                                        { !hasArtigo && <CardArticle.Button onClick={() => Router.push(`/blog/artigo/${artigo.titulo.replaceSpecialChars().toLowerCase().split(' ').join('-').replace(/\W/g, '')}-${artigo.id}`)}>Leia mais</CardArticle.Button> }
                                     </SlideArticles.Item>
                                 </SlideArticles>
                         }
@@ -67,7 +123,7 @@ class Blog extends React.Component {
                                         !not_found ?
                                             <React.Fragment>
                                                 <h3 style={{ fontSize: "34px", marginBottom: "2rem", color: "#494949", lineHeight: "30px" }}>{artigo.titulo}</h3>
-                                                <div style={{ whiteSpace: "pre-wrap" }}>{artigo.conteudo}</div>
+                                                <div style={{ whiteSpace: "pre-wrap" }} dangerouslySetInnerHTML={{ __html: replaceKeys(artigo.conteudo) }} />
                                             </React.Fragment> :
                                             <CardArticle.Title>Artigo não encontrado. <span style={{ textDecoration: 'underline', cursor: 'pointer' }} onClick={() => Router.push('/blog')}>Ver outros.</span></CardArticle.Title>
                                     }
@@ -83,8 +139,8 @@ class Blog extends React.Component {
                                                 <CardArticle.Info>
                                                     <CardArticle.Category>{categoria.nome}</CardArticle.Category>
                                                     <CardArticle.Title>{titulo}</CardArticle.Title>
-                                                    <CardArticle.Text dangerouslySetInnerHTML={{ __html: `${conteudo.slice(0, 100)} ...` }} />
-                                                    <CardArticle.Button onClick={() => Router.push({ pathname: '/blog', query: { artigo: id } })}>Leia mais</CardArticle.Button>
+                                                    <CardArticle.Text dangerouslySetInnerHTML={{ __html: `${replaceKeys(conteudo).slice(0, 100)} ...` }} />
+                                                    <CardArticle.Button onClick={() => Router.push(`/blog/artigo/${titulo.replaceSpecialChars().toLowerCase().split(' ').join('-').replace(/\W/g, '')}-${id}`)}>Leia mais</CardArticle.Button>
                                                 </CardArticle.Info>
                                             </CardArticle.Item>    
                                         )
@@ -120,14 +176,16 @@ class Blog extends React.Component {
                 </section>
                 <EbookConteudo />
              </section>
+            </React.Fragment>
       )
     }
-}                
- 
+}
+
 export default withRouter(connect(state => state)(Blog));
         
 
 /*
+{ pathname: '/blog', query: { artigo: artigo.id } }
 <SlideArticles.Arrow side="left"><img src="/static/img/left-arrow.svg" /></SlideArticles.Arrow>
 <SlideArticles.Arrow side="right"><img src="/static/img/left-arrow.svg" /></SlideArticles.Arrow>
 
