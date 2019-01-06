@@ -30,11 +30,7 @@ class NavMenu extends React.Component {
                 
                     <Link prefetch href="/">
                         <a className="menu-mobile__logo">
-                            {
-                                isFixed ?
-                                    <img className="nav-menu__logo" src="/static/img/logo_solid_blue.svg" /> :
-                                    <img className="nav-menu__logo" src="/static/img/logo_solid_white.svg" />
-                            }
+                            <img className="nav-menu__logo" src="/static/img/logo_solid_white.svg" />
                         </a>
                     </Link>
                 </div>

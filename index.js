@@ -4,6 +4,10 @@ const compression = require("compression");
 const nodeMailer = require('nodemailer');
 const bodyParser = require("body-parser");
 
+var apiKey = 'cdb13cbcea5c9a5f9a1e160ed6dd92d9-49a2671e-63e3d5f4';
+//var domain = 'www.mydomain.com';
+var mailgun = require('mailgun-js')({ apiKey });
+
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -13,7 +17,7 @@ const sendMail = ({ assunto, mensagem, to }) =>
         let transporter = nodeMailer.createTransport({
             host: 'smtp.gmail.com',
             //port: 465,
-            //secure: false,
+            //secure: true,
             auth: {
                 type: 'OAuth2',
                 user: "mailapisender@gmail.com",
@@ -55,13 +59,31 @@ app.prepare()
     server.post('/api/sendmail', async (req, res) => {
         const { assunto, mensagem, to = 'contato@solidsolucoes.com.br' } = req.body;
 
+        var data = {
+            from: '"Contato Site Solid" <mailsenderapi@gmail.com>',
+            to,
+            subject: assunto,
+            text: mensagem
+          };
+           
+        mailgun.messages().send(data, function (error, body) {
+            if(error) {
+                console.log(error);
+                res.json({ sucesso: false, erro });
+            }
+
+            res.json({ sucesso: true, mensagem: "Email enviado", data: body });
+        });
+        
+        /*
+
         try {
             let info = await sendMail({ assunto, mensagem, to });
 
             res.json({ sucesso: true, mensagem: "Email enviado", data: info });
         }catch(erro) {
-            res.json({ sucesso: false, erro });
-        }
+            
+        }*/
     });
 
     server.get("/blog/artigo/:id", (req, res) => {

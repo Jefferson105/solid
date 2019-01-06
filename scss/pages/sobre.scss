@@ -107,7 +107,7 @@
         &--center {
             justify-content: center;
         }
-        @media (max-width: $bp) {  
+        @media (max-width: $bp) { 
             flex-direction: column;
             margin-top: 2rem;
         }
@@ -124,7 +124,8 @@
         flex-direction: column;
         text-align: center;
         cursor: pointer;
-        @media (max-width: $bp) { 
+        @media (max-width: $bp) {
+            margin: 0 auto; 
             margin-bottom: 2rem;
         }
     }
