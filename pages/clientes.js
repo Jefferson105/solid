@@ -16,6 +16,9 @@ const ListItem = styled.li`
     box-shadow: 0 0 20px 0 rgba(0,0,0,.2);
     border-radius: 10px;
     margin-bottom: 3rem;
+    @media (max-width: 1009px){
+        flex-direction: column;
+    }
 `;
 
 const FigItem = styled.figure`
@@ -23,12 +26,21 @@ const FigItem = styled.figure`
     background-size: cover;
     width: 30%;
     clip-path: ${props => props.right ? "polygon(20% 0, 100% 0, 100% 100%, 0% 100%)" : "polygon(0 0, 80% 0%, 100% 100%, 0% 100%)" };
+    @media (max-width: 1009px){
+        width: 100%;
+        height: 10rem;
+        clip-path: none;
+    }
 `;
 
 const ClienteInfo = styled.div`
     padding: 2rem 6rem 2rem 3rem;
     width: 70%;
     box-sizing: border-box;
+    @media (max-width: 1009px){
+        width: 100%;
+        padding: 1rem;
+    }
 `;
 
 const LogoCliente = styled.img`

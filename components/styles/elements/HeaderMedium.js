@@ -11,5 +11,5 @@ export default styled.header`
     border-bottom: thin solid #D2D2D2;
     position: relative;
     background-color: #1B4E85;
-    background-blend-mode: overlay;
+    background-blend-mode: ${props => props.noOverlay ? 'none' : 'overlay'};
 `;

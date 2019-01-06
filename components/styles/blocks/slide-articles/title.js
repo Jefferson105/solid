@@ -6,6 +6,11 @@ const Title = styled.h2`
     line-height: 45px;
     width: 80%;
     margin: 1rem auto;
+    @media (max-width: 1009px) {
+        font-size: 1.5rem;
+        line-height: 30px;
+        width: 100%;
+    }
 `;
 
 export default Title;

@@ -5,6 +5,9 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        @media (max-width: $bp) { 
+            padding: 1rem;
+        }
     }
     &__formcontent{
         background-color: #fff;

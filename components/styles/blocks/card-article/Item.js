@@ -7,6 +7,10 @@ const Item = styled.li`
     border-radius: 10px;
     margin-bottom: 2rem;
     border: thin solid #D2D2D2;
+    @media (max-width: 1009px) {
+        height: auto;
+        flex-direction: column;
+    }
 `;
 
 export default Item;

@@ -13,6 +13,9 @@ const List = styled.ul`
     list-style: none;
     width: 80%;
     margin: auto;
+    @media (max-width: 1009px) {
+        width: 99%;
+    }
 `;
 
 List.Arrow = Arrow;

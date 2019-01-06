@@ -6,7 +6,7 @@ import Clientes from "../components/Clientes";
 
 import ListMarketing from "../components/styles/blocks/list-marketing";
 
-import { HeaderMini, HeaderTitle, ButtonHeader, TxtBold, TxtMini, GreenButton, IconHeader, WrapperImg100 } from "../components/styles";
+import { HeaderMini, HeaderTitle, ButtonHeader, TxtBold, GreenButton, IconHeader } from "../components/styles";
 
 class Home extends React.Component {
     constructor(props) {

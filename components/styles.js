@@ -21,6 +21,10 @@ export const HeaderTitle = styled.h2`
     font-weight: lighter;
     position: relative;
     bottom: ${props => props.top ? "4rem" : "0"};
+    @media (max-width: 1009px) {
+        font-size: 2rem;
+        line-height: 40px;
+    }
 `;
 
 export const ButtonHeader = styled.button`
@@ -51,17 +55,29 @@ export const TxtBold = styled.p`
     margin: 0 auto;
     margin-top: 5rem;
     line-height: 35px;
+    @media (max-width: 1009px){
+        font-size: 1.2rem;
+        width: 95%;
+        line-height: 20px;
+    }
 `;
 
 export const WrapperTxtImg = styled.div`
     display: flex;
     margin: 4rem 0;
+    @media (max-width: 1009px){
+        flex-direction: column;
+    }
 `;
 
 export const Img50 = styled.figure`
     width: 50%;
     background-image: url(${props => props.url});
     background-size: 150% 120%;
+    @media (max-width: 1009px){
+        width: 100%;
+        height: 15rem;
+    }
 `;
 
 export const WrapperImg100 = styled.div`
@@ -80,6 +96,11 @@ export const Txt50 = styled.p`
     font-size: 1.4rem;
     box-sizing: border-box;
     line-height: 27px;
+    @media (max-width: 1009px){
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
 `;
 
 export const TxtMini = styled.p`
@@ -103,4 +124,5 @@ export const GreenButton = styled.button`
     height: 3rem;
     width: 25rem;
     cursor: pointer;
+    max-width: 100%;
 `;

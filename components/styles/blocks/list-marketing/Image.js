@@ -5,6 +5,10 @@ const Image = styled.figure`
     box-sizing: border-box; 
     background-image: url(${props => props.url});
     background-size: cover;
+    @media (max-width: 1009px){
+        width: 100%;
+        height: 15rem;
+    }
 `;
 
 export default Image;

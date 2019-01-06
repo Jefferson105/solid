@@ -6,17 +6,40 @@ class NavMenu extends React.Component {
         super(props);
 
         this.state = {
-            showMenu: false
+            showMenu: false,
+            menuMobile: false
         }
     }
 
     render() {
         const { isFixed } = this.props;
-        const { showMenu } = this.state;
+        const { showMenu, menuMobile } = this.state;
 
         return(
             <nav className={`nav-menu ${!!isFixed && "nav-menu--fixed"}`}>
-                <ul className="nav-menu__list">
+                <div className="only__mobile menu-mobile">
+                    <div 
+                        id="nav-icon4" 
+                        className={`${!!menuMobile && 'open'}`} 
+                        onClick={() => this.setState({ menuMobile: !menuMobile })}
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                
+                    <Link prefetch href="/">
+                        <a className="menu-mobile__logo">
+                            {
+                                isFixed ?
+                                    <img className="nav-menu__logo" src="/static/img/logo_solid_blue.svg" /> :
+                                    <img className="nav-menu__logo" src="/static/img/logo_solid_white.svg" />
+                            }
+                        </a>
+                    </Link>
+                </div>
+
+                <ul className={`nav-menu__list ${!!menuMobile && "nav-menu__list--open"}`}>
                     <li className="nav-menu__item nav-menu__item--logo">
                         <Link prefetch href="/">
                             <a className="nav-menu__link">

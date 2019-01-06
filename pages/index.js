@@ -19,7 +19,7 @@ class Home extends React.Component {
     }
 
     render() {
-        const { artigo, sec } = this.state;
+        const { artigo } = this.state;
         const { posts, prefix } = this.props;
 
         return(

@@ -6,7 +6,7 @@ import { withRouter } from 'next/router';
 
 import { enviarEmailContato } from '../actions';
 
-import { HeaderMini, HeaderTitle, TxtMini } from '../components/styles';
+import { HeaderTitle } from '../components/styles';
 
 import HeaderMedium from '../components/styles/elements/HeaderMedium';
 import Error from '../components/styles/elements/Error';
@@ -19,6 +19,9 @@ const ContainerEmail = styled.div`
     position: relative;
     bottom: 5rem;
     text-align: center;
+    @media (max-width: 1009px){
+        width: 100%;
+    }
 `;
 
 const TitleEmail = styled.h3`
@@ -26,6 +29,9 @@ const TitleEmail = styled.h3`
     font-size: 2.5rem;
     font-weight: lighter;
     margin-bottom: 1rem;
+    @media (max-width: 1009px){
+        font-size: 2rem;
+    }
 `;
 
 const TextEmail = styled.p`
@@ -35,6 +41,9 @@ const TextEmail = styled.p`
 
 const EmailInfo = styled.div`
     display: flex;
+    @media (max-width: 1009px){
+        flex-direction: column;
+    }
 `;
 
 const InfoBox = styled.div`
@@ -47,6 +56,10 @@ const InfoBox = styled.div`
     background-color: ${props => props.bgColor};
     color: #FFF;
     font-weight: bold;
+    @media (max-width: 1009px){
+        width: 100%;
+        height: 7rem;
+    }
 `;
 
 const IconInfo = styled.span`
@@ -95,7 +108,7 @@ class Home extends React.Component {
         return(
             <section className="container contato container__sobre">
                 <NavMenu isFixed={true} />
-                <HeaderMedium url="/static/img/quem-somos-header.jpg">
+                <HeaderMedium noOverlay={true} url="/static/img/quem-somos-header.jpg">
                     <HeaderTitle top={true}>Receba o contato de um <b>consultor especializado ainda hoje!</b></HeaderTitle>      
                 </HeaderMedium>
                 <section style={{ backgroundColor: "#F9F9F9" }}>
@@ -116,11 +129,11 @@ class Home extends React.Component {
                     </ContainerEmail>    
                     <EmailInfo>
                         <InfoBox bgColor="#051526">
-                            <p style={{ fontSize: "1.8rem" }}>contato@solidsolucoes.com.br</p>
+                            <p style={{ fontSize: "1rem" }}>contato@solidsolucoes.com.br</p>
                             <IconInfo><img src="/static/img/envelope.svg" /></IconInfo>
                         </InfoBox>
                         <InfoBox bgColor="#1b4e85">
-                            <p style={{ fontSize: "2.3rem" }}>11 4330-2784</p>
+                            <p style={{ fontSize: "1.3rem" }}>11 4330-2784</p>
                             <IconInfo><img src="/static/img/telephone.svg" /></IconInfo>
                         </InfoBox>
                     </EmailInfo>
