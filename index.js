@@ -6,7 +6,8 @@ const bodyParser = require("body-parser");
 
 var apiKey = 'cdb13cbcea5c9a5f9a1e160ed6dd92d9-49a2671e-63e3d5f4';
 //var domain = 'www.mydomain.com';
-var mailgun = require('mailgun-js')({ apiKey });
+const domain = 'sandboxe01f58fefc5843b9b30c5de95a01bf5f.mailgun.org';
+var mailgun = require('mailgun-js')({ apiKey, domain });
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -61,16 +62,18 @@ app.prepare()
 
         var data = {
             from: '"Contato Site Solid" <mailsenderapi@gmail.com>',
-            to,
+            to: 'jefferson.barbosa105@gmail.com',
             subject: assunto,
             text: mensagem
           };
-           
-        mailgun.messages().send(data, function (error, body) {
-            if(error) {
-                console.log(error);
+
+        mailgun.messages().send(data, function (erro, body) {
+            if(erro) {
+                console.log(erro);
                 res.json({ sucesso: false, erro });
             }
+
+            console.log(body);
 
             res.json({ sucesso: true, mensagem: "Email enviado", data: body });
         });
