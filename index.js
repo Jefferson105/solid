@@ -62,7 +62,7 @@ app.prepare()
 
         var data = {
             from: '"Contato Site Solid" <mailsenderapi@gmail.com>',
-            to: 'jefferson.barbosa105@gmail.com',
+            to,
             subject: assunto,
             text: mensagem
           };
