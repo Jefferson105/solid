@@ -4,7 +4,9 @@
     margin: 0 auto;
     overflow-x: hidden;
     &__home {
-        background-size: 100% 100%;
         background-image: url(/static/img/bg_hero.jpg);
+        @media (min-width: $bp) { 
+            background-size: cover;
+        }
     }
 }
