@@ -3,6 +3,8 @@ const next = require("next");
 const compression = require("compression");
 const nodeMailer = require('nodemailer');
 const bodyParser = require("body-parser");
+const fetch = require('isomorphic-fetch');
+const prefix = "http://www.solidsolucoes.com.br:8197";
 
 var apiKey = 'cdb13cbcea5c9a5f9a1e160ed6dd92d9-49a2671e-63e3d5f4';
 //var domain = 'www.mydomain.com';
@@ -65,28 +67,26 @@ app.prepare()
             to,
             subject: assunto,
             text: mensagem
-          };
+        };
 
         mailgun.messages().send(data, function (erro, body) {
             if(erro) {
-                console.log(erro);
                 res.json({ sucesso: false, erro });
             }
 
-            console.log(body);
-
             res.json({ sucesso: true, mensagem: "Email enviado", data: body });
         });
-        
-        /*
+    });
 
+    server.get("/request/:name", async (req, res) => {
         try {
-            let info = await sendMail({ assunto, mensagem, to });
+            let resp = await fetch(`${prefix}/${req.params.name}`);
+            let data = await resp.json();
 
-            res.json({ sucesso: true, mensagem: "Email enviado", data: info });
-        }catch(erro) {
-            
-        }*/
+            res.json({ data });
+        }catch(error) {
+            res.json({ error })
+        }
     });
 
     server.get("/blog/artigo/:id", (req, res) => {
