@@ -5,11 +5,13 @@ const nodeMailer = require('nodemailer');
 const bodyParser = require("body-parser");
 const fetch = require('isomorphic-fetch');
 const prefix = "http://www.solidsolucoes.com.br:8197";
+const path = require("path");
 
-var apiKey = 'cdb13cbcea5c9a5f9a1e160ed6dd92d9-49a2671e-63e3d5f4';
-//var domain = 'www.mydomain.com';
+const apiKey = 'cdb13cbcea5c9a5f9a1e160ed6dd92d9-49a2671e-63e3d5f4';
 const domain = 'sandboxe01f58fefc5843b9b30c5de95a01bf5f.mailgun.org';
-var mailgun = require('mailgun-js')({ apiKey, domain });
+const mailgun = require('mailgun-js')({ apiKey, domain });
+
+const mapPath = path.join(__dirname, 'static', 'sitemap.xml');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -58,6 +60,11 @@ app.prepare()
     server.use(bodyParser.urlencoded({ extended: false }));
     server.use(bodyParser.json());
     server.use(compression());
+
+    server.get('/sitemap.xml', (req, res) => {
+        res.setHeader('Cache-Control', 'no-cache');
+        res.sendFile(mapPath);
+    });
 
     server.post('/api/sendmail', async (req, res) => {
         const { assunto, mensagem, to = 'contato@solidsolucoes.com.br' } = req.body;

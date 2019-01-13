@@ -8,6 +8,8 @@ export const getPosts = () => {
         try {
             let data = await request('posts');
 
+            data = data.reverse();
+
             dispatch({ type: GET_POSTS, data: { list: data, fetched: true, error: null }});
         }catch(err) {
             dispatch({ type: GET_POSTS, data: { list: [], fetched: true, error: "Ocorreu um erro ao obter os posts." }});

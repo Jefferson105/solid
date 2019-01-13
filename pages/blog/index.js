@@ -1,5 +1,7 @@
 import { connect } from "react-redux";
 import Router, { withRouter } from 'next/router';
+import Head from 'next/head';
+import ReactMarkdown from 'react-markdown';
 
 import NavMenu from "../../components/NavMenu";
 import SlideArticles from "../../components/styles/blocks/slide-articles";
@@ -8,7 +10,6 @@ import CardArticle from "../../components/styles/blocks/card-article";
 import BookAside from "../../components/styles/blocks/book-aside";
 import CategoryAside from "../../components/styles/blocks/categories-aside";
 import EbookConteudo from '../../components/EbookConteudo';
-import Head from 'next/head'
 
 import { getCategorias } from '../../actions/index';
 
@@ -16,22 +17,6 @@ import { HeaderTitle } from "../../components/styles";
 import Loading from "../../components/styles/elements/Loading";
 
 import { request } from '../../utils/request';
-
-const replaceKeys = (inputString) => {
-    let keySplit = inputString.split('**');
-    let newStr = '';
-
-
-    keySplit.forEach((s, i) => {
-        if(i % 2 == 0) {
-            newStr += s;
-        }else {
-            newStr += `<b>${s}</b>`;
-        }
-    })
-
-    return newStr;
-} 
 
 class Blog extends React.Component {
     static async getInitialProps({ req }) {
@@ -123,7 +108,7 @@ class Blog extends React.Component {
                                             !not_found ?
                                                 <React.Fragment>
                                                     <h3 style={{ fontSize: "34px", marginBottom: "2rem", color: "#494949", lineHeight: "30px" }}>{artigo.titulo}</h3>
-                                                    <div style={{ whiteSpace: "pre-wrap" }} dangerouslySetInnerHTML={{ __html: replaceKeys(artigo.conteudo) }} />
+                                                    <ReactMarkdown source={artigo.conteudo} />
                                                 </React.Fragment> :
                                                 <CardArticle.Title>Artigo não encontrado. <span style={{ textDecoration: 'underline', cursor: 'pointer' }} onClick={() => Router.push('/blog')}>Ver outros.</span></CardArticle.Title>
                                         }
@@ -139,7 +124,9 @@ class Blog extends React.Component {
                                                     <CardArticle.Info>
                                                         <CardArticle.Category>{categoria.nome}</CardArticle.Category>
                                                         <CardArticle.Title>{titulo}</CardArticle.Title>
-                                                        <CardArticle.Text dangerouslySetInnerHTML={{ __html: `${replaceKeys(conteudo).slice(0, 100)} ...` }} />
+                                                        <CardArticle.Text>
+                                                            <ReactMarkdown source={artigo.conteudo.slice(0, 100) + '...'} />
+                                                        </CardArticle.Text>
                                                         <CardArticle.Button onClick={() => Router.push(`/blog/artigo/${titulo.replaceSpecialChars().toLowerCase().split(' ').join('-').replace(/\W/g, '')}-${id}`)}>Leia mais</CardArticle.Button>
                                                     </CardArticle.Info>
                                                 </CardArticle.Item>    
@@ -185,6 +172,7 @@ export default withRouter(connect(state => state)(Blog));
         
 
 /*
+<div style={{ whiteSpace: "pre-wrap" }} dangerouslySetInnerHTML={{ __html: replaceKeys(artigo.conteudo) }} />
 { pathname: '/blog', query: { artigo: artigo.id } }
 <SlideArticles.Arrow side="left"><img src="/static/img/left-arrow.svg" /></SlideArticles.Arrow>
 <SlideArticles.Arrow side="right"><img src="/static/img/left-arrow.svg" /></SlideArticles.Arrow>
