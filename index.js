@@ -63,6 +63,7 @@ app.prepare()
 
     server.get('/sitemap.xml', (req, res) => {
         res.setHeader('Cache-Control', 'no-cache');
+        res.setHeader('Content-Type', 'application/xml');
         res.sendFile(mapPath);
     });
 
