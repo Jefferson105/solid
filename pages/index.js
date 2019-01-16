@@ -42,7 +42,7 @@ class Home extends React.Component {
                     <header ref={el => this.header = el} className="header">
                         <NavMenu />
                         <div className="header__info">
-                            <h2 className="header__h2">{texto}</h2>
+                            <h1 className="header__h2">{texto}</h1>
 
                             <button onClick={() => Router.push({ pathname: '/contato' })} className="header__button">Fale com nossos consultores</button>
                             <button onClick={() => {

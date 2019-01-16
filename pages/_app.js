@@ -27,16 +27,14 @@ import ReactGA from "react-ga";
 
 import createStore from "../store";
 
-import '../scss/style.scss';
+//import '../scss/style.scss';
 
 import { getPosts } from '../actions';
 
 class MyApp extends App {
-    constructor(props) {
-        super(props);
-    }
-
     componentWillMount() {
+        require('../scss/style.scss');
+
         ReactGA.initialize('UA-130772779-1');
         ReactGA.pageview('/homepage');
         this.props.dispatch(getPosts());
