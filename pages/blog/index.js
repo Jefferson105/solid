@@ -70,8 +70,6 @@ class Blog extends React.Component {
         if(categoria && posts.fetched) listPosts = posts.list.filter((p) => p.categoria.nome.replaceSpecialChars().toLowerCase() == categoria.nome.replaceSpecialChars().toLowerCase());
         else listPosts = posts.list;
 
-        console.log(listPosts);
-
         return(
             <React.Fragment>
                 <Head>
