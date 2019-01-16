@@ -33,14 +33,14 @@ import { getPosts } from '../actions';
 
 class MyApp extends App {
     componentWillMount() {
-        require('../scss/style.scss');
-
         ReactGA.initialize('UA-130772779-1');
         ReactGA.pageview('/homepage');
         this.props.dispatch(getPosts());
     }
 
     componentDidMount() {
+        require('../scss/style.scss');
+
         Router.onRouteChangeStart = url => {
             ReactGA.pageview(url);
             window.scrollTo(0,0);
