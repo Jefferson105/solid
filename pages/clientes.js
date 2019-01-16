@@ -1,9 +1,13 @@
 import { connect } from "react-redux";
+import Head from 'next/head';
+
 import NavMenu from "../components/NavMenu";
 import Crescer from "../components/Crescer";
 import styled from "styled-components";
 
 import { HeaderMini, HeaderTitle, ButtonHeader, IconHeader } from "../components/styles";
+
+import { request } from '../utils/request';
 
 const ListClients = styled.ul`
     list-style: none;
@@ -66,34 +70,46 @@ const ClientButton = styled.a`
 `;
 
 class Home extends React.Component {
-    constructor(props) {
-        super(props);
+    static async getInitialProps() {
+        let data = await request('cases');
+
+        data = data[0];
+
+        return data;
     }
 
     render() {
-        return(
-            <section className="container container__sobre">
-                <NavMenu isFixed={true} />
-                
-                <HeaderMini url="/static/img/header-clientes.jpg">
-                    <HeaderTitle color="#FFF">Veja como a Solid vem <b>transformando empresas</b></HeaderTitle>      
-                    <ButtonHeader mini={true}><IconHeader mini={true} src="/static/img/expand-button.svg" /></ButtonHeader>
-                </HeaderMini>
+        const { prefix, titulo, descricao, frase_principal, imagem } = this.props;
 
-                <section>
-                    <ListClients>
-                        <ListItem>
-                            <FigItem url="/static/img/cliente1.jpg" />
-                            <ClienteInfo>
-                                <LogoCliente src="/static/img/abclogo.jpg" />
-                                <ClienteTxt>Veja como a Solid ajudou a ABC Cargas a sair do prejuízo para o lucro de R$ 6 milhões, em 1 ano</ClienteTxt>
-                                <ClientButton target="_blank" href="https://mailchi.mp/d6b22e18739f/case-lucro-abc-cargas">Download Case</ClientButton>
-                            </ClienteInfo>
-                        </ListItem>
-                    </ListClients>
+        return(
+            <React.Fragment>
+                <Head>
+                    <title>{titulo}</title>
+                    <meta content={descricao} name="description" />
+                </Head>
+                <section className="container container__sobre">
+                    <NavMenu isFixed={true} />
+                    
+                    <HeaderMini url={prefix + imagem.url}>
+                        <HeaderTitle color="#FFF">{frase_principal}</HeaderTitle>      
+                        <ButtonHeader mini={true}><IconHeader mini={true} src="/static/img/expand-button.svg" /></ButtonHeader>
+                    </HeaderMini>
+
+                    <section>
+                        <ListClients>
+                            <ListItem>
+                                <FigItem url="/static/img/cliente1.jpg" />
+                                <ClienteInfo>
+                                    <LogoCliente src="/static/img/abclogo.jpg" />
+                                    <ClienteTxt>Veja como a Solid ajudou a ABC Cargas a sair do prejuízo para o lucro de R$ 6 milhões, em 1 ano</ClienteTxt>
+                                    <ClientButton target="_blank" href="https://mailchi.mp/d6b22e18739f/case-lucro-abc-cargas">Download Case</ClientButton>
+                                </ClienteInfo>
+                            </ListItem>
+                        </ListClients>
+                    </section>
+                    <Crescer />
                 </section>
-                <Crescer />
-            </section>
+            </React.Fragment>
         )
     }
 }                

@@ -10,6 +10,7 @@ import CardArticle from "../../components/styles/blocks/card-article";
 import BookAside from "../../components/styles/blocks/book-aside";
 import CategoryAside from "../../components/styles/blocks/categories-aside";
 import EbookConteudo from '../../components/EbookConteudo';
+import Pagination from '../../components/styles/blocks/pagination';
 
 import { getCategorias } from '../../actions/index';
 
@@ -34,12 +35,15 @@ class Blog extends React.Component {
         return { artigo }
     }
 
+    state = { page: 0 }
+
     componentDidMount() {
         this.props.dispatch(getCategorias());
     }
 
     render() {
         const { categorias, posts, router, prefix } = this.props;
+        const { page } = this.state;
 
         let categoria = router.query.categoria ? categorias.list.find(c => c.id === router.query.categoria) : null;
 
@@ -65,6 +69,8 @@ class Blog extends React.Component {
 
         if(categoria && posts.fetched) listPosts = posts.list.filter((p) => p.categoria.nome.replaceSpecialChars().toLowerCase() == categoria.nome.replaceSpecialChars().toLowerCase());
         else listPosts = posts.list;
+
+        console.log(listPosts);
 
         return(
             <React.Fragment>
@@ -116,23 +122,35 @@ class Blog extends React.Component {
                                     !posts.fetched ?
                                     <p style={{ color: "#1B4E85" }}>Carregando <Loading src="/static/img/loading.svg" /></p> :
                                     listPosts.length ?
-                                    <CardArticle>
-                                        {
-                                            listPosts.map(({ categoria, titulo, conteudo, id, imagem_principal }, i) => 
-                                                <CardArticle.Item key={i}>
-                                                    <CardArticle.Figure url={prefix + imagem_principal.url} />
-                                                    <CardArticle.Info>
-                                                        <CardArticle.Category>{categoria.nome}</CardArticle.Category>
-                                                        <CardArticle.Title>{titulo}</CardArticle.Title>
-                                                        <CardArticle.Text>
-                                                            <ReactMarkdown source={artigo.conteudo.slice(0, 100) + '...'} />
-                                                        </CardArticle.Text>
-                                                        <CardArticle.Button onClick={() => Router.push(`/blog/artigo/${titulo.replaceSpecialChars().toLowerCase().split(' ').join('-').replace(/\W/g, '')}-${id}`)}>Leia mais</CardArticle.Button>
-                                                    </CardArticle.Info>
-                                                </CardArticle.Item>    
-                                            )
-                                        }
-                                    </CardArticle> :
+                                    <React.Fragment>
+                                        <CardArticle>
+                                            {
+                                                listPosts.slice(page * 5, (page * 5) + 5).map(({ categoria, titulo, autor, id, imagem_principal }, i) => 
+                                                    <CardArticle.Item key={i}>
+                                                        <CardArticle.Figure url={prefix + imagem_principal.url} />
+                                                        <CardArticle.Info>
+                                                            <CardArticle.Category>{categoria.nome}</CardArticle.Category>
+                                                            <CardArticle.Title>{titulo}</CardArticle.Title>
+                                                            <CardArticle.Author>
+                                                                <CardArticle.Photo url={autor.path_img} />
+                                                                <CardArticle.Name>Por <b>{autor.nome}</b></CardArticle.Name>
+                                                            </CardArticle.Author>
+                                                            <CardArticle.Text>
+                                                                <ReactMarkdown source={artigo.conteudo.slice(0, 100) + '...'} />
+                                                            </CardArticle.Text>
+                                                            <CardArticle.Button onClick={() => Router.push(`/blog/artigo/${titulo.replaceSpecialChars().toLowerCase().split(' ').join('-').replace(/\W/g, '')}-${id}`)}>Leia mais</CardArticle.Button>
+                                                        </CardArticle.Info>
+                                                    </CardArticle.Item>    
+                                                )
+                                            }
+                                        </CardArticle>
+                                        <Pagination>
+                                            {
+                                                [...Array(Math.ceil(listPosts.length / 5))].map((_, i) => <Pagination.Num selected={i == page} onClick={() => this.setState({ page: i })}>{i + 1}</Pagination.Num>)
+                                            }
+                                            <Pagination.Next onClick={() => ((listPosts.length / (page + 1)) > 5) && this.setState({ page: page + 1 })}>Próxima Página</Pagination.Next>
+                                        </Pagination> 
+                                    </React.Fragment>:
                                     <CardArticle.Title>Em breve teremos artigos aqui.</CardArticle.Title>
                             }
                         </div>
