@@ -42,7 +42,7 @@ class Blog extends React.Component {
     }
 
     render() {
-        const { categorias, posts, router, prefix } = this.props;
+        const { categorias, posts, router, prefix, banners } = this.props;
         const { page } = this.state;
 
         let categoria = router.query.categoria ? categorias.list.find(c => c.id === router.query.categoria) : null;
@@ -69,6 +69,10 @@ class Blog extends React.Component {
 
         if(categoria && posts.fetched) listPosts = posts.list.filter((p) => p.categoria.nome.replaceSpecialChars().toLowerCase() == categoria.nome.replaceSpecialChars().toLowerCase());
         else listPosts = posts.list;
+
+        let banner = null;
+    
+        if(banners.fetched) banner = banners.list.filter(({ local }) => local.local == 'blog')[0]; 
 
         return(
             <React.Fragment>
@@ -153,11 +157,12 @@ class Blog extends React.Component {
                             }
                         </div>
                         <aside className="sec-blog__aside">
-                            <BookAside>
-                                <BookAside.Image src="/static/img/livro.png" />
-                                <BookAside.Text>Como a Solid ajudou a ABC Cargas a sair do prejuízo?</BookAside.Text>
-                                <BookAside.Button target="_blank" href="https://mailchi.mp/d6b22e18739f/case-lucro-abc-cargas">Descubra</BookAside.Button>
-                            </BookAside>
+                            {
+                                !!banner &&
+                                <BookAside>
+                                    <a target="_blank" href={banner.link}><BookAside.Image src={prefix + banner.banner.url} /></a>
+                                </BookAside>
+                            }
                             {
                                 !!categorias.fetched &&
                                 <CategoryAside>
@@ -210,4 +215,7 @@ export default withRouter(connect(state => state)(Blog));
                             <CardArticle.Num>4</CardArticle.Num>
                             <CardArticle.Proximo>Próxima página</CardArticle.Proximo>
                         </CardArticle.Pagination>
+
+<BookAside.Text>Como a Solid ajudou a ABC Cargas a sair do prejuízo?</BookAside.Text>
+                                <BookAside.Button target="_blank" href="https://mailchi.mp/d6b22e18739f/case-lucro-abc-cargas">Descubra</BookAside.Button>
 */

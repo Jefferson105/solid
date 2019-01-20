@@ -17,13 +17,14 @@ const ListClients = styled.ul`
 
 const ListItem = styled.li`
     display: flex;
-    box-shadow: 0 0 20px 0 rgba(0,0,0,.2);
     border-radius: 10px;
     margin-bottom: 3rem;
     @media (max-width: 1009px){
         flex-direction: column;
     }
 `;
+
+//box-shadow: 0 0 20px 0 rgba(0,0,0,.2);
 
 const FigItem = styled.figure`
     background-image: ${props => `url(${props.url})`};
@@ -79,7 +80,9 @@ class Home extends React.Component {
     }
 
     render() {
-        const { prefix, titulo, descricao, frase_principal, imagem } = this.props;
+        const { prefix, titulo, descricao, frase_principal, imagem, banners } = this.props;
+
+        console.log(banners);
 
         return(
             <React.Fragment>
@@ -97,14 +100,14 @@ class Home extends React.Component {
 
                     <section>
                         <ListClients>
-                            <ListItem>
-                                <FigItem url="/static/img/cliente1.jpg" />
-                                <ClienteInfo>
-                                    <LogoCliente src="/static/img/abclogo.jpg" />
-                                    <ClienteTxt>Veja como a Solid ajudou a ABC Cargas a sair do prejuízo para o lucro de R$ 6 milhões, em 1 ano</ClienteTxt>
-                                    <ClientButton target="_blank" href="https://mailchi.mp/d6b22e18739f/case-lucro-abc-cargas">Download Case</ClientButton>
-                                </ClienteInfo>
-                            </ListItem>
+                            {
+                                !!banners.fetched &&
+                                banners.list.filter(({ local }) => local.local == 'cases').map((b) => 
+                                    <ListItem>
+                                        <a target="_blank" className="conheca__link" href={b.link}><img className="conheca__img" src={prefix + b.banner.url} /></a>
+                                    </ListItem>
+                                )
+                            }
                         </ListClients>
                     </section>
                     <Crescer />
@@ -115,3 +118,13 @@ class Home extends React.Component {
 }                
     
 export default connect(state => state)(Home);
+
+/*
+<ListItem>
+    <FigItem url="/static/img/cliente1.jpg" />
+    <ClienteInfo>
+        <LogoCliente src="/static/img/abclogo.jpg" />
+        <ClienteTxt>Veja como a Solid ajudou a ABC Cargas a sair do prejuízo para o lucro de R$ 6 milhões, em 1 ano</ClienteTxt>
+        <ClientButton target="_blank" href="https://mailchi.mp/d6b22e18739f/case-lucro-abc-cargas">Download Case</ClientButton>
+    </ClienteInfo>
+</ListItem>*/

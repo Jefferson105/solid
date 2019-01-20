@@ -29,13 +29,14 @@ import createStore from "../store";
 
 //import '../scss/style.scss';
 
-import { getPosts } from '../actions';
+import { getPosts, getBanners } from '../actions';
 
 class MyApp extends App {
     componentWillMount() {
         ReactGA.initialize('UA-127764897-1');
         ReactGA.pageview('/');
         this.props.dispatch(getPosts());
+        this.props.dispatch(getBanners());
     }
 
     componentDidMount() {

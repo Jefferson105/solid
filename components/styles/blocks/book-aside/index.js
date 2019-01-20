@@ -5,15 +5,24 @@ import Image from "./Image";
 import Text from "./Text";
 
 const BookAside = styled.div`
-    background-color: #F58538;
     border-radius: 15px;
     width: 18rem;
     margin-bottom: 2rem;
-    padding: 3rem 2rem;
     position: relative;
     overflow: hidden;
     z-index: 1;
-    ::before {
+`;
+
+BookAside.Button = Button;
+BookAside.Image = Image;
+BookAside.Text = Text;
+
+export default BookAside;
+
+/*
+padding: 3rem 2rem;
+background-color: #F58538;
+::before {
         content: "";
         position: absolute;
         top: -10%;
@@ -24,10 +33,4 @@ const BookAside = styled.div`
         transform: rotate(-15deg);
         z-index: 0;
     }
-`;
-
-BookAside.Button = Button;
-BookAside.Image = Image;
-BookAside.Text = Text;
-
-export default BookAside;
+*/

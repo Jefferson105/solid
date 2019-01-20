@@ -1,8 +1,13 @@
-import { GET_POSTS, GET_CATEGORIAS, MODAL_EMAIL_CONTATO } from '../actions/types';
+import { GET_POSTS, GET_CATEGORIAS, MODAL_EMAIL_CONTATO, GET_BANNERS } from '../actions/types';
 
 export const initialData = {
     prefix: 'http://www.solidsolucoes.com.br:8197',
     posts: {
+        list: [],
+        fetched: false,
+        error: null
+    },
+    banners: {
         list: [],
         fetched: false,
         error: null
@@ -38,6 +43,12 @@ let reducer = (state = initialData, { type, data }) => {
             return {
                 ...state,
                 emailContato: data
+            }
+
+        case GET_BANNERS: 
+            return {
+                ...state,
+                banners: data
             }
 
         default:

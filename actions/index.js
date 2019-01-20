@@ -1,4 +1,4 @@
-import { GET_POSTS, GET_CATEGORIAS, MODAL_EMAIL_CONTATO } from './types';
+import { GET_POSTS, GET_CATEGORIAS, MODAL_EMAIL_CONTATO, GET_BANNERS } from './types';
 import { request } from '../utils/request';
 
 export const getPosts = () => {
@@ -13,6 +13,20 @@ export const getPosts = () => {
             dispatch({ type: GET_POSTS, data: { list: data, fetched: true, error: null }});
         }catch(err) {
             dispatch({ type: GET_POSTS, data: { list: [], fetched: true, error: "Ocorreu um erro ao obter os posts." }});
+        }
+    }
+}
+
+export const getBanners = () => {
+    return async dispatch => {
+        dispatch({ type: GET_BANNERS, data: { list: [], fetched: false, error: null }});
+        
+        try {
+            let data = await request('banners');
+
+            dispatch({ type: GET_BANNERS, data: { list: data, fetched: true, error: null }});
+        }catch(err) {
+            dispatch({ type: GET_BANNERS, data: { list: [], fetched: true, error: "Ocorreu um erro ao obter os banners." }});
         }
     }
 }
