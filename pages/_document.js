@@ -38,14 +38,6 @@ export default class MyDocument extends Document {
                     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
                     <link rel='icon' type='image/x-icon' href='/static/favicon.ico' />
                     <script id="mcjs" dangerouslySetInnerHTML={{ __html: mailChimpCode }} />
-                    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130772779-1"></script>
-                    <script>
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-
-                        gtag('config', 'UA-130772779-1');
-                    </script>
                 </Head>
                 <body>
                     <script dangerouslySetInnerHTML={{ __html: fbCode }} />
@@ -62,3 +54,14 @@ export default class MyDocument extends Document {
 }
 
 //<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+/*
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130772779-1"></script>
+                    <script>
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+
+                        gtag('config', 'UA-130772779-1');
+                    </script>
+*/

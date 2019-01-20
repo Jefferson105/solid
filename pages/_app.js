@@ -23,7 +23,7 @@ import withRedux from "next-redux-wrapper";
 import Head from 'next/head';
 import withNProgress from "next-nprogress";
 import Router from "next/router";
-//import ReactGA from "react-ga";
+import ReactGA from "react-ga";
 
 import createStore from "../store";
 
@@ -33,6 +33,8 @@ import { getPosts } from '../actions';
 
 class MyApp extends App {
     componentWillMount() {
+        ReactGA.initialize('UA-127764897-1');
+        ReactGA.pageview('/');
         this.props.dispatch(getPosts());
     }
 
@@ -40,6 +42,7 @@ class MyApp extends App {
         require('../scss/style.scss');
 
         Router.onRouteChangeStart = url => {
+            ReactGA.pageview(url);
             window.scrollTo(0,0);
         }
     }
@@ -69,9 +72,3 @@ export default withNProgress(200, { showSpinner: false })(withRouter(withRedux(c
 
 // jessica.paraguassu@solidsolucoes.com.br
 // solid@admin
-
-/*
-ReactGA.initialize('UA-130772779-1');
-ReactGA.pageview('/');
-
-*/
