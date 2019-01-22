@@ -8,6 +8,7 @@ import styled from "styled-components";
 import { HeaderMini, HeaderTitle, ButtonHeader, IconHeader } from "../components/styles";
 
 import { request } from '../utils/request';
+import { getCases } from "../actions";
 
 const ListClients = styled.ul`
     list-style: none;
@@ -79,10 +80,14 @@ class Home extends React.Component {
         return data;
     }
 
-    render() {
-        const { prefix, titulo, descricao, frase_principal, imagem, banners } = this.props;
+    componentWillMount() {
+        this.props.dispatch(getCases());
+    }
 
-        console.log(banners);
+    render() {
+        const { prefix, titulo, descricao, frase_principal, imagem, cases } = this.props;
+
+        console.log(cases);
 
         return(
             <React.Fragment>
@@ -101,10 +106,15 @@ class Home extends React.Component {
                     <section>
                         <ListClients>
                             {
-                                !!banners.fetched &&
-                                banners.list.filter(({ local }) => local.local == 'cases').map((b) => 
+                                !!(cases.fetched && !cases.error) &&
+                                cases.list.map(({ imagem, link, texto, logo }) => 
                                     <ListItem>
-                                        <a target="_blank" className="conheca__link" href={b.link}><img className="conheca__img" src={prefix + b.banner.url} /></a>
+                                        <FigItem url={prefix + imagem.url} />
+                                        <ClienteInfo>
+                                            <LogoCliente src={prefix + logo.url} />
+                                            <ClienteTxt>{texto}</ClienteTxt>
+                                            <ClientButton target="_blank" href={link}>Download Case</ClientButton>
+                                        </ClienteInfo>
                                     </ListItem>
                                 )
                             }
@@ -120,6 +130,15 @@ class Home extends React.Component {
 export default connect(state => state)(Home);
 
 /*
+
+{
+!!banners.fetched &&
+banners.list.filter(({ local }) => local.local == 'cases').map((b) => 
+    <ListItem>
+        <a target="_blank" className="conheca__link" href={b.link}><img className="conheca__img" src={prefix + b.banner.url} /></a>
+    </ListItem>
+)
+}
 <ListItem>
     <FigItem url="/static/img/cliente1.jpg" />
     <ClienteInfo>
@@ -127,4 +146,5 @@ export default connect(state => state)(Home);
         <ClienteTxt>Veja como a Solid ajudou a ABC Cargas a sair do prejuízo para o lucro de R$ 6 milhões, em 1 ano</ClienteTxt>
         <ClientButton target="_blank" href="https://mailchi.mp/d6b22e18739f/case-lucro-abc-cargas">Download Case</ClientButton>
     </ClienteInfo>
-</ListItem>*/
+</ListItem>
+*/

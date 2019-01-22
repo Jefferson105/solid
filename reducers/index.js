@@ -1,4 +1,4 @@
-import { GET_POSTS, GET_CATEGORIAS, MODAL_EMAIL_CONTATO, GET_BANNERS } from '../actions/types';
+import { GET_POSTS, GET_CATEGORIAS, MODAL_EMAIL_CONTATO, GET_BANNERS, GET_CASES } from '../actions/types';
 
 export const initialData = {
     prefix: 'http://www.solidsolucoes.com.br:8197',
@@ -22,6 +22,11 @@ export const initialData = {
         loading: false,
         sended: false,
         error: false
+    },
+    cases: {
+        list: [],
+        fetched: false,
+        error: null
     }
 };
 
@@ -49,6 +54,12 @@ let reducer = (state = initialData, { type, data }) => {
             return {
                 ...state,
                 banners: data
+            }
+
+        case GET_CASES: 
+            return {
+                ...state,
+                cases: data
             }
 
         default:
