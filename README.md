@@ -15,3 +15,6 @@ React, Redux, Redux Thunk, NexJS, Sass e Styled Components.
 
 ## Api
 A api utilizada é baseada no CMS [Strapi](https://strapi.io).
+
+## Servidor
+O servidor está utilizando os serviços NGINX e PM2. Caso aconteça algum problema, possivelmente a melhor solução será reiniciar os serviços.
