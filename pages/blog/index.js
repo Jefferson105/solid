@@ -115,7 +115,7 @@ class Blog extends React.Component {
                                         {
                                             !not_found ?
                                                 <React.Fragment>
-                                                    <h3 style={{ fontSize: "34px", marginBottom: "2rem", color: "#494949", lineHeight: "30px" }}>{artigo.titulo}</h3>
+                                                    <h3 className="title-blog">{artigo.titulo}</h3>
                                                     <ReactMarkdown source={artigo.conteudo} />
                                                 </React.Fragment> :
                                                 <CardArticle.Title>Artigo não encontrado. <span style={{ textDecoration: 'underline', cursor: 'pointer' }} onClick={() => Router.push('/blog')}>Ver outros.</span></CardArticle.Title>

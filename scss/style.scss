@@ -124,6 +124,16 @@ button {
     }
 }
 
+.title-blog {
+    font-size: 34px; 
+    margin-bottom: 2rem; 
+    color: #494949; 
+    line-height: 30px;
+    ~ p {
+        margin-bottom: 1rem;
+    }
+}
+
 #nav-icon4 {
     width: 30px;
     height: 10px;
