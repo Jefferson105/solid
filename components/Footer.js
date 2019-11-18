@@ -19,11 +19,11 @@ const Footer = () =>
             </div>
             <div className="footer__list-content">
                 <ul className="footer__list">
-                    <li className="footer__item"><Link href="/servicos" prefetch><a className="link">Nossos Serviços</a></Link></li>
-                    <li className="footer__item"><Link href="/sobre" prefetch><a className="link">Sobre a Solid</a></Link></li>
-                    <li className="footer__item"><Link href="/clientes" prefetch><a className="link">Clientes</a></Link></li>
-                    <li className="footer__item"><Link href="/contato" prefetch><a className="link">Contato</a></Link></li>
-                    <li className="footer__item"><Link href="/blog" prefetch><a className="link">Blog</a></Link></li>
+                    <li className="footer__item"><Link href="/servicos"><a className="link">Nossos Serviços</a></Link></li>
+                    <li className="footer__item"><Link href="/sobre"><a className="link">Sobre a Solid</a></Link></li>
+                    <li className="footer__item"><Link href="/clientes"><a className="link">Clientes</a></Link></li>
+                    <li className="footer__item"><Link href="/contato"><a className="link">Contato</a></Link></li>
+                    <li className="footer__item"><Link href="/blog"><a className="link">Blog</a></Link></li>
                 </ul>
             </div>
             <div>

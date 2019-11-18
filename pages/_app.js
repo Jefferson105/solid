@@ -16,27 +16,28 @@ String.prototype.replaceSpecialChars = function() {
     return str;
 };
 
-import App, { Container } from "next/app";
-import { connect, Provider } from "react-redux";
+import App from "next/app";
+import { Provider } from "react-redux";
 import { withRouter } from 'next/router';
 import withRedux from "next-redux-wrapper";
 import Head from 'next/head';
-import withNProgress from "next-nprogress";
 import Router from "next/router";
 import ReactGA from "react-ga";
 
 import createStore from "../store";
 
-//import '../scss/style.scss';
-
-import { getPosts, getBanners } from '../actions';
+import { getPosts, getBanners, getEquipe } from '../actions';
 
 class MyApp extends App {
     componentWillMount() {
         ReactGA.initialize('UA-127764897-1');
         ReactGA.pageview('/');
-        this.props.dispatch(getPosts());
-        this.props.dispatch(getBanners());
+
+        const { dispatch } = this.props.store;
+
+        dispatch(getPosts());
+        dispatch(getBanners());
+        dispatch(getEquipe());
     }
 
     componentDidMount() {
@@ -52,24 +53,19 @@ class MyApp extends App {
         const { Component, pageProps, router, store } = this.props;
 
         return (
-            <Container>
-                <Provider store={store}>
-                    <React.Fragment>
-                        <Head>
-                            <title>Solid</title>
-                            <meta property="og:site_name" content="Solid" />
-                            <meta property="og:type" content="website" />
-                            <meta property="og:url" content={`http://www.solidsolucoes.com.br${router.asPath}`} />
-                        </Head>
-                        <Component {...pageProps} />
-                    </React.Fragment>
-                </Provider>
-            </Container>
+            <Provider store={store}>
+                <>
+                    <Head>
+                        <title>Solid</title>
+                        <meta property="og:site_name" content="Solid" />
+                        <meta property="og:type" content="website" />
+                        <meta property="og:url" content={`http://www.solidsolucoes.com.br${router.asPath}`} />
+                    </Head>
+                    <Component {...pageProps} />
+                </>
+            </Provider>
         );
     }
 }
 
-export default withNProgress(200, { showSpinner: false })(withRouter(withRedux(createStore)(connect(state => state)(MyApp))));
-
-// jessica.paraguassu@solidsolucoes.com.br
-// solid@admin
+export default withRedux(createStore)(withRouter(MyApp));

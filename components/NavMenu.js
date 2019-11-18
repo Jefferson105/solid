@@ -28,7 +28,7 @@ class NavMenu extends React.Component {
                         <span></span>
                     </div>
                 
-                    <Link prefetch href="/">
+                    <Link href="/">
                         <a className="menu-mobile__logo">
                             <img className="nav-menu__logo" src="/static/img/logo_solid_white.svg" />
                         </a>
@@ -37,7 +37,7 @@ class NavMenu extends React.Component {
 
                 <ul className={`nav-menu__list ${!!menuMobile && "nav-menu__list--open"}`}>
                     <li className="nav-menu__item nav-menu__item--logo">
-                        <Link prefetch href="/">
+                        <Link href="/">
                             <a className="nav-menu__link">
                                 {
                                     isFixed ?
@@ -48,7 +48,7 @@ class NavMenu extends React.Component {
                         </Link>
                     </li>
                     <li className="nav-menu__item nav-menu__item--item">
-                        <Link prefetch href="/sobre">
+                        <Link href="/sobre">
                             <a className="nav-menu__link">
                                 Sobre a Solid
                             </a>
@@ -60,7 +60,7 @@ class NavMenu extends React.Component {
                             !!showMenu &&
                             <ul onClick={(e) => e.stopPropagation()} className="sub-menu">
                                 <li className="sub-menu__item">
-                                    <Link prefetch href="/gestao-estrategica">
+                                    <Link href="/gestao-estrategica">
                                         <a className="nav-menu__link sub-menu__link">
                                             <figure className="sub-menu__icon">
                                                 <img src="/static/img/setting-gears.svg" />
@@ -70,7 +70,7 @@ class NavMenu extends React.Component {
                                     </Link>
                                 </li>
                                 <li className="sub-menu__item">
-                                    <Link prefetch href="/gestao-pessoas">
+                                    <Link href="/gestao-pessoas">
                                         <a className="nav-menu__link sub-menu__link">
                                             <figure className="sub-menu__icon">
                                                 <img src="/static/img/multiple-users.svg" />
@@ -80,7 +80,7 @@ class NavMenu extends React.Component {
                                     </Link>
                                 </li>
                                 <li className="sub-menu__item">
-                                    <Link prefetch href="/gestao-empresarial">
+                                    <Link href="/gestao-empresarial">
                                         <a className="nav-menu__link sub-menu__link">
                                             <figure className="sub-menu__icon">
                                                 <img src="/static/img/desktop-monitor.svg" />
@@ -90,7 +90,7 @@ class NavMenu extends React.Component {
                                     </Link>
                                 </li>
                                 <li className="sub-menu__item">
-                                    <Link prefetch href="/vendas-marketing">
+                                    <Link href="/vendas-marketing">
                                         <a className="nav-menu__link sub-menu__link">
                                             <figure className="sub-menu__icon">
                                                 <img src="/static/img/funnel.svg" />
@@ -103,21 +103,21 @@ class NavMenu extends React.Component {
                         }
                     </li>
                     <li className="nav-menu__item nav-menu__item--item">
-                        <Link prefetch href="/clientes">
+                        <Link href="/clientes">
                             <a className="nav-menu__link">
                                 Cases
                             </a>
                         </Link>
                     </li>
                     <li className="nav-menu__item nav-menu__item--item">
-                        <Link prefetch href="/contato">
+                        <Link href="/contato">
                             <a className="nav-menu__link">
                                 Contato
                             </a>
                         </Link>
                     </li>
                     <li className="nav-menu__item nav-menu__item--item">
-                        <Link prefetch href="/blog">
+                        <Link href="/blog">
                             <a className="nav-menu__link">
                                 Blog
                             </a>

@@ -52,16 +52,3 @@ export default class MyDocument extends Document {
         )
     }
 }
-
-//<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-/*
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130772779-1"></script>
-                    <script>
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-
-                        gtag('config', 'UA-130772779-1');
-                    </script>
-*/
