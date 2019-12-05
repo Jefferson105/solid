@@ -77,7 +77,7 @@ class Home extends React.Component {
 
         data = data[0];
 
-        return data;
+        return data || [];
     }
 
     componentWillMount() {
@@ -86,8 +86,6 @@ class Home extends React.Component {
 
     render() {
         const { prefix, titulo, descricao, frase_principal, imagem, cases } = this.props;
-
-        console.log(cases);
 
         return(
             <React.Fragment>
@@ -106,7 +104,7 @@ class Home extends React.Component {
                     <section>
                         <ListClients>
                             {
-                                !!(cases.fetched && !cases.error) &&
+                                !!(cases.fetched && !cases.error && cases.list) &&
                                 cases.list.map(({ imagem, link, texto, logo }) => 
                                     <ListItem>
                                         <FigItem url={prefix + imagem.url} />

@@ -5,7 +5,7 @@ import Head from 'next/head';
 import NavMenu from "../components/NavMenu";
 import Impacto from "../components/Impacto";
 import Equipe from "../components/Equipe";
-import Clientes from "../components/Clientes";
+//import Clientes from "../components/Clientes";
 import EbookConteudo from "../components/EbookConteudo";
 
 import { request } from '../utils/request';
@@ -55,7 +55,7 @@ class Home extends React.Component {
                         </div>
                     </header>
                     <Impacto />
-                    <Clientes />
+                    {/*<Clientes />*/}
                     <section className="blog">
                         <h3 className="impacto__title">Artigos do <b> Blog SOLID</b></h3>
                         <ul className="blog__postblog">
