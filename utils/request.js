@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-const prefix = "http://www.solidsolucoes.com.br:8197";
+const prefix = "https://adminsolid.co.vu";
 
 export const request = (url) => 
     new Promise(async (resolve, reject) => {
