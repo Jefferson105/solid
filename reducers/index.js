@@ -1,7 +1,14 @@
-import { GET_POSTS, GET_CATEGORIAS, MODAL_EMAIL_CONTATO, GET_BANNERS, GET_CASES, GET_EQUIPE } from '../actions/types';
+import {
+    GET_POSTS,
+    GET_CATEGORIAS,
+    MODAL_EMAIL_CONTATO,
+    GET_BANNERS,
+    GET_CASES,
+    GET_EQUIPE
+} from '../actions/types';
 
 export const initialData = {
-    prefix: 'https://adminsolid.co.vu',
+    prefix: 'https://admin.solidsolucoes.com.br',
     posts: {
         list: [],
         fetched: false,
@@ -36,46 +43,46 @@ export const initialData = {
 };
 
 let reducer = (state = initialData, { type, data }) => {
-    switch(type) {
+    switch (type) {
         case GET_POSTS:
             return {
                 ...state,
                 posts: data
-            }
+            };
 
         case GET_CATEGORIAS:
             return {
                 ...state,
                 categorias: data
-            }
-        
+            };
+
         case GET_EQUIPE:
             return {
                 ...state,
                 equipe: data
-            }
+            };
 
         case MODAL_EMAIL_CONTATO:
             return {
                 ...state,
                 emailContato: data
-            }
+            };
 
-        case GET_BANNERS: 
+        case GET_BANNERS:
             return {
                 ...state,
                 banners: data
-            }
+            };
 
-        case GET_CASES: 
+        case GET_CASES:
             return {
                 ...state,
                 cases: data
-            }
+            };
 
         default:
             return state;
     }
-}
+};
 
 export default reducer;
