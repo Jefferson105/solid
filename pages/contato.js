@@ -23,7 +23,7 @@ const ContainerEmail = styled.div`
     position: relative;
     bottom: 5rem;
     text-align: center;
-    @media (max-width: 1009px){
+    @media (max-width: 1009px) {
         width: 100%;
     }
 `;
@@ -33,7 +33,7 @@ const TitleEmail = styled.h3`
     font-size: 2.5rem;
     font-weight: lighter;
     margin-bottom: 1rem;
-    @media (max-width: 1009px){
+    @media (max-width: 1009px) {
         font-size: 2rem;
     }
 `;
@@ -45,7 +45,7 @@ const TextEmail = styled.p`
 
 const EmailInfo = styled.div`
     display: flex;
-    @media (max-width: 1009px){
+    @media (max-width: 1009px) {
         flex-direction: column;
     }
 `;
@@ -57,10 +57,10 @@ const InfoBox = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
-    background-color: ${props => props.bgColor};
-    color: #FFF;
+    background-color: ${(props) => props.bgColor};
+    color: #fff;
     font-weight: bold;
-    @media (max-width: 1009px){
+    @media (max-width: 1009px) {
         width: 100%;
         height: 7rem;
     }
@@ -72,9 +72,9 @@ const IconInfo = styled.span`
     width: 3.5rem;
     top: -1.75rem;
     left: calc(50% - 1.75rem);
-    box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     border-radius: 50%;
-    background-color: #FFF;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,31 +93,42 @@ class Home extends React.Component {
     }
 
     state = {
-        nome: "",
-        empresa: "",
-        email: "",
-        departamento: "",
-        mensagem: "",
+        nome: '',
+        empresa: '',
+        email: '',
+        departamento: '',
+        mensagem: '',
         error: null
-    }
+    };
 
     checkFields = (e) => {
         e.preventDefault();
 
         this.setState({ error: null });
 
-        if(Object.keys(this.state).every(k => k == 'error' ? true : this.state[k])) {
+        if (
+            Object.keys(this.state).every((k) =>
+                k == 'error' ? true : this.state[k]
+            )
+        ) {
             this.props.dispatch(enviarEmailContato(this.state));
-        }else {
-            this.setState({ error: "Preencha todos os campos." });
+        } else {
+            this.setState({ error: 'Preencha todos os campos.' });
         }
-    }
+    };
 
     render() {
-        const { prefix, titulo, descricao, frase_principal, imagem, emailContato } = this.props;
+        const {
+            prefix,
+            titulo,
+            descricao,
+            frase_principal,
+            imagem,
+            emailContato
+        } = this.props;
         const { error } = this.state;
 
-        return(
+        return (
             <React.Fragment>
                 <Head>
                     <title>{titulo}</title>
@@ -126,50 +137,136 @@ class Home extends React.Component {
                 <section className="container contato container__sobre">
                     <NavMenu isFixed={true} />
                     <HeaderMedium noOverlay={true} url={prefix + imagem.url}>
-                        <HeaderTitle top={true}>{frase_principal}</HeaderTitle>      
+                        <HeaderTitle top={true}>{frase_principal}</HeaderTitle>
                     </HeaderMedium>
-                    <section style={{ backgroundColor: "#F9F9F9" }}>
+                    <section style={{ backgroundColor: '#F9F9F9' }}>
                         <div className="contato__formcontent">
-                            <form onSubmit={this.checkFields} className="contato__form">
-                                <input onChange={(e) => this.setState({ nome: e.target.value })} type="text" className="contato__input" placeholder="Seu nome"/>
-                                <input onChange={(e) => this.setState({ empresa: e.target.value })} type="text" className="contato__input" placeholder="Empresa"/>
-                                <input onChange={(e) => this.setState({ email: e.target.value })} type="text" className="contato__input2" placeholder="Seu e-mail"/>
-                                <input onChange={(e) => this.setState({ departamento: e.target.value })} type="text" className="contato__input2" placeholder="Departamento desejado"/>
-                                <input onChange={(e) => this.setState({ mensagem: e.target.value })} type="text" className="contato__msg" placeholder="Mensagem"/>
-                                <button style={{ marginTop: "2rem" }} className="header__button blog__button enviarform">Enviar</button>
+                            <form
+                                onSubmit={this.checkFields}
+                                className="contato__form"
+                            >
+                                <input
+                                    onChange={(e) =>
+                                        this.setState({ nome: e.target.value })
+                                    }
+                                    type="text"
+                                    className="contato__input"
+                                    placeholder="Seu nome"
+                                />
+                                <input
+                                    onChange={(e) =>
+                                        this.setState({
+                                            empresa: e.target.value
+                                        })
+                                    }
+                                    type="text"
+                                    className="contato__input"
+                                    placeholder="Empresa"
+                                />
+                                <input
+                                    onChange={(e) =>
+                                        this.setState({ email: e.target.value })
+                                    }
+                                    type="text"
+                                    className="contato__input2"
+                                    placeholder="Seu e-mail"
+                                />
+                                <input
+                                    onChange={(e) =>
+                                        this.setState({
+                                            departamento: e.target.value
+                                        })
+                                    }
+                                    type="text"
+                                    className="contato__input2"
+                                    placeholder="Departamento desejado"
+                                />
+                                <input
+                                    onChange={(e) =>
+                                        this.setState({
+                                            mensagem: e.target.value
+                                        })
+                                    }
+                                    type="text"
+                                    className="contato__msg"
+                                    placeholder="Mensagem"
+                                />
+                                <button
+                                    style={{ marginTop: '2rem' }}
+                                    className="header__button blog__button enviarform"
+                                >
+                                    Enviar
+                                </button>
                             </form>
-                            { !!error && <Error>{error}</Error> }
+                            {!!error && <Error>{error}</Error>}
                         </div>
                         <ContainerEmail>
-                            <TitleEmail>Caso prefira, envie um e-mail ou ligue para nós.</TitleEmail>
-                            <TextEmail>Nosso time de especialistas está preparado para te ajudar!</TextEmail>
-                        </ContainerEmail>    
+                            <TitleEmail>
+                                Caso prefira, envie um e-mail ou ligue para nós.
+                            </TitleEmail>
+                            <TextEmail>
+                                Nosso time de especialistas está preparado para
+                                te ajudar!
+                            </TextEmail>
+                        </ContainerEmail>
                         <EmailInfo>
                             <InfoBox bgColor="#051526">
-                                <p style={{ fontSize: "1rem" }}>contato@solidsolucoes.com.br</p>
-                                <IconInfo><img src="/static/img/envelope.svg" /></IconInfo>
+                                <p style={{ fontSize: '1rem' }}>
+                                    contato@solidsolucoes.com.br
+                                </p>
+                                <IconInfo>
+                                    <img src="/static/img/envelope.svg" />
+                                </IconInfo>
                             </InfoBox>
                             <InfoBox bgColor="#1b4e85">
-                                <p style={{ fontSize: "1.3rem" }}>11 4330-2784</p>
-                                <IconInfo><img src="/static/img/telephone.svg" /></IconInfo>
+                                <p style={{ fontSize: '1.3rem' }}>
+                                    (11) 941578881
+                                </p>
+                                <IconInfo>
+                                    <img src="/static/img/telephone.svg" />
+                                </IconInfo>
+                            </InfoBox>
+                            <InfoBox bgColor="#051526">
+                                <p style={{ fontSize: '1.3rem' }}>
+                                    (11) 41038163
+                                </p>
+                                <IconInfo>
+                                    <img src="/static/img/telephone.svg" />
+                                </IconInfo>
                             </InfoBox>
                         </EmailInfo>
                     </section>
                     <Crescer />
                     <div style={{ position: 'relative' }}>
                         <Box>
-                            <Box.Text><b>Endereço:</b></Box.Text>
-                            <Box.Text>R. Jurubatuba, 1350<br/>Salas 618,619 - Centro</Box.Text>
-                            <Box.Text>CEP 09725-000<br/>São Bernardo do Campo - SP<br/>Brasil</Box.Text>
+                            <Box.Text>
+                                <b>Endereço:</b>
+                            </Box.Text>
+                            <Box.Text>
+                                R. Jurubatuba, 1350
+                                <br />
+                                Salas 618,619 - Centro
+                            </Box.Text>
+                            <Box.Text>
+                                CEP 09725-000
+                                <br />
+                                São Bernardo do Campo - SP
+                                <br />
+                                Brasil
+                            </Box.Text>
                         </Box>
-                        <iframe src="https://snazzymaps.com/embed/119420" width="100%" height="440px" style={{ border: 'none' }}></iframe>
+                        <iframe
+                            src="https://snazzymaps.com/embed/119420"
+                            width="100%"
+                            height="440px"
+                            style={{ border: 'none' }}
+                        ></iframe>
                     </div>
-                    { !!emailContato.show && <Modal /> }
+                    {!!emailContato.show && <Modal />}
                 </section>
             </React.Fragment>
-        )
+        );
     }
-}                
- 
-export default withRouter(connect(state => state)(Home));
-        
+}
+
+export default withRouter(connect((state) => state)(Home));
