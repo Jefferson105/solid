@@ -110,4 +110,4 @@ const Footer = () => (
 
 export default Footer;
 
-//<a href="https://www.facebook.com/SolidGestaoEmpresarial/" target="_blank" className="footer__social"><img src="/static/img/twitter-logo.svg" /></a>
+//<a href="https://www.facebook.com/SolidGestaoEmpresarial/" target="_blank" className="footer__social"><img src="/static/img/twitter-logo.svg" />
