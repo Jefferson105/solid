@@ -13,7 +13,7 @@ const Footer = () => (
                 <p className="footer__txt footer__txt--top">
                     R. Jurubatuba, 1350
                 </p>
-                <p className="footer__txt">Salas 618,619 - Centro</p>
+                <p className="footer__txt">SL. 625 - Centro</p>
                 <p className="footer__txt">CEP 09725-000</p>
                 <p className="footer__txt footer__txt--top">
                     São Bernardo do Campo - SP

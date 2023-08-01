@@ -245,7 +245,7 @@ class Home extends React.Component {
                             <Box.Text>
                                 R. Jurubatuba, 1350
                                 <br />
-                                Salas 618,619 - Centro
+                                SL. 625 - Centro
                             </Box.Text>
                             <Box.Text>
                                 CEP 09725-000
