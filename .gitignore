@@ -5,3 +5,5 @@ out
 idea
 yarn.lock
 yarn-error.log
+backup
+.env
