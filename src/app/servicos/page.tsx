@@ -1,24 +1,40 @@
-import { Metadata } from 'next';
-
 import GrowUp from '@/components/grow-up';
 
 import styles from '@/styles/about.module.css';
 import shared from '@/styles/shared.module.css';
 
-export const metadata: Metadata = {
-    title: 'Solid Serviços',
-    description: 'Solid Soluções'
-};
+import { request } from '@/services/api';
+import { prefixApi } from '@/constants';
 
-const Servicos = () => {
+export async function generateMetadata() {
+    const { data } = await request({
+        path: 'pagina-servico',
+        populate: 'Metadata'
+    });
+
+    return {
+        title: data?.attributes?.Metadata?.Titulo,
+        description: data?.attributes?.Metadata?.Descricao
+    };
+}
+
+const Servicos = async () => {
+    const { data } = await request({
+        path: 'pagina-servico',
+        populate: 'Imagem'
+    });
+
+    const { Titulo, Imagem } = data?.attributes || {};
+
     return (
         <main className={shared.container}>
-            <header className={styles.header}>
-                <h2 className={styles.title}>
-                    Mais do que uma consultoria de gestão, somos uma empresa que
-                    nasceu para transformar seu negócio e acelerar os
-                    resultados.
-                </h2>
+            <header
+                style={{
+                    backgroundImage: `url(${prefixApi + Imagem?.data?.attributes?.url})`
+                }}
+                className={styles.header}
+            >
+                <h2 className={styles.title}>{Titulo}</h2>
             </header>
             <GrowUp />
         </main>

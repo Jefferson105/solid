@@ -8,9 +8,17 @@ import animation from '@/styles/animation.module.css';
 import shared from '@/styles/shared.module.css';
 
 import { multiCssClass } from '@/utils';
-import { impactData } from '@/data';
 
-const Impacto = () => {
+interface IProps {
+    title: string;
+    data: {
+        Titulo: string;
+        Texto: string;
+        Link: string;
+    }[];
+}
+
+const Impacto = ({ title, data = [] }: IProps) => {
     const [style, setStyle] = useState({});
     const [current, setCurrent] = useState(0);
 
@@ -61,18 +69,16 @@ const Impacto = () => {
 
     return (
         <section className={styles.container}>
-            <h2 className={shared.title}>
-                Como geramos <b>impacto no seu negócio</b>
-            </h2>
+            <h2 className={shared.title}>{title}</h2>
             <div className={styles.divider}>
                 <div className={styles.animation}>
                     <ul style={style} className={animation.container}>
-                        {impactData.map((_, i) => (
+                        {data.map((_, i) => (
                             <li
                                 key={i}
                                 className={multiCssClass(
                                     animation.item,
-                                    i - impactData.length + 1 + current >= 0 &&
+                                    i - data.length + 1 + current >= 0 &&
                                         animation.selected
                                 )}
                             >
@@ -82,7 +88,7 @@ const Impacto = () => {
                     </ul>
                 </div>
                 <ul id="animation-list" className={styles.list}>
-                    {impactData.map((item, i) => (
+                    {data.map((item, i) => (
                         <li key={i} className={styles.item}>
                             <div>
                                 <p className={styles.number}>
@@ -92,10 +98,12 @@ const Impacto = () => {
                                 </p>
                             </div>
                             <div>
-                                <h4 className={styles.subTitle}>{item.name}</h4>
+                                <h4 className={styles.subTitle}>
+                                    {item.Titulo}
+                                </h4>
 
-                                <p className={styles.text}>{item.desc}</p>
-                                <Link className={styles.link} href={item.path}>
+                                <p className={styles.text}>{item.Texto}</p>
+                                <Link className={styles.link} href={item.Link}>
                                     Saiba mais.
                                 </Link>
                             </div>

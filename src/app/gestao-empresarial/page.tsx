@@ -3,28 +3,35 @@ import ServicePage from '@/components/service-page';
 import { request } from '@/services/api';
 
 export async function generateMetadata() {
-    const data = await request('gestaoempresarials');
+    const { data } = await request({
+        path: 'software-gestao',
+        populate: 'Metadata'
+    });
 
     return {
-        title: data[0]?.titulo,
-        description: data[0]?.descricao
+        title: data?.attributes?.Metadata?.Titulo,
+        description: data?.attributes?.Metadata?.Descricao
     };
 }
 
 const Empresarial = async () => {
-    const { frase_principal, frase_secundaria, imagem } = (
-        await request('gestaoempresarials')
-    )[0];
+    const { data } = await request({
+        path: 'software-gestao',
+        populate: 'Header,Header.Imagem,Header.Icon,Conteudo,Conteudo.Imagem'
+    });
+
+    const { Header, Conteudo } = data?.attributes || {};
 
     return (
         <ServicePage
-            image={String(imagem?.url)}
-            title={frase_principal}
-            text={frase_secundaria}
-            figImg="/static/img/empresarial-photo.jpg"
-            icon="/static/img/desktop-monitor.svg"
-            textMini="Por meio desse sistema, o gestor passa a ter acesso a um dashboard, onde tem a possibilidade de acompanhar a evolução dos resultados em tempo real e de qualquer lugar."
-            remove={['enterprise']}
+            image={Header?.Imagem?.data?.attributes?.url}
+            title={Header?.Titulo}
+            text={Header?.Texto}
+            figImg={Conteudo?.Imagem?.data?.attributes?.url}
+            icon={Header?.Icon?.data?.attributes?.url}
+            desc={Conteudo?.TextoImagem || null}
+            textMini={Conteudo?.Texto}
+            remove={['/gestao-empresarial']}
         />
     );
 };

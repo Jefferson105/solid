@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 import GrowUp from '@/components/grow-up';
 
@@ -16,8 +17,13 @@ interface IProps {
     text: string;
     desc?: string;
     textMini?: string;
-    remove: string[];
-    list?: { text: JSX.Element; image: string }[];
+    remove: Array<
+        | '/gestao-empresarial'
+        | '/vendas-marketing'
+        | '/gestao-estrategica'
+        | '/gestao-pessoas'
+    >;
+    list?: { Texto: any; Imagem: any }[];
 }
 
 const ServicePage = ({
@@ -35,11 +41,16 @@ const ServicePage = ({
         <main className={shared.container}>
             <header
                 className={styles.header}
-                style={{ backgroundImage: `url(${prefixApi + '/' + image})` }}
+                style={{ backgroundImage: `url(${prefixApi + image})` }}
             >
                 <h2 className={styles.title}>{title}</h2>
                 <div className={styles.button}>
-                    <Image width={56} height={56} alt="Ícone" src={icon} />
+                    <Image
+                        width={56}
+                        height={56}
+                        alt="Ícone"
+                        src={prefixApi + icon}
+                    />
                 </div>
             </header>
 
@@ -49,7 +60,9 @@ const ServicePage = ({
                     <div className={styles.wrapedText}>
                         <figure
                             className={styles.fig50}
-                            style={{ backgroundImage: `url(${figImg})` }}
+                            style={{
+                                backgroundImage: `url(${prefixApi}${figImg})`
+                            }}
                         />
                         <p className={styles.text50}>{desc}</p>
                     </div>
@@ -57,7 +70,9 @@ const ServicePage = ({
                 {!!(!desc && figImg) && (
                     <figure
                         className={styles.fig100}
-                        style={{ backgroundImage: `url(${figImg})` }}
+                        style={{
+                            backgroundImage: `url(${prefixApi}${figImg})`
+                        }}
                     />
                 )}
 
@@ -68,11 +83,11 @@ const ServicePage = ({
                                 <figure
                                     className={styles.itemFig}
                                     style={{
-                                        backgroundImage: `url(${item.image})`
+                                        backgroundImage: `url(${prefixApi}${item.Imagem?.data?.attributes?.url})`
                                     }}
                                 />
                                 <div className={styles.itemTxt}>
-                                    {item.text}
+                                    <BlocksRenderer content={item?.Texto} />
                                 </div>
                             </li>
                         ))}

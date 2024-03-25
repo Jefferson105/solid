@@ -3,13 +3,20 @@
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
+import useRequest from '@/hooks/request';
+
 import styles from '@/styles/grow.module.css';
 import shared from '@/styles/shared.module.css';
 
-import { growList } from '@/data';
+import { prefixApi } from '@/constants';
 
 interface IProps {
-    remove?: string[];
+    remove?: Array<
+        | '/gestao-empresarial'
+        | '/vendas-marketing'
+        | '/gestao-estrategica'
+        | '/gestao-pessoas'
+    >;
     title?: string;
 }
 
@@ -19,28 +26,39 @@ const GrowUp = ({
 }: IProps) => {
     const router = useRouter();
 
+    const { data } = useRequest({
+        name: 'Servicos',
+        populate: 'Icon'
+    });
+
     return (
         <section className={styles.container}>
             <h3 className={shared.title}>{title}</h3>
             <ul className={styles.list}>
-                {growList
-                    .filter((item) => remove.indexOf(item.slug) === -1)
-                    .map((item, i) => (
+                {data
+                    .filter(
+                        ({ attributes }: any) =>
+                            remove.indexOf(attributes.Link) === -1
+                    )
+                    .map(({ attributes }: any, i: number) => (
                         <li
                             key={i}
-                            onClick={() => router.push(item.path)}
+                            onClick={() => router.push(attributes.Link)}
                             className={styles.item}
                         >
                             <figure className={styles.icon}>
                                 <Image
                                     width={64}
                                     height={64}
-                                    alt="Ícone crescimento"
-                                    src={item.image}
+                                    alt={`Ícone ${attributes.Nome}`}
+                                    src={
+                                        prefixApi +
+                                        attributes?.Icon?.data?.attributes?.url
+                                    }
                                 />
                             </figure>
-                            <h3 className={styles.title}>{item.title}</h3>
-                            <p className={styles.text}>{item.text}</p>
+                            <h3 className={styles.title}>{attributes.Nome}</h3>
+                            <p className={styles.text}>{attributes.Texto}</p>
                             <a className={styles.more}>Saiba mais</a>
                         </li>
                     ))}

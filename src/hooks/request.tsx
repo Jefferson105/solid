@@ -9,9 +9,12 @@ const apiData: Record<string, unknown> = {};
 
 interface IProps {
     name: string;
+    populate?: string;
+    sort?: string;
+    limit?: number;
 }
 
-const useRequest = ({ name }: IProps) => {
+const useRequest = ({ name, populate, sort, limit }: IProps) => {
     const [info, dispatch] = useReducer(genericReducer, {
         data: [],
         loading: false,
@@ -27,7 +30,12 @@ const useRequest = ({ name }: IProps) => {
 
             dispatch({ loading: true });
 
-            const data = await request(name);
+            const { data } = await request({
+                path: name,
+                populate,
+                sort,
+                limit
+            });
 
             apiData[name] = data;
 
@@ -35,7 +43,7 @@ const useRequest = ({ name }: IProps) => {
         } catch (err) {
             dispatch({ error: err });
         }
-    }, [name]);
+    }, [name, populate, sort, limit]);
 
     useEffect(() => {
         if (!name) return;

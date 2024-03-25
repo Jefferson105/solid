@@ -10,7 +10,7 @@ import styles from '@/styles/menu.module.css';
 import { multiCssClass } from '@/utils';
 import { menuList } from '@/data';
 
-const Menu = () => {
+const Menu = ({ phone }: { phone: string }) => {
     const path = usePathname();
 
     const fixed = !(path === '/');
@@ -122,7 +122,7 @@ const Menu = () => {
                                 src="/static/img/telephone.svg"
                             />
                         </figure>{' '}
-                        <span>(11) 941578881</span>
+                        <span>{phone}</span>
                     </li>
                 </ul>
             </nav>

@@ -8,29 +8,42 @@ import shared from '@/styles/shared.module.css';
 
 import { prefixApi } from '@/constants';
 import { request } from '@/services/api';
-import { contactList } from '@/data';
 
 export async function generateMetadata() {
-    const data = await request('contatoes');
+    const { data } = await request({
+        path: 'contato',
+        populate: 'Metadata'
+    });
 
     return {
-        title: data[0]?.titulo,
-        description: data[0]?.descricao
+        title: data?.attributes?.Metadata?.Titulo,
+        description: data?.attributes?.Metadata?.Descricao
     };
 }
-
 const Contato = async () => {
-    const { frase_principal, imagem } = (await request('contatoes'))[0];
+    const [contato, info] = await Promise.all([
+        request({
+            path: 'contato',
+            populate: 'Imagem'
+        }),
+        request({
+            path: 'info',
+            populate: 'Numeros'
+        })
+    ]);
+
+    const { Titulo, Imagem, Map } = contato?.data?.attributes || {};
+    const { Email, Numeros } = info?.data?.attributes || {};
 
     return (
         <main className={shared.container}>
             <header
                 className={shared.header}
                 style={{
-                    backgroundImage: `url(${prefixApi + '/' + imagem?.url})`
+                    backgroundImage: `url(${prefixApi + Imagem?.data?.attributes?.url})`
                 }}
             >
-                <h2 className={shared.titleLarge}>{frase_principal}</h2>
+                <h2 className={shared.titleLarge}>{Titulo}</h2>
             </header>
 
             <section className={styles.section}>
@@ -45,15 +58,26 @@ const Contato = async () => {
                     </p>
                 </div>
                 <ul className={styles.list}>
-                    {contactList.map((item, i) => (
+                    <li className={styles.item}>
+                        <p>{Email}</p>
+                        <div className={styles.icon}>
+                            <Image
+                                width={32}
+                                height={32}
+                                alt="Ícone"
+                                src="/static/img/envelope.svg"
+                            />
+                        </div>
+                    </li>
+                    {Numeros.map((item: any, i: number) => (
                         <li key={i} className={styles.item}>
-                            <p>{item.text}</p>
+                            <p>{item.Numero}</p>
                             <div className={styles.icon}>
                                 <Image
                                     width={32}
                                     height={32}
                                     alt="Ícone"
-                                    src={item.image}
+                                    src="/static/img/telephone.svg"
                                 />
                             </div>
                         </li>
@@ -79,11 +103,10 @@ const Contato = async () => {
                         Brasil
                     </p>
                 </address>
-
                 <iframe
                     width="425"
                     height="440"
-                    src={`https://www.openstreetmap.org/export/embed.html?bbox=-46.55851,-23.70819,-46.54846,-23.71104&amp;layer=mapnik`}
+                    src={Map}
                     style={{
                         width: '100%',
                         height: '400px',

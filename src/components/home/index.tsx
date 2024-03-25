@@ -9,17 +9,27 @@ import { prefixApi } from '@/constants';
 import { request } from '@/services/api';
 
 const Home = async () => {
-    const data = await request('homes');
+    const { data } = await request({
+        path: 'home',
+        populate: 'Impacto,Imagem'
+    });
 
-    const { texto, imagem } = data[0];
+    const {
+        Titulo,
+        Imagem,
+        Impacto: ImpactoArr,
+        TituloImpacto
+    } = data?.attributes || {};
 
     return (
         <main
-            style={{ backgroundImage: `url(${prefixApi}/${imagem.url})` }}
+            style={{
+                backgroundImage: `url(${prefixApi}${Imagem?.data?.attributes?.url})`
+            }}
             className={home.container}
         >
-            <HeaderHome texto={texto} />
-            <Impacto />
+            <HeaderHome texto={Titulo} />
+            <Impacto title={TituloImpacto} data={ImpactoArr} />
             <BlogHome />
             <Team />
         </main>

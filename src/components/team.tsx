@@ -14,7 +14,7 @@ import { multiCssClass } from '@/utils';
 const Team = () => {
     const router = useRouter();
 
-    const { data } = useRequest({ name: 'equipes' });
+    const { data } = useRequest({ name: 'equipes', populate: 'Foto' });
 
     return (
         <section className={styles.container}>
@@ -28,15 +28,18 @@ const Team = () => {
                             <Image
                                 width={256}
                                 height={256}
-                                alt={`Foto ${p.nome}`}
+                                alt={`Foto ${p.Nome}`}
                                 style={{ borderRadius: '50%' }}
-                                src={prefixApi + p.foto.url}
+                                src={
+                                    prefixApi +
+                                    p.attributes.Foto.data.attributes.url
+                                }
                             />
                         </figure>
                         <div>
-                            <h4 className={styles.name}>{p.nome}</h4>
-                            <p className={styles.cargo}>{p.cargo}</p>
-                            <p className={styles.desc}>{p.descricao}</p>
+                            <h4 className={styles.name}>{p.attributes.Nome}</h4>
+                            <p className={styles.cargo}>{p.attributes.Cargo}</p>
+                            <p className={styles.desc}>{p.attributes.Texto}</p>
                         </div>
                     </li>
                 ))}

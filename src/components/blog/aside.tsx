@@ -17,9 +17,12 @@ const BlogAside = () => {
         <aside className={styles.aside}>
             <h4>Categorias</h4>
             <Link href="/blog">Todos</Link>
-            {data?.map((c: any, i: number) => (
-                <Link href={`/blog/categoria/${slugLinkTitle(c.nome)}`} key={i}>
-                    {c.nome}
+            {data?.map(({ attributes }: any, i: number) => (
+                <Link
+                    href={`/blog/categoria/${slugLinkTitle(attributes.Nome)}`}
+                    key={i}
+                >
+                    {attributes.Nome}
                 </Link>
             ))}
         </aside>

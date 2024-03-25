@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Markdown from 'react-markdown';
 import { usePathname } from 'next/navigation';
 
 import BlogAside from '@/components/blog/aside';
@@ -12,7 +11,7 @@ import useRequest from '@/hooks/request';
 import styles from '@/styles/blog.module.css';
 import shared from '@/styles/shared.module.css';
 
-import { multiCssClass, slugLinkTitle } from '@/utils';
+import { getPartText, multiCssClass, slugLinkTitle } from '@/utils';
 import { prefixApi } from '@/constants';
 
 const PER_PAGE = 5;
@@ -24,32 +23,39 @@ const Blog = () => {
     const [page, setPage] = useState<number>(0);
     const [articles, setArticles] = useState([]);
 
-    const { data, loading } = useRequest({ name: 'posts' });
+    const { data, loading } = useRequest({
+        name: 'blogs',
+        populate: 'Imagem,Autor,Autor.Foto,Categoria',
+        sort: 'createdAt:desc'
+    });
 
     const { data: categories, loading: loadingC } = useRequest({
         name: 'categorias'
     });
 
     useEffect(() => {
-        if (loading || loadingC) return;
-
         const slug = path.split('/categoria/')[1];
 
+        if (loading || loadingC) return;
+
         const catg = categories.find(
-            (c: any) => slugLinkTitle(c.nome) === slug
+            (c: any) => slugLinkTitle(c?.attributes?.Nome) === slug
         );
 
         if (!catg) {
             setCategory(null);
             setArticles(data);
         } else {
-            setCategory(catg);
+            setCategory(catg.attributes);
             setArticles(
-                data.filter((ctg: any) => ctg.categoria.id === catg.id)
+                data.filter(
+                    ({ attributes }: any) =>
+                        attributes?.Categoria?.data?.id === catg.id
+                )
             );
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [path, data, loading, loadingC]);
+    }, [path, data, loading, loadingC, categories?.length]);
 
     if (loading)
         return (
@@ -84,18 +90,23 @@ const Blog = () => {
             >
                 {category ? (
                     <h2 style={{ color: '#fff' }} className={shared.titleLarge}>
-                        {category?.nome}
+                        {category?.Nome}
                     </h2>
                 ) : (
                     <div className={styles.slide}>
                         <div>
                             <p className={styles.category}>
-                                {firstPost.categoria.nome}
+                                {
+                                    firstPost?.attributes?.Categoria?.data
+                                        ?.attributes?.Nome
+                                }
                             </p>
-                            <h2 className={styles.title}>{firstPost.titulo}</h2>
+                            <h2 className={styles.title}>
+                                {firstPost?.attributes?.Titulo}
+                            </h2>
                             <Link
                                 className={styles.button}
-                                href={`/blog/artigo/${slugLinkTitle(firstPost.titulo)}-${firstPost.id}`}
+                                href={`/blog/artigo/${slugLinkTitle(firstPost?.attributes?.Titulo)}-${firstPost?.id}`}
                             >
                                 Leia mais
                             </Link>
@@ -105,7 +116,7 @@ const Blog = () => {
             </header>
             <section className={styles.section}>
                 <nav className={styles.nav}>
-                    {!articles?.length && (
+                    {!data?.length && (
                         <h3 className={shared.titleLarge}>
                             Em breve teremos artigos aqui.
                         </h3>
@@ -113,41 +124,47 @@ const Blog = () => {
                     <ul className={styles.list}>
                         {articles
                             .slice(PER_PAGE * page, PER_PAGE * page + PER_PAGE)
-                            .map((item: any, i: number) => (
+                            .map(({ attributes: item, id }: any, i: number) => (
                                 <li key={i} className={styles.item}>
                                     <figure
                                         className={styles.figure}
                                         style={{
-                                            backgroundImage: `url(${prefixApi}/${item.imagem_principal.url})`
+                                            backgroundImage: `url(${prefixApi}${item?.Imagem?.data?.attributes?.url})`
                                         }}
                                     />
                                     <div className={styles.content}>
                                         <p className={styles.category}>
-                                            {item.categoria.nome}
+                                            {
+                                                item?.Categoria?.data
+                                                    ?.attributes?.Nome
+                                            }
                                         </p>
                                         <h3 className={styles.titleItem}>
-                                            {item.titulo}
+                                            {item?.Titulo}
                                         </h3>
                                         <div className={styles.author}>
                                             <figure
                                                 className={styles.photo}
                                                 style={{
-                                                    backgroundImage: `url(${item.autor.path_img})`
+                                                    backgroundImage: `url(${prefixApi}${item?.Autor?.data?.attributes?.Foto?.data?.attributes?.url})`
                                                 }}
                                             />
                                             <p className={styles.name}>
-                                                Por <b>{item.autor.nome}</b>
+                                                Por{' '}
+                                                <b>
+                                                    {
+                                                        item?.Autor?.data
+                                                            ?.attributes?.Nome
+                                                    }
+                                                </b>
                                             </p>
                                         </div>
                                         <div className={styles.text}>
-                                            <Markdown>
-                                                {item?.conteudo?.slice(0, 100) +
-                                                    '...'}
-                                            </Markdown>
+                                            {getPartText(item?.Texto)}...
                                         </div>
                                         <Link
                                             className={styles.buttonItem}
-                                            href={`/blog/artigo/${slugLinkTitle(item.titulo)}-${item.id}`}
+                                            href={`/blog/artigo/${slugLinkTitle(item.Titulo)}-${id}`}
                                         >
                                             Leia mais
                                         </Link>
@@ -155,7 +172,7 @@ const Blog = () => {
                                 </li>
                             ))}
                     </ul>
-                    {articles?.length > PER_PAGE && (
+                    {data?.length > PER_PAGE && (
                         <ul className={styles.pagination}>
                             {[
                                 ...Array(Math.ceil(articles.length / PER_PAGE))

@@ -6,8 +6,27 @@ import shared from '@/styles/shared.module.css';
 
 import { menuList } from '@/data';
 import { multiCssClass } from '@/utils';
+import { prefixApi } from '@/constants';
 
-const Footer = () => (
+interface IProps {
+    Endereco: string;
+    CEP: string;
+    Cidade: string;
+    NewsLetter: string;
+    Email: string;
+    Numeros: { Numero: string }[];
+    SocialMedia: { Nome: string; Link: string; Icon: any }[];
+}
+
+const Footer = async ({
+    Endereco,
+    CEP,
+    Cidade,
+    Numeros,
+    NewsLetter,
+    Email,
+    SocialMedia
+}: IProps) => (
     <footer className={styles.container}>
         <div className={styles.content}>
             <div className={styles.info}>
@@ -20,36 +39,25 @@ const Footer = () => (
                     />
                 </figure>
                 <div>
-                    <p>R. Jurubatuba, 1350</p>
-                    <p>SL. 625 - Centro</p>
-                    <p>CEP 09725-000</p>
+                    <p>{Endereco}</p>
+                    <p>CEP {CEP}</p>
                 </div>
-                <p>São Bernardo do Campo - SP</p>
-                <p>Telefone: (11) 941578881</p>
-                <p>Telefone: (11) 41038163</p>
+                <p>{Cidade}</p>
+                {Numeros.map((n, i) => (
+                    <p key={i}>Telefone: {n.Numero}</p>
+                ))}
+                <p>Email: {Email}</p>
                 <div className={styles.social}>
-                    <a
-                        href="https://www.facebook.com/SolidGestaoEmpresarial/"
-                        target="_blank"
-                    >
-                        <Image
-                            width={24}
-                            height={24}
-                            alt="Facebook Link"
-                            src="/static/img/facebook-logo.svg"
-                        />
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/company/solid-consultoria-em-gestao-empresarial/"
-                        target="_blank"
-                    >
-                        <Image
-                            width={24}
-                            height={24}
-                            alt="Linkedin link"
-                            src="/static/img/linkedin-logo.svg"
-                        />
-                    </a>
+                    {SocialMedia.map((s, i) => (
+                        <a href={s.Link} target="_blank" key={i}>
+                            <Image
+                                width={24}
+                                height={24}
+                                alt={`${s.Nome} Link`}
+                                src={prefixApi + s?.Icon?.data?.attributes?.url}
+                            />
+                        </a>
+                    ))}
                 </div>
             </div>
             <ul className={styles.list}>
@@ -64,7 +72,7 @@ const Footer = () => (
                     Receba dicas para transformar seu negócio
                 </h4>
                 <form
-                    action="https://solidsolucoes.us19.list-manage.com/subscribe/post?u=f6a8b65cd28d281b2c0856998&amp;id=bc061a8c5b"
+                    action={NewsLetter}
                     method="post"
                     id="mc-embedded-subscribe-form"
                     name="mc-embedded-subscribe-form"

@@ -1,10 +1,8 @@
+import BaseLayout from '@/components/base';
 import './globals.css';
 
 import type { Metadata, Viewport } from 'next';
 import { Montserrat } from 'next/font/google';
-
-import Footer from '@/components/footer';
-import Menu from '@/components/menu';
 
 const montSerrat = Montserrat({ subsets: ['latin'] });
 
@@ -29,9 +27,7 @@ export default function RootLayout({
     return (
         <html lang="pt-br">
             <body className={montSerrat.className}>
-                <Menu />
-                {children}
-                <Footer />
+                <BaseLayout>{children}</BaseLayout>
             </body>
         </html>
     );

@@ -1,12 +1,13 @@
 import Home from '@/components/home';
+
 import { request } from '@/services/api';
 
 export async function generateMetadata() {
-    const data = await request('homes');
+    const { data } = await request({ path: 'home', populate: 'Metadata' });
 
     return {
-        title: data[0]?.titulo,
-        description: data[0]?.description
+        title: data?.attributes?.Metadata?.Titulo,
+        description: data?.attributes?.Metadata?.Descricao
     };
 }
 

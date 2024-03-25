@@ -1,5 +1,4 @@
-import Markdown from 'react-markdown';
-import { headers } from 'next/headers';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import Link from 'next/link';
 import { Metadata } from 'next';
 
@@ -10,58 +9,65 @@ import shared from '@/styles/shared.module.css';
 
 import { request } from '@/services/api';
 import { prefixApi } from '@/constants';
+import { getPartText } from '@/utils';
 
-export async function generateMetadata(): Promise<Metadata> {
-    const headersList = headers();
+type Props = {
+    params: { slug: string };
+};
 
-    const url = headersList.get('next-url');
-    const id = url?.split('-')[1];
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const id = params?.slug?.split('-')[1];
 
-    const data = await request(`posts/${id}`);
+    const { data } = await request({
+        path: `blogs/${id}`,
+        populate: 'Imagem'
+    });
+
+    const { Titulo, Texto, Imagem } = data?.attributes || {};
 
     return {
-        title: data?.titulo,
-        description: data?.descricao,
+        title: Titulo,
+        description: getPartText(Texto),
         openGraph: {
             siteName: 'Solid Soluções',
-            description: data.conteudo.slice(0, 200) + '...',
-            images: [`${prefixApi}/${data?.imagem_principal?.url}`]
+            description: getPartText(Texto) + '...',
+            images: [`${prefixApi}${Imagem?.data?.attributes?.url}`]
         }
     };
 }
 
-const Article = async () => {
-    const headersList = headers();
+const Article = async ({ params }: Props) => {
+    const id = params?.slug?.split('-')[1];
 
-    const url = headersList.get('next-url');
-    const id = url?.split('-')[1];
+    const { data } = await request({
+        path: `blogs/${id}`,
+        populate: 'Imagem,Categoria'
+    });
 
-    const data = await request(`posts/${id}`);
+    const { Titulo, Categoria, Imagem, Texto } = data?.attributes || {};
 
     return (
         <main className={shared.container}>
             <header
                 className={shared.header}
                 style={{
-                    backgroundImage: `url(${data?.error || !data ? '/static/img/header-pessoas.jpg' : `${prefixApi}/${data?.imagem_principal?.url}`})`,
+                    backgroundImage: `url(${!data ? '/static/img/header-pessoas.jpg' : `${prefixApi}${Imagem?.data?.attributes?.url}`})`,
                     backgroundBlendMode: 'overlay'
                 }}
             >
-                {!!data?.categoria?.nome && (
-                    <p className={styles.category}>{data?.categoria?.nome}</p>
+                {!!Categoria?.data?.attributes?.Nome && (
+                    <p className={styles.category}>
+                        {Categoria?.data?.attributes?.Nome}
+                    </p>
                 )}
-                {!!data?.titulo && (
-                    <h2 className={styles.title}>{data?.titulo}</h2>
-                )}
+                {!!Titulo && <h2 className={styles.title}>{Titulo}</h2>}
             </header>
             <section className={styles.section}>
                 <nav className={styles.nav}>
-                    {!data?.error ? (
+                    {!!data ? (
                         <>
-                            <h3 className={styles.titleArticle}>
-                                {data?.titulo}
-                            </h3>
-                            <Markdown>{data?.conteudo}</Markdown>{' '}
+                            <h3 className={styles.titleArticle}>{Titulo}</h3>
+                            <BlocksRenderer content={Texto} />{' '}
                         </>
                     ) : (
                         <Link href="/blog" className={styles.notFound}>
