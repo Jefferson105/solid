@@ -1,0 +1,74 @@
+.container {
+    background-color: #f9f9f9;
+    border: thin solid #e6e6e6;
+    padding: 3rem 5%;
+}
+
+.list {
+    list-style: none;
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.item {
+    border-radius: 10px;
+    background-color: #fff;
+    width: 277px;
+    height: 517px;
+    border: thin solid #e6e6e6;
+    padding: 2rem 20px 3rem 20px;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    cursor: pointer;
+}
+
+.icon {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    box-shadow: 0 3px 20px 3px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.title {
+    margin-top: 1.2rem;
+    font-weight: lighter;
+    color: var(--blue);
+    font-size: 1.2rem;
+}
+
+.text {
+    font-size: 1rem;
+    color: #666666;
+    line-height: 20px;
+    margin-top: 1rem;
+}
+
+.more {
+    background-color: #1b4e85;
+    color: #fff;
+    width: 10rem;
+    margin: auto auto 0 auto;
+    padding: 0.3rem 0;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+@media (max-width: 1009px) {
+    .list {
+        flex-direction: column;
+        margin-top: 2rem;
+    }
+
+    .item {
+        margin: 0 auto;
+        margin-bottom: 2rem;
+    }
+}

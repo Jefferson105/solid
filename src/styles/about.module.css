@@ -1,0 +1,112 @@
+.header {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(/static/img/quem-somos-header.jpg);
+    background-size: cover;
+    background-position-y: 40%;
+    border-bottom: thin solid #d2d2d2;
+    position: relative;
+}
+
+.content {
+    padding: 7rem 10%;
+}
+
+.title {
+    color: var(--blue);
+    max-width: 768px;
+    text-align: center;
+    font-size: 2.1rem;
+    line-height: 50px;
+}
+
+.subTitle {
+    font-weight: lighter;
+    max-width: 700px;
+    text-align: center;
+    font-size: 1.3rem;
+    margin: 0 auto;
+}
+
+.list {
+    list-style: none;
+    max-width: 950px;
+    margin: 5rem auto;
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.figure {
+    width: 50%;
+    background-color: #000;
+    border-radius: 10px;
+    position: relative;
+    top: -4rem;
+    background-size: cover;
+}
+
+.figure:last-child {
+    right: 1rem;
+}
+
+.figure:first-child {
+    left: 1rem;
+}
+
+.text {
+    padding: 3rem;
+    width: 50%;
+    box-sizing: border-box;
+    background-color: #223952;
+    color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+@media (max-width: 1009px) {
+    .title {
+        font-size: 1.5rem;
+        line-break: 30px;
+    }
+
+    .content {
+        padding: 2rem 5%;
+    }
+
+    .list {
+        margin: 2rem auto;
+        gap: 0rem;
+    }
+
+    .item {
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+
+    .figure {
+        width: 100%;
+        padding: 1rem;
+        top: 0;
+        right: 0;
+        left: 0 !important;
+        height: 15rem;
+        margin: 1rem 0;
+    }
+
+    .text {
+        width: 100%;
+        padding: 1rem;
+    }
+}

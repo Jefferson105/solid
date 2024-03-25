@@ -1,0 +1,126 @@
+.container {
+    max-width: 1367px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+.loading {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.loading p {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.header {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position-y: 40%;
+    border-bottom: thin solid #d2d2d2;
+    position: relative;
+    background-color: #1b4e85;
+}
+
+.title {
+    font-size: 2.3rem;
+    font-weight: lighter;
+    text-align: center;
+    line-height: 50px;
+    color: var(--blue);
+}
+
+.titleLarge {
+    color: #223952;
+    max-width: 900px;
+    text-align: center;
+    font-size: 2.9rem;
+    line-height: 50px;
+    font-weight: lighter;
+    position: relative;
+    bottom: 4rem;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 4rem;
+    font-weight: bold;
+    color: white;
+    background-color: #36ab12;
+    border-radius: 30px;
+    font-size: 1.3rem;
+    height: 3.5rem;
+    width: 25rem;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 5px 20px;
+    text-align: center;
+}
+
+.button {
+    font-size: 1.2rem;
+    width: 17rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 3rem;
+}
+
+.scroll {
+    background-color: #fff;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: rotation 2s linear infinite;
+}
+
+@media (max-width: 1009px) {
+    .title {
+        width: 95%;
+        font-size: 2.5rem;
+    }
+
+    .titleLarge {
+        font-size: 2rem;
+        line-height: 40px;
+    }
+
+    .link {
+        max-width: 300px;
+    }
+}

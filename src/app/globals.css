@@ -1,0 +1,24 @@
+:root {
+    --bp: 1009px;
+    --blue: #223952;
+    --green: #36ab12;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 25px;
+    scroll-behavior: smooth;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    border: none;
+}

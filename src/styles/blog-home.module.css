@@ -1,0 +1,86 @@
+.container {
+    background-color: #f9f9f8;
+    padding-top: 11rem;
+    padding: 5rem 10%;
+    border-top: thin solid #ccc;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    margin-top: 6rem;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.list:hover li {
+    width: 16%;
+}
+
+.list:hover li > div {
+    opacity: 0;
+}
+
+.item {
+    list-style: none;
+    width: 16%;
+    overflow: hidden;
+    height: 27rem;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.item:first-child {
+    width: 65%;
+}
+
+.item:first-child > div {
+    opacity: 1;
+}
+
+.item:hover {
+    width: 65% !important;
+}
+
+.item:hover > div {
+    opacity: 1 !important;
+}
+
+.item > div {
+    position: absolute;
+    bottom: 1rem;
+    width: 75%;
+    color: #fff;
+    left: 1.5rem;
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+
+.title {
+    top: -0.5rem;
+    position: relative;
+    font-size: 1rem;
+}
+
+@media (max-width: 1009px) {
+    .list {
+        flex-direction: column;
+        margin-top: 2rem;
+        gap: 1rem;
+    }
+
+    .item,
+    .item:hover,
+    .item:first-child {
+        width: 100%;
+    }
+
+    .item > div {
+        opacity: 1 !important;
+    }
+}
