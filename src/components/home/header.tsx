@@ -10,7 +10,7 @@ const HeaderHome = ({ texto }: { texto: string }) => (
         <div className={home.info}>
             <h1 className={home.title}>{texto}</h1>
 
-            <Link className={shared.link} href="/contato">
+            <Link className={shared.link} href="/contato?consultor=true">
                 Fale com nossos consultores
             </Link>
             <ScrollBtn distance={700} />

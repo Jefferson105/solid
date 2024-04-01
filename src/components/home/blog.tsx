@@ -9,7 +9,7 @@ import styles from '@/styles/blog-home.module.css';
 import shared from '@/styles/shared.module.css';
 
 import { prefixApi } from '@/constants';
-import { getPartText, multiCssClass } from '@/utils';
+import { getPartText, multiCssClass, slugLinkTitle } from '@/utils';
 
 const BlogHome = () => {
     const router = useRouter();
@@ -28,10 +28,14 @@ const BlogHome = () => {
             </h2>
             <ul className={styles.list}>
                 {!!data?.length &&
-                    data.map((p: any, i: number) => (
+                    data.slice(0, 3).map((p: any, i: number) => (
                         <li
                             key={i}
-                            onClick={() => router.push(`/blog/${p.id}`)}
+                            onClick={() =>
+                                router.push(
+                                    `/blog/artigo/${slugLinkTitle(p?.attributes?.Titulo)}-${p?.id}`
+                                )
+                            }
                             style={{
                                 backgroundImage: `url(${prefixApi + p?.attributes?.Imagem?.data?.attributes?.url})`
                             }}
